@@ -1,0 +1,24 @@
+{
+  "tables": 12,
+  "counts": {
+    "analysis": 16,
+    "balancesheet": 1140,
+    "cashflow": 1056,
+    "companies": 92,
+    "documents": 1456,
+    "financial_ratios": 1041,
+    "market_cap": 552,
+    "peer_groups": 56,
+    "profitandloss": 1073,
+    "prosandcons": 14,
+    "sectors": 92,
+    "stock_prices": 5520
+  },
+  "foreign_key_violations": 0,
+  "validation_failures": 1113,
+  "critical_findings": 772,
+  "critical_open": 0,
+  "warning_failures": 341,
+  "info_findings": 0,
+  "tests": "61 passed in 0.69s"
+}
