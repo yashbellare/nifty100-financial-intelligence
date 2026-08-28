@@ -3,11 +3,11 @@ PYTHON?=python
 load:
 	$(PYTHON) -m src.etl.loader
 ratios:
-	@echo "Sprint 2 target: ratio engine not implemented in Sprint 1"
+	$(PYTHON) scripts/populate_ratios.py
 test:
 	pytest -q
 report:
-	@echo "Sprint 1 reports are in output/"
+	@echo "Sprint 2 reports are in output/"
 dashboard:
 	@echo "Sprint 5 target"
 api:

@@ -27,3 +27,15 @@ The document says "10 tables" in a few places, but its dataset catalogue, schema
 
 ## DQ-13
 URL checks are optional and disabled by default for offline environments.
+
+
+## Sprint 2 — Financial Ratio Engine
+
+Run the completed ratio engine with:
+
+```bash
+make ratios
+make test
+```
+
+Sprint 2 generates `financial_ratios` for the union of all available P&L, balance-sheet and cash-flow company-years, `output/capital_allocation.csv`, `output/ratio_edge_cases.log`, a manual spot-check workbook, and a screener preview. See `reports/sprint2_status.md` for the completion evidence and formula decisions.

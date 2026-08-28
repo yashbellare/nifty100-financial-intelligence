@@ -1,0 +1,1323 @@
+# Sprint 2 ratio edge-case log
+# Categories: data source issue, version difference, formula discrepancy
+ABB | 2012-12 | ROCE | data source issue | Computed 31.2210 vs company source 46.0000; difference -14.7790 pp
+ABB | 2012-12 | ROE | version difference | Computed 22.4111 vs company source 34.9000; difference -12.4889 pp
+ABB | 2014-03 | ROCE | data source issue | Computed 33.8832 vs company source 46.0000; difference -12.1168 pp
+ABB | 2014-03 | ROE | version difference | Computed 25.1269 vs company source 34.9000; difference -9.7731 pp
+ABB | 2015-03 | ROCE | data source issue | Computed 33.2978 vs company source 46.0000; difference -12.7022 pp
+ABB | 2015-03 | ROE | version difference | Computed 24.4397 vs company source 34.9000; difference -10.4603 pp
+ABB | 2016-03 | ROCE | data source issue | Computed 30.5439 vs company source 46.0000; difference -15.4561 pp
+ABB | 2016-03 | ROE | version difference | Computed 21.3389 vs company source 34.9000; difference -13.5611 pp
+ABB | 2017-03 | ROCE | data source issue | Computed 28.6950 vs company source 46.0000; difference -17.3050 pp
+ABB | 2017-03 | ROE | version difference | Computed 19.9712 vs company source 34.9000; difference -14.9288 pp
+ABB | 2018-03 | ROCE | data source issue | Computed 31.0100 vs company source 46.0000; difference -14.9900 pp
+ABB | 2018-03 | ROE | version difference | Computed 23.6858 vs company source 34.9000; difference -11.2142 pp
+ABB | 2019-03 | ROCE | data source issue | Computed 30.1295 vs company source 46.0000; difference -15.8705 pp
+ABB | 2019-03 | ROE | version difference | Computed 22.4104 vs company source 34.9000; difference -12.4896 pp
+ABB | 2020-03 | ROCE | data source issue | Computed 29.0483 vs company source 46.0000; difference -16.9517 pp
+ABB | 2020-03 | ROE | version difference | Computed 24.3933 vs company source 34.9000; difference -10.5067 pp
+ABB | 2021-03 | ROCE | data source issue | Computed 33.4664 vs company source 46.0000; difference -12.5336 pp
+ABB | 2021-03 | ROE | version difference | Computed 26.5565 vs company source 34.9000; difference -8.3435 pp
+ABB | 2022-03 | ROCE | data source issue | Computed 36.4065 vs company source 46.0000; difference -9.5935 pp
+ABB | 2022-03 | ROE | version difference | Computed 28.3333 vs company source 34.9000; difference -6.5667 pp
+ABB | 2023-03 | ROCE | data source issue | Computed 36.5344 vs company source 46.0000; difference -9.4656 pp
+ABB | 2023-03 | ROE | version difference | Computed 29.7679 vs company source 34.9000; difference -5.1321 pp
+ABB | 2024-03 | ROCE | data source issue | Computed 38.4188 vs company source 46.0000; difference -7.5812 pp
+ADANIENSOL | 2014-03 | ROCE | data source issue | Computed 0.0000 vs company source 9.0000; difference -9.0000 pp
+ADANIENSOL | 2014-03 | ROE | version difference | Computed 0.0000 vs company source 8.5900; difference -8.5900 pp
+ADANIENSOL | 2015-03 | ROCE | data source issue | Computed 0.9366 vs company source 9.0000; difference -8.0634 pp
+ADANIENSOL | 2015-03 | ROE | version difference | Computed -0.6464 vs company source 8.5900; difference -9.2364 pp
+ADANIENSOL | 2016-03 | ROCE | data source issue | Computed 17.1182 vs company source 9.0000; difference 8.1182 pp
+ADANIENSOL | 2016-03 | ROE | version difference | Computed 13.7725 vs company source 8.5900; difference 5.1825 pp
+ADANIENSOL | 2017-03 | ROCE | data source issue | Computed 16.6331 vs company source 9.0000; difference 7.6331 pp
+ADANIENSOL | 2017-03 | ROE | version difference | Computed 14.1161 vs company source 8.5900; difference 5.5261 pp
+ADANIENSOL | 2018-03 | ROCE | data source issue | Computed 17.1429 vs company source 9.0000; difference 8.1429 pp
+ADANIENSOL | 2018-03 | ROE | version difference | Computed 18.8707 vs company source 8.5900; difference 10.2807 pp
+ADANIENSOL | 2021-03 | ROE | version difference | Computed 14.4635 vs company source 8.5900; difference 5.8735 pp
+ADANIENSOL | 2024-03 | OPM | data source issue | Computed 34.3891 vs source 30.0000; diff 4.3891 pp
+ADANIENT | 2013-03 | ROE | version difference | Computed 5.6927 vs company source 13.6400; difference -7.9473 pp
+ADANIENT | 2016-03 | ROCE | data source issue | Computed 5.1741 vs company source 11.6000; difference -6.4259 pp
+ADANIENT | 2016-03 | ROE | version difference | Computed 7.4750 vs company source 13.6400; difference -6.1650 pp
+ADANIENT | 2017-03 | ROCE | data source issue | Computed 5.4371 vs company source 11.6000; difference -6.1629 pp
+ADANIENT | 2017-03 | ROE | version difference | Computed 6.5436 vs company source 13.6400; difference -7.0964 pp
+ADANIENT | 2018-03 | ROCE | data source issue | Computed 6.2275 vs company source 11.6000; difference -5.3725 pp
+ADANIENT | 2018-03 | ROE | version difference | Computed 3.9366 vs company source 13.6400; difference -9.7034 pp
+ADANIENT | 2019-03 | ROE | version difference | Computed 3.4291 vs company source 13.6400; difference -10.2109 pp
+ADANIENT | 2020-03 | ROE | version difference | Computed 6.1368 vs company source 13.6400; difference -7.5032 pp
+ADANIENT | 2021-03 | ROE | version difference | Computed 6.0959 vs company source 13.6400; difference -7.5441 pp
+ADANIENT | 2022-03 | ROCE | data source issue | Computed 5.8158 vs company source 11.6000; difference -5.7842 pp
+ADANIENT | 2022-03 | ROE | version difference | Computed 3.5405 vs company source 13.6400; difference -10.0995 pp
+ADANIENT | 2023-03 | ROE | version difference | Computed 7.3281 vs company source 13.6400; difference -6.3119 pp
+ADANIENT | 2024-03 | ROE | version difference | Computed 8.5347 vs company source 13.6400; difference -5.1053 pp
+ADANIGREEN | 2017-03 | ROCE | data source issue | Computed 7.2613 vs company source 96.5000; difference -89.2387 pp
+ADANIGREEN | 2017-03 | ROE | version difference | Computed -3.9069 vs company source 14.7000; difference -18.6069 pp
+ADANIGREEN | 2018-03 | ROCE | data source issue | Computed 7.5234 vs company source 96.5000; difference -88.9766 pp
+ADANIGREEN | 2018-03 | ROE | version difference | Computed -10.2908 vs company source 14.7000; difference -24.9908 pp
+ADANIGREEN | 2019-03 | ROCE | data source issue | Computed 11.6711 vs company source 96.5000; difference -84.8289 pp
+ADANIGREEN | 2019-03 | ROE | version difference | Computed -24.5732 vs company source 14.7000; difference -39.2732 pp
+ADANIGREEN | 2020-03 | ROCE | data source issue | Computed 8.4190 vs company source 96.5000; difference -88.0810 pp
+ADANIGREEN | 2020-03 | ROE | version difference | Computed -2.8850 vs company source 14.7000; difference -17.5850 pp
+ADANIGREEN | 2021-03 | ROCE | data source issue | Computed 8.4857 vs company source 96.5000; difference -88.0143 pp
+ADANIGREEN | 2021-03 | ROE | version difference | Computed 8.2727 vs company source 14.7000; difference -6.4273 pp
+ADANIGREEN | 2022-03 | ROCE | data source issue | Computed 6.3341 vs company source 96.5000; difference -90.1659 pp
+ADANIGREEN | 2023-03 | ROCE | data source issue | Computed 8.0778 vs company source 96.5000; difference -88.4222 pp
+ADANIGREEN | 2024-03 | ROCE | data source issue | Computed 9.7976 vs company source 96.5000; difference -86.7024 pp
+ADANIPORTS | 2013-03 | ROE | version difference | Computed 25.6334 vs company source 18.1000; difference 7.5334 pp
+ADANIPORTS | 2022-03 | ROE | version difference | Computed 11.8433 vs company source 18.1000; difference -6.2567 pp
+ADANIPORTS | 2023-03 | ROE | version difference | Computed 11.8773 vs company source 18.1000; difference -6.2227 pp
+ADANIPOWER | 2013-03 | ROCE | data source issue | Computed 2.0830 vs company source 32.2000; difference -30.1170 pp
+ADANIPOWER | 2013-03 | ROE | version difference | Computed -53.4591 vs company source 57.1000; difference -110.5591 pp
+ADANIPOWER | 2014-03 | ROCE | data source issue | Computed 9.0604 vs company source 32.2000; difference -23.1396 pp
+ADANIPOWER | 2014-03 | ROE | version difference | Computed -4.4475 vs company source 57.1000; difference -61.5475 pp
+ADANIPOWER | 2015-03 | ROCE | data source issue | Computed 9.2694 vs company source 32.2000; difference -22.9306 pp
+ADANIPOWER | 2015-03 | ROE | version difference | Computed -14.2533 vs company source 57.1000; difference -71.3533 pp
+ADANIPOWER | 2016-03 | ROCE | data source issue | Computed 14.6220 vs company source 32.2000; difference -17.5780 pp
+ADANIPOWER | 2016-03 | ROE | version difference | Computed 7.3781 vs company source 57.1000; difference -49.7219 pp
+ADANIPOWER | 2017-03 | ROCE | data source issue | Computed 10.7779 vs company source 32.2000; difference -21.4221 pp
+ADANIPOWER | 2017-03 | ROE | version difference | Computed -205.8000 vs company source 57.1000; difference -262.9000 pp
+ADANIPOWER | 2018-03 | ROCE | data source issue | Computed 10.1184 vs company source 32.2000; difference -22.0816 pp
+ADANIPOWER | 2018-03 | ROE | version difference | Computed -236.5579 vs company source 57.1000; difference -293.6579 pp
+ADANIPOWER | 2019-03 | ROCE | data source issue | Computed 9.1110 vs company source 32.2000; difference -23.0890 pp
+ADANIPOWER | 2019-03 | ROE | version difference | Computed -12.7593 vs company source 57.1000; difference -69.8593 pp
+ADANIPOWER | 2020-03 | ROCE | data source issue | Computed 9.2964 vs company source 32.2000; difference -22.9036 pp
+ADANIPOWER | 2020-03 | ROE | version difference | Computed -35.1026 vs company source 57.1000; difference -92.2026 pp
+ADANIPOWER | 2021-03 | ROCE | data source issue | Computed 13.2374 vs company source 32.2000; difference -18.9626 pp
+ADANIPOWER | 2021-03 | ROE | version difference | Computed 9.6850 vs company source 57.1000; difference -47.4150 pp
+ADANIPOWER | 2022-03 | ROCE | data source issue | Computed 14.6164 vs company source 32.2000; difference -17.5836 pp
+ADANIPOWER | 2022-03 | ROE | version difference | Computed 26.6132 vs company source 57.1000; difference -30.4868 pp
+ADANIPOWER | 2023-03 | ROCE | data source issue | Computed 13.9783 vs company source 32.2000; difference -18.2217 pp
+ADANIPOWER | 2023-03 | ROE | version difference | Computed 35.9051 vs company source 57.1000; difference -21.1949 pp
+ADANIPOWER | 2024-03 | ROCE | data source issue | Computed 23.4411 vs company source 32.2000; difference -8.7589 pp
+ADANIPOWER | 2024-03 | ROE | version difference | Computed 48.2767 vs company source 57.1000; difference -8.8233 pp
+AMBUJACEM | 2012-12 | ROCE | data source issue | Computed 27.9214 vs company source 12.8000; difference 15.1214 pp
+AMBUJACEM | 2012-12 | ROE | version difference | Computed 14.6868 vs company source 9.2400; difference 5.4468 pp
+AMBUJACEM | 2014-12 | ROCE | data source issue | Computed 19.1409 vs company source 12.8000; difference 6.3409 pp
+AMBUJACEM | 2014-12 | ROE | version difference | Computed 14.7666 vs company source 9.2400; difference 5.5266 pp
+AMBUJACEM | 2017-12 | ROCE | data source issue | Computed 18.6413 vs company source 12.8000; difference 5.8413 pp
+AMBUJACEM | 2018-12 | ROCE | data source issue | Computed 17.8983 vs company source 12.8000; difference 5.0983 pp
+AMBUJACEM | 2019-12 | ROCE | data source issue | Computed 19.0597 vs company source 12.8000; difference 6.2597 pp
+AMBUJACEM | 2020-12 | ROCE | data source issue | Computed 21.5516 vs company source 12.8000; difference 8.7516 pp
+AMBUJACEM | 2021-12 | ROCE | data source issue | Computed 24.0409 vs company source 12.8000; difference 11.2409 pp
+AMBUJACEM | 2021-12 | ROE | version difference | Computed 14.6367 vs company source 9.2400; difference 5.3967 pp
+APOLLOHOSP | 2016-03 | ROCE | data source issue | Computed 11.0931 vs company source 17.2000; difference -6.1069 pp
+APOLLOHOSP | 2016-03 | ROE | version difference | Computed 7.0528 vs company source 13.8100; difference -6.7572 pp
+APOLLOHOSP | 2017-03 | ROCE | data source issue | Computed 11.3993 vs company source 17.2000; difference -5.8007 pp
+APOLLOHOSP | 2017-03 | ROE | version difference | Computed 3.9529 vs company source 13.8100; difference -9.8571 pp
+APOLLOHOSP | 2018-03 | ROCE | data source issue | Computed 11.9928 vs company source 17.2000; difference -5.2072 pp
+APOLLOHOSP | 2018-03 | ROE | version difference | Computed 1.8450 vs company source 13.8100; difference -11.9650 pp
+APOLLOHOSP | 2019-03 | ROE | version difference | Computed 5.9988 vs company source 13.8100; difference -7.8112 pp
+APOLLOHOSP | 2020-03 | ROCE | data source issue | Computed 22.9383 vs company source 17.2000; difference 5.7383 pp
+APOLLOHOSP | 2021-03 | ROE | version difference | Computed 2.9763 vs company source 13.8100; difference -10.8337 pp
+APOLLOHOSP | 2022-03 | ROCE | data source issue | Computed 22.5880 vs company source 17.2000; difference 5.3880 pp
+APOLLOHOSP | 2022-03 | ROE | version difference | Computed 19.7048 vs company source 13.8100; difference 5.8948 pp
+ASIANPAINT | 2013-03 | ROCE | data source issue | Computed 47.7854 vs company source 41.7500; difference 6.0354 pp
+ASIANPAINT | 2017-03 | ROCE | data source issue | Computed 36.6732 vs company source 41.7500; difference -5.0768 pp
+ASIANPAINT | 2018-03 | ROCE | data source issue | Computed 35.8269 vs company source 41.7500; difference -5.9231 pp
+ASIANPAINT | 2018-03 | ROE | version difference | Computed 24.9465 vs company source 31.4500; difference -6.5035 pp
+ASIANPAINT | 2019-03 | ROCE | data source issue | Computed 34.8902 vs company source 41.7500; difference -6.8598 pp
+ASIANPAINT | 2019-03 | ROE | version difference | Computed 23.3133 vs company source 31.4500; difference -8.1367 pp
+ASIANPAINT | 2021-03 | ROCE | data source issue | Computed 34.9378 vs company source 41.7500; difference -6.8122 pp
+ASIANPAINT | 2021-03 | ROE | version difference | Computed 25.0429 vs company source 31.4500; difference -6.4071 pp
+ASIANPAINT | 2022-03 | ROCE | data source issue | Computed 31.1968 vs company source 41.7500; difference -10.5532 pp
+ASIANPAINT | 2022-03 | ROE | version difference | Computed 22.3357 vs company source 31.4500; difference -9.1143 pp
+ASIANPAINT | 2023-03 | ROCE | data source issue | Computed 34.9233 vs company source 41.7500; difference -6.8267 pp
+ASIANPAINT | 2023-03 | ROE | version difference | Computed 26.2319 vs company source 31.4500; difference -5.2181 pp
+ASIANPAINT | 2024-03 | ROCE | data source issue | Computed 35.7749 vs company source 41.7500; difference -5.9751 pp
+ATGL | 2018-03 | ROCE | data source issue | Computed 15.5019 vs company source 21.2000; difference -5.6981 pp
+ATGL | 2019-03 | ROCE | data source issue | Computed 30.4144 vs company source 21.2000; difference 9.2144 pp
+ATGL | 2020-03 | ROCE | data source issue | Computed 31.3323 vs company source 21.2000; difference 10.1323 pp
+ATGL | 2020-03 | ROE | version difference | Computed 29.6397 vs company source 20.5000; difference 9.1397 pp
+ATGL | 2021-03 | ROCE | data source issue | Computed 28.5830 vs company source 21.2000; difference 7.3830 pp
+AXISBANK | 2013-03 | OPM | data source issue | Computed 30.5816 vs source 1353.0000; diff -1322.4184 pp
+AXISBANK | 2014-03 | OPM | data source issue | Computed 31.4742 vs source 2307.0000; diff -2275.5258 pp
+AXISBANK | 2015-03 | OPM | data source issue | Computed 31.3622 vs source 3097.0000; diff -3065.6378 pp
+AXISBANK | 2016-03 | OPM | data source issue | Computed 32.6120 vs source 3466.0000; diff -3433.3880 pp
+AXISBANK | 2017-03 | OPM | data source issue | Computed 53.4507 vs source -5715.0000; diff 5768.4507 pp
+AXISBANK | 2017-03 | ROE | version difference | Computed 6.5254 vs company source 18.4000; difference -11.8746 pp
+AXISBANK | 2018-03 | OPM | data source issue | Computed 63.1171 vs source -10277.0000; diff 10340.1171 pp
+AXISBANK | 2018-03 | ROE | version difference | Computed 0.4299 vs company source 18.4000; difference -17.9701 pp
+AXISBANK | 2019-03 | OPM | data source issue | Computed 49.3853 vs source -5447.0000; diff 5496.3853 pp
+AXISBANK | 2019-03 | ROE | version difference | Computed 6.8980 vs company source 18.4000; difference -11.5020 pp
+AXISBANK | 2020-03 | OPM | data source issue | Computed 55.9847 vs source -9859.0000; diff 9914.9847 pp
+AXISBANK | 2020-03 | ROE | version difference | Computed 1.8844 vs company source 18.4000; difference -16.5156 pp
+AXISBANK | 2021-03 | OPM | data source issue | Computed 50.1200 vs source -2510.0000; diff 2560.1200 pp
+AXISBANK | 2021-03 | ROE | version difference | Computed 6.3594 vs company source 18.4000; difference -12.0406 pp
+AXISBANK | 2022-03 | OPM | data source issue | Computed 44.4692 vs source 3170.0000; diff -3125.5308 pp
+AXISBANK | 2022-03 | ROE | version difference | Computed 11.0138 vs company source 18.4000; difference -7.3862 pp
+AXISBANK | 2023-03 | OPM | data source issue | Computed 34.1565 vs source 13857.0000; diff -13822.8435 pp
+AXISBANK | 2023-03 | ROE | version difference | Computed 7.3817 vs company source 18.4000; difference -11.0183 pp
+AXISBANK | 2024-03 | OPM | data source issue | Computed 34.6926 vs source 11952.0000; diff -11917.3074 pp
+BAJAJ-AUTO | 2013-03 | ROCE | data source issue | Computed 44.6889 vs company source 33.5000; difference 11.1889 pp
+BAJAJ-AUTO | 2013-03 | ROE | version difference | Computed 38.8469 vs company source 26.5000; difference 12.3469 pp
+BAJAJ-AUTO | 2014-03 | ROCE | data source issue | Computed 40.7100 vs company source 33.5000; difference 7.2100 pp
+BAJAJ-AUTO | 2014-03 | ROE | version difference | Computed 33.2448 vs company source 26.5000; difference 6.7448 pp
+BAJAJ-AUTO | 2017-03 | ROCE | data source issue | Computed 24.6384 vs company source 33.5000; difference -8.8616 pp
+BAJAJ-AUTO | 2018-03 | ROCE | data source issue | Computed 23.5861 vs company source 33.5000; difference -9.9139 pp
+BAJAJ-AUTO | 2018-03 | ROE | version difference | Computed 20.6561 vs company source 26.5000; difference -5.8439 pp
+BAJAJ-AUTO | 2019-03 | ROCE | data source issue | Computed 22.2536 vs company source 33.5000; difference -11.2464 pp
+BAJAJ-AUTO | 2019-03 | ROE | version difference | Computed 21.2112 vs company source 26.5000; difference -5.2888 pp
+BAJAJ-AUTO | 2020-03 | ROCE | data source issue | Computed 23.4487 vs company source 33.5000; difference -10.0513 pp
+BAJAJ-AUTO | 2021-03 | ROCE | data source issue | Computed 18.0258 vs company source 33.5000; difference -15.4742 pp
+BAJAJ-AUTO | 2021-03 | ROE | version difference | Computed 17.8088 vs company source 26.5000; difference -8.6912 pp
+BAJAJ-AUTO | 2022-03 | ROCE | data source issue | Computed 17.5405 vs company source 33.5000; difference -15.9595 pp
+BAJAJ-AUTO | 2022-03 | ROE | version difference | Computed 20.6504 vs company source 26.5000; difference -5.8496 pp
+BAJAJ-AUTO | 2023-03 | ROCE | data source issue | Computed 21.9257 vs company source 33.5000; difference -11.5743 pp
+BAJAJ-AUTO | 2023-03 | ROE | version difference | Computed 20.6389 vs company source 26.5000; difference -5.8611 pp
+BAJAJ-AUTO | 2024-03 | ROCE | data source issue | Computed 28.3896 vs company source 33.5000; difference -5.1104 pp
+BAJAJFINSV | 2013-03 | ROE | version difference | Computed 28.3773 vs company source 11.7200; difference 16.6573 pp
+BAJAJFINSV | 2014-03 | ROCE | data source issue | Computed 15.5835 vs company source 21.1400; difference -5.5565 pp
+BAJAJFINSV | 2014-03 | ROE | version difference | Computed 23.5288 vs company source 11.7200; difference 11.8088 pp
+BAJAJFINSV | 2015-03 | ROCE | data source issue | Computed 14.7349 vs company source 21.1400; difference -6.4051 pp
+BAJAJFINSV | 2015-03 | ROE | version difference | Computed 21.7242 vs company source 11.7200; difference 10.0042 pp
+BAJAJFINSV | 2016-03 | ROCE | data source issue | Computed 13.5700 vs company source 21.1400; difference -7.5700 pp
+BAJAJFINSV | 2016-03 | ROE | version difference | Computed 20.4059 vs company source 11.7200; difference 8.6859 pp
+BAJAJFINSV | 2017-03 | ROCE | data source issue | Computed 13.5226 vs company source 21.1400; difference -7.6174 pp
+BAJAJFINSV | 2017-03 | ROE | version difference | Computed 21.3609 vs company source 11.7200; difference 9.6409 pp
+BAJAJFINSV | 2018-03 | ROCE | data source issue | Computed 12.5183 vs company source 21.1400; difference -8.6217 pp
+BAJAJFINSV | 2018-03 | ROE | version difference | Computed 20.3876 vs company source 11.7200; difference 8.6676 pp
+BAJAJFINSV | 2019-03 | ROCE | data source issue | Computed 12.1763 vs company source 21.1400; difference -8.9637 pp
+BAJAJFINSV | 2019-03 | ROE | version difference | Computed 22.6369 vs company source 11.7200; difference 10.9169 pp
+BAJAJFINSV | 2020-03 | ROCE | data source issue | Computed 11.5182 vs company source 21.1400; difference -9.6218 pp
+BAJAJFINSV | 2020-03 | ROE | version difference | Computed 19.1489 vs company source 11.7200; difference 7.4289 pp
+BAJAJFINSV | 2021-03 | ROCE | data source issue | Computed 11.9550 vs company source 21.1400; difference -9.1850 pp
+BAJAJFINSV | 2021-03 | ROE | version difference | Computed 20.5610 vs company source 11.7200; difference 8.8410 pp
+BAJAJFINSV | 2022-03 | ROCE | data source issue | Computed 10.6516 vs company source 21.1400; difference -10.4884 pp
+BAJAJFINSV | 2022-03 | ROE | version difference | Computed 20.6574 vs company source 11.7200; difference 8.9374 pp
+BAJAJFINSV | 2023-03 | ROCE | data source issue | Computed 11.5467 vs company source 21.1400; difference -9.5933 pp
+BAJAJFINSV | 2023-03 | ROE | version difference | Computed 26.3107 vs company source 11.7200; difference 14.5907 pp
+BAJAJFINSV | 2024-03 | ROCE | data source issue | Computed 11.7064 vs company source 21.1400; difference -9.4336 pp
+BAJAJFINSV | 2024-03 | ROE | version difference | Computed 25.8504 vs company source 11.7200; difference 14.1304 pp
+BAJAJHLDNG | 2013-03 | ROCE | data source issue | Computed 3.1126 vs company source 13.1000; difference -9.9874 pp
+BAJAJHLDNG | 2014-03 | ROCE | data source issue | Computed 3.3336 vs company source 13.1000; difference -9.7664 pp
+BAJAJHLDNG | 2015-03 | ROCE | data source issue | Computed 3.6138 vs company source 13.1000; difference -9.4862 pp
+BAJAJHLDNG | 2016-03 | ROCE | data source issue | Computed 2.8052 vs company source 13.1000; difference -10.2948 pp
+BAJAJHLDNG | 2017-03 | ROCE | data source issue | Computed 3.5245 vs company source 13.1000; difference -9.5755 pp
+BAJAJHLDNG | 2018-03 | ROCE | data source issue | Computed 1.4087 vs company source 13.1000; difference -11.6913 pp
+BAJAJHLDNG | 2019-03 | ROCE | data source issue | Computed 1.2875 vs company source 13.1000; difference -11.8125 pp
+BAJAJHLDNG | 2020-03 | ROCE | data source issue | Computed 1.0777 vs company source 13.1000; difference -12.0223 pp
+BAJAJHLDNG | 2021-03 | ROCE | data source issue | Computed 0.9436 vs company source 13.1000; difference -12.1564 pp
+BAJAJHLDNG | 2022-03 | ROCE | data source issue | Computed 0.8544 vs company source 13.1000; difference -12.2456 pp
+BAJAJHLDNG | 2022-03 | ROE | version difference | Computed 9.6307 vs company source 14.8000; difference -5.1693 pp
+BAJAJHLDNG | 2023-03 | ROCE | data source issue | Computed 0.8583 vs company source 13.1000; difference -12.2417 pp
+BAJAJHLDNG | 2024-03 | ROCE | data source issue | Computed 2.8761 vs company source 13.1000; difference -10.2239 pp
+BAJFINANCE | 2015-03 | OPM | data source issue | Computed 32.4926 vs source 1367.0000; diff -1334.5074 pp
+BAJFINANCE | 2015-03 | ROCE | data source issue | Computed 5.5699 vs company source 11.9000; difference -6.3301 pp
+BAJFINANCE | 2016-03 | OPM | data source issue | Computed 32.2510 vs source 1986.0000; diff -1953.7490 pp
+BAJFINANCE | 2016-03 | ROCE | data source issue | Computed 5.2956 vs company source 11.9000; difference -6.6044 pp
+BAJFINANCE | 2017-03 | OPM | data source issue | Computed 32.5978 vs source 2867.0000; diff -2834.4022 pp
+BAJFINANCE | 2017-03 | ROCE | data source issue | Computed 5.5225 vs company source 11.9000; difference -6.3775 pp
+BAJFINANCE | 2018-03 | OPM | data source issue | Computed 32.2846 vs source 3935.0000; diff -3902.7154 pp
+BAJFINANCE | 2018-03 | ROCE | data source issue | Computed 4.9936 vs company source 11.9000; difference -6.9064 pp
+BAJFINANCE | 2018-03 | ROE | version difference | Computed 15.7496 vs company source 22.1000; difference -6.3504 pp
+BAJFINANCE | 2019-03 | OPM | data source issue | Computed 29.5018 vs source 6310.0000; diff -6280.4982 pp
+BAJFINANCE | 2019-03 | ROCE | data source issue | Computed 4.4968 vs company source 11.9000; difference -7.4032 pp
+BAJFINANCE | 2020-03 | OPM | data source issue | Computed 34.7274 vs source 7608.0000; diff -7573.2726 pp
+BAJFINANCE | 2020-03 | ROCE | data source issue | Computed 5.6490 vs company source 11.9000; difference -6.2510 pp
+BAJFINANCE | 2020-03 | ROE | version difference | Computed 16.2831 vs company source 22.1000; difference -5.8169 pp
+BAJFINANCE | 2021-03 | OPM | data source issue | Computed 40.6366 vs source 6314.0000; diff -6273.3634 pp
+BAJFINANCE | 2021-03 | ROCE | data source issue | Computed 6.4307 vs company source 11.9000; difference -5.4693 pp
+BAJFINANCE | 2021-03 | ROE | version difference | Computed 11.9725 vs company source 22.1000; difference -10.1275 pp
+BAJFINANCE | 2022-03 | OPM | data source issue | Computed 37.5462 vs source 9906.0000; diff -9868.4538 pp
+BAJFINANCE | 2022-03 | ROCE | data source issue | Computed 5.6857 vs company source 11.9000; difference -6.2143 pp
+BAJFINANCE | 2022-03 | ROE | version difference | Computed 16.0776 vs company source 22.1000; difference -6.0224 pp
+BAJFINANCE | 2023-03 | OPM | data source issue | Computed 30.6513 vs source 16018.0000; diff -15987.3487 pp
+BAJFINANCE | 2023-03 | ROCE | data source issue | Computed 4.6827 vs company source 11.9000; difference -7.2173 pp
+BAJFINANCE | 2024-03 | OPM | data source issue | Computed 29.2858 vs source 19987.0000; diff -19957.7142 pp
+BAJFINANCE | 2024-03 | ROCE | data source issue | Computed 4.3506 vs company source 11.9000; difference -7.5494 pp
+BANKBARODA | 2013-03 | OPM | data source issue | Computed 30.0477 vs source 1006.0000; diff -975.9523 pp
+BANKBARODA | 2014-03 | OPM | data source issue | Computed 29.7778 vs source 809.0000; diff -779.2222 pp
+BANKBARODA | 2015-03 | OPM | data source issue | Computed 29.9811 vs source 902.0000; diff -872.0189 pp
+BANKBARODA | 2015-03 | ROE | version difference | Computed 9.4007 vs company source 16.7000; difference -7.2993 pp
+BANKBARODA | 2016-03 | OPM | data source issue | Computed 55.4401 vs source -11700.0000; diff 11755.4401 pp
+BANKBARODA | 2016-03 | ROE | version difference | Computed -11.8415 vs company source 16.7000; difference -28.5415 pp
+BANKBARODA | 2017-03 | OPM | data source issue | Computed 43.2847 vs source -4372.0000; diff 4415.2847 pp
+BANKBARODA | 2017-03 | ROE | version difference | Computed 4.3072 vs company source 16.7000; difference -12.3928 pp
+BANKBARODA | 2018-03 | OPM | data source issue | Computed 56.6549 vs source -9197.0000; diff 9253.6549 pp
+BANKBARODA | 2018-03 | ROE | version difference | Computed -3.9428 vs company source 16.7000; difference -20.6428 pp
+BANKBARODA | 2019-03 | OPM | data source issue | Computed 48.7941 vs source -5414.0000; diff 5462.7941 pp
+BANKBARODA | 2019-03 | ROE | version difference | Computed 2.1202 vs company source 16.7000; difference -14.5798 pp
+BANKBARODA | 2020-03 | OPM | data source issue | Computed 51.4393 vs source -11728.0000; diff 11779.4393 pp
+BANKBARODA | 2020-03 | ROE | version difference | Computed 1.2890 vs company source 16.7000; difference -15.4110 pp
+BANKBARODA | 2021-03 | OPM | data source issue | Computed 51.2286 vs source -6957.0000; diff 7008.2286 pp
+BANKBARODA | 2021-03 | ROE | version difference | Computed 1.9663 vs company source 16.7000; difference -14.7337 pp
+BANKBARODA | 2022-03 | OPM | data source issue | Computed 51.1249 vs source -2948.0000; diff 2999.1249 pp
+BANKBARODA | 2022-03 | ROE | version difference | Computed 8.6351 vs company source 16.7000; difference -8.0649 pp
+BANKBARODA | 2023-03 | OPM | data source issue | Computed 40.4548 vs source 6329.0000; diff -6288.5452 pp
+BANKBARODA | 2024-03 | OPM | data source issue | Computed 37.4889 vs source 4102.0000; diff -4064.5111 pp
+BEL | 2013-03 | ROCE | data source issue | Computed 2230.0000 vs company source 34.6000; difference 2195.4000 pp
+BEL | 2013-03 | ROE | version difference | Computed 15183.3333 vs company source 26.3000; difference 15157.0333 pp
+BEL | 2014-03 | ROCE | data source issue | Computed 3303.5714 vs company source 34.6000; difference 3268.9714 pp
+BEL | 2014-03 | ROE | version difference | Computed 13600.0000 vs company source 26.3000; difference 13573.7000 pp
+BEL | 2015-03 | ROCE | data source issue | Computed 3572.7273 vs company source 34.6000; difference 3538.1273 pp
+BEL | 2015-03 | ROE | version difference | Computed 17100.0000 vs company source 26.3000; difference 17073.7000 pp
+BEL | 2016-03 | ROCE | data source issue | Computed 3764.8649 vs company source 34.6000; difference 3730.2649 pp
+BEL | 2016-03 | ROE | version difference | Computed 11141.6667 vs company source 26.3000; difference 11115.3667 pp
+BEL | 2017-03 | ROCE | data source issue | Computed 4072.7273 vs company source 34.6000; difference 4038.1273 pp
+BEL | 2017-03 | ROE | version difference | Computed 10153.3333 vs company source 26.3000; difference 10127.0333 pp
+BEL | 2018-03 | ROCE | data source issue | Computed 2581.0127 vs company source 34.6000; difference 2546.4127 pp
+BEL | 2018-03 | ROE | version difference | Computed 4616.1290 vs company source 26.3000; difference 4589.8290 pp
+BEL | 2019-03 | ROCE | data source issue | Computed 3030.2083 vs company source 34.6000; difference 2995.6083 pp
+BEL | 2019-03 | ROE | version difference | Computed 3851.0204 vs company source 26.3000; difference 3824.7204 pp
+BEL | 2020-03 | ROCE | data source issue | Computed 2786.8687 vs company source 34.6000; difference 2752.2687 pp
+BEL | 2020-03 | ROE | version difference | Computed 3318.1818 vs company source 26.3000; difference 3291.8818 pp
+BEL | 2021-03 | ROCE | data source issue | Computed 2975.9259 vs company source 34.6000; difference 2941.3259 pp
+BEL | 2021-03 | ROE | version difference | Computed 3559.3220 vs company source 26.3000; difference 3533.0220 pp
+BEL | 2022-03 | ROCE | data source issue | Computed 2633.0709 vs company source 34.6000; difference 2598.4709 pp
+BEL | 2022-03 | ROE | version difference | Computed 3478.2609 vs company source 26.3000; difference 3451.9609 pp
+BEL | 2023-03 | ROCE | data source issue | Computed 3587.7193 vs company source 34.6000; difference 3553.1193 pp
+BEL | 2023-03 | ROE | version difference | Computed 3981.3333 vs company source 26.3000; difference 3955.0333 pp
+BEL | 2024-03 | ROCE | data source issue | Computed 3977.1654 vs company source 34.6000; difference 3942.5654 pp
+BEL | 2024-03 | ROE | version difference | Computed 4744.0476 vs company source 26.3000; difference 4717.7476 pp
+BHARTIARTL | 2013-03 | ROCE | data source issue | Computed 19.6142 vs company source 13.1000; difference 6.5142 pp
+BHARTIARTL | 2013-03 | ROE | version difference | Computed 4.5050 vs company source 14.9000; difference -10.3950 pp
+BHARTIARTL | 2014-03 | ROCE | data source issue | Computed 19.5441 vs company source 13.1000; difference 6.4441 pp
+BHARTIARTL | 2014-03 | ROE | version difference | Computed 5.0522 vs company source 14.9000; difference -9.8478 pp
+BHARTIARTL | 2015-03 | ROCE | data source issue | Computed 27.2761 vs company source 13.1000; difference 14.1761 pp
+BHARTIARTL | 2016-03 | ROCE | data source issue | Computed 20.2991 vs company source 13.1000; difference 7.1991 pp
+BHARTIARTL | 2017-03 | ROCE | data source issue | Computed 20.2180 vs company source 13.1000; difference 7.1180 pp
+BHARTIARTL | 2017-03 | ROE | version difference | Computed 6.2870 vs company source 14.9000; difference -8.6130 pp
+BHARTIARTL | 2018-03 | ROE | version difference | Computed 3.1409 vs company source 14.9000; difference -11.7591 pp
+BHARTIARTL | 2019-03 | ROE | version difference | Computed 2.3634 vs company source 14.9000; difference -12.5366 pp
+BHARTIARTL | 2020-03 | ROE | version difference | Computed -39.7485 vs company source 14.9000; difference -54.6485 pp
+BHARTIARTL | 2021-03 | ROCE | data source issue | Computed 20.4200 vs company source 13.1000; difference 7.3200 pp
+BHARTIARTL | 2021-03 | ROE | version difference | Computed -20.9726 vs company source 14.9000; difference -35.8726 pp
+BHARTIARTL | 2022-03 | ROCE | data source issue | Computed 24.3549 vs company source 13.1000; difference 11.2549 pp
+BHARTIARTL | 2023-03 | ROCE | data source issue | Computed 23.4776 vs company source 13.1000; difference 10.3776 pp
+BHARTIARTL | 2024-03 | ROCE | data source issue | Computed 26.2539 vs company source 13.1000; difference 13.1539 pp
+BHEL | 2013-03 | ROCE | data source issue | Computed 28.5229 vs company source 3.2800; difference 25.2429 pp
+BHEL | 2013-03 | ROE | version difference | Computed 21.9091 vs company source 1.0500; difference 20.8591 pp
+BHEL | 2014-03 | ROCE | data source issue | Computed 12.0933 vs company source 3.2800; difference 8.8133 pp
+BHEL | 2014-03 | ROE | version difference | Computed 10.5574 vs company source 1.0500; difference 9.5074 pp
+BHEL | 2016-03 | ROCE | data source issue | Computed -4.1720 vs company source 3.2800; difference -7.4520 pp
+BHEL | 2020-03 | ROE | version difference | Computed -5.1221 vs company source 1.0500; difference -6.1721 pp
+BHEL | 2021-03 | ROCE | data source issue | Computed -9.8565 vs company source 3.2800; difference -13.1365 pp
+BHEL | 2021-03 | ROE | version difference | Computed -10.3914 vs company source 1.0500; difference -11.4414 pp
+BOSCHLTD | 2015-03 | ROCE | data source issue | Computed 26.5621 vs company source 20.6000; difference 5.9621 pp
+BOSCHLTD | 2020-03 | ROE | version difference | Computed 7.0119 vs company source 16.0000; difference -8.9881 pp
+BOSCHLTD | 2021-03 | ROCE | data source issue | Computed 11.7748 vs company source 20.6000; difference -8.8252 pp
+BOSCHLTD | 2021-03 | ROE | version difference | Computed 4.9069 vs company source 16.0000; difference -11.0931 pp
+BOSCHLTD | 2022-03 | ROCE | data source issue | Computed 13.5861 vs company source 20.6000; difference -7.0139 pp
+BPCL | 2013-03 | ROCE | data source issue | Computed 13.4363 vs company source 32.1000; difference -18.6637 pp
+BPCL | 2013-03 | ROE | version difference | Computed 11.5410 vs company source 41.9000; difference -30.3590 pp
+BPCL | 2014-03 | ROCE | data source issue | Computed 17.9001 vs company source 32.1000; difference -14.1999 pp
+BPCL | 2014-03 | ROE | version difference | Computed 20.8488 vs company source 41.9000; difference -21.0512 pp
+BPCL | 2015-03 | ROCE | data source issue | Computed 20.3521 vs company source 32.1000; difference -11.7479 pp
+BPCL | 2015-03 | ROE | version difference | Computed 22.5246 vs company source 41.9000; difference -19.3754 pp
+BPCL | 2016-03 | ROCE | data source issue | Computed 25.3429 vs company source 32.1000; difference -6.7571 pp
+BPCL | 2016-03 | ROE | version difference | Computed 29.1034 vs company source 41.9000; difference -12.7966 pp
+BPCL | 2017-03 | ROCE | data source issue | Computed 20.7126 vs company source 32.1000; difference -11.3874 pp
+BPCL | 2017-03 | ROE | version difference | Computed 30.8479 vs company source 41.9000; difference -11.0521 pp
+BPCL | 2018-03 | ROCE | data source issue | Computed 20.6212 vs company source 32.1000; difference -11.4788 pp
+BPCL | 2018-03 | ROE | version difference | Computed 26.7402 vs company source 41.9000; difference -15.1598 pp
+BPCL | 2019-03 | ROCE | data source issue | Computed 18.0757 vs company source 32.1000; difference -14.0243 pp
+BPCL | 2019-03 | ROE | version difference | Computed 21.9992 vs company source 41.9000; difference -19.9008 pp
+BPCL | 2020-03 | ROCE | data source issue | Computed 8.7983 vs company source 32.1000; difference -23.3017 pp
+BPCL | 2020-03 | ROE | version difference | Computed 10.0350 vs company source 41.9000; difference -31.8650 pp
+BPCL | 2021-03 | ROCE | data source issue | Computed 19.4297 vs company source 32.1000; difference -12.6703 pp
+BPCL | 2021-03 | ROE | version difference | Computed 32.3406 vs company source 41.9000; difference -9.5594 pp
+BPCL | 2022-03 | ROCE | data source issue | Computed 16.4352 vs company source 32.1000; difference -15.6648 pp
+BPCL | 2022-03 | ROE | version difference | Computed 22.5065 vs company source 41.9000; difference -19.3935 pp
+BPCL | 2023-03 | ROCE | data source issue | Computed 8.8683 vs company source 32.1000; difference -23.2317 pp
+BPCL | 2023-03 | ROE | version difference | Computed 3.9815 vs company source 41.9000; difference -37.9185 pp
+BPCL | 2024-03 | ROE | version difference | Computed 35.5113 vs company source 41.9000; difference -6.3887 pp
+BRITANNIA | 2013-03 | ROE | version difference | Computed 46.5950 vs company source 57.1000; difference -10.5050 pp
+BRITANNIA | 2014-03 | ROCE | data source issue | Computed 66.1392 vs company source 48.9000; difference 17.2392 pp
+BRITANNIA | 2014-03 | ROE | version difference | Computed 49.4987 vs company source 57.1000; difference -7.6013 pp
+BRITANNIA | 2015-03 | ROCE | data source issue | Computed 62.5899 vs company source 48.9000; difference 13.6899 pp
+BRITANNIA | 2016-03 | ROCE | data source issue | Computed 55.0607 vs company source 48.9000; difference 6.1607 pp
+BRITANNIA | 2016-03 | ROE | version difference | Computed 39.4359 vs company source 57.1000; difference -17.6641 pp
+BRITANNIA | 2017-03 | ROE | version difference | Computed 32.8264 vs company source 57.1000; difference -24.2736 pp
+BRITANNIA | 2018-03 | ROCE | data source issue | Computed 41.6135 vs company source 48.9000; difference -7.2865 pp
+BRITANNIA | 2018-03 | ROE | version difference | Computed 29.4774 vs company source 57.1000; difference -27.6226 pp
+BRITANNIA | 2019-03 | ROCE | data source issue | Computed 39.2833 vs company source 48.9000; difference -9.6167 pp
+BRITANNIA | 2019-03 | ROE | version difference | Computed 27.1573 vs company source 57.1000; difference -29.9427 pp
+BRITANNIA | 2020-03 | ROCE | data source issue | Computed 31.0217 vs company source 48.9000; difference -17.8783 pp
+BRITANNIA | 2020-03 | ROE | version difference | Computed 31.6602 vs company source 57.1000; difference -25.4398 pp
+BRITANNIA | 2022-03 | ROCE | data source issue | Computed 43.6793 vs company source 48.9000; difference -5.2207 pp
+BRITANNIA | 2023-03 | ROCE | data source issue | Computed 43.3471 vs company source 48.9000; difference -5.5529 pp
+BRITANNIA | 2023-03 | ROE | version difference | Computed 65.5348 vs company source 57.1000; difference 8.4348 pp
+CANBK | 2013-03 | OPM | data source issue | Computed 21.1829 vs source 655.0000; diff -633.8171 pp
+CANBK | 2013-03 | ROE | version difference | Computed 11.8963 vs company source 17.9000; difference -6.0037 pp
+CANBK | 2014-03 | OPM | data source issue | Computed 24.3518 vs source -672.0000; diff 696.3518 pp
+CANBK | 2014-03 | ROE | version difference | Computed 8.8547 vs company source 17.9000; difference -9.0453 pp
+CANBK | 2015-03 | OPM | data source issue | Computed 23.5136 vs source -621.0000; diff 644.5136 pp
+CANBK | 2015-03 | ROE | version difference | Computed 9.0207 vs company source 17.9000; difference -8.8793 pp
+CANBK | 2016-03 | OPM | data source issue | Computed 40.3847 vs source -8008.0000; diff 8048.3847 pp
+CANBK | 2016-03 | ROE | version difference | Computed -7.8217 vs company source 17.9000; difference -25.7217 pp
+CANBK | 2017-03 | OPM | data source issue | Computed 37.8489 vs source -5775.0000; diff 5812.8489 pp
+CANBK | 2017-03 | ROE | version difference | Computed 4.0680 vs company source 17.9000; difference -13.8320 pp
+CANBK | 2018-03 | OPM | data source issue | Computed 61.8745 vs source -13350.0000; diff 13411.8745 pp
+CANBK | 2018-03 | ROE | version difference | Computed -10.4968 vs company source 17.9000; difference -28.3968 pp
+CANBK | 2019-03 | OPM | data source issue | Computed 56.7287 vs source -11590.0000; diff 11646.7287 pp
+CANBK | 2019-03 | ROE | version difference | Computed 1.8467 vs company source 17.9000; difference -16.0533 pp
+CANBK | 2020-03 | OPM | data source issue | Computed 53.8777 vs source -12867.0000; diff 12920.8777 pp
+CANBK | 2020-03 | ROE | version difference | Computed -4.6619 vs company source 17.9000; difference -22.5619 pp
+CANBK | 2021-03 | OPM | data source issue | Computed 61.8294 vs source -18367.0000; diff 18428.8294 pp
+CANBK | 2021-03 | ROE | version difference | Computed 4.7380 vs company source 17.9000; difference -13.1620 pp
+CANBK | 2022-03 | OPM | data source issue | Computed 58.3949 vs source -13657.0000; diff 13715.3949 pp
+CANBK | 2022-03 | ROE | version difference | Computed 8.8020 vs company source 17.9000; difference -9.0980 pp
+CANBK | 2023-03 | OPM | data source issue | Computed 49.8015 vs source -9877.0000; diff 9926.8015 pp
+CANBK | 2024-03 | OPM | data source issue | Computed 41.7539 vs source -7745.0000; diff 7786.7539 pp
+CHOLAFIN | 2013-03 | OPM | data source issue | Computed 26.7704 vs source 472.0000; diff -445.2296 pp
+CHOLAFIN | 2013-03 | ROCE | data source issue | Computed 3.9951 vs company source 10.4000; difference -6.4049 pp
+CHOLAFIN | 2014-03 | OPM | data source issue | Computed 28.4233 vs source 578.0000; diff -549.5767 pp
+CHOLAFIN | 2014-03 | ROCE | data source issue | Computed 4.5772 vs company source 10.4000; difference -5.8228 pp
+CHOLAFIN | 2015-03 | OPM | data source issue | Computed 28.5599 vs source 696.0000; diff -667.4401 pp
+CHOLAFIN | 2015-03 | ROCE | data source issue | Computed 4.6895 vs company source 10.4000; difference -5.7105 pp
+CHOLAFIN | 2016-03 | OPM | data source issue | Computed 30.0427 vs source 899.0000; diff -868.9573 pp
+CHOLAFIN | 2016-03 | ROCE | data source issue | Computed 4.8291 vs company source 10.4000; difference -5.5709 pp
+CHOLAFIN | 2017-03 | OPM | data source issue | Computed 28.1636 vs source 1143.0000; diff -1114.8364 pp
+CHOLAFIN | 2017-03 | ROCE | data source issue | Computed 4.6600 vs company source 10.4000; difference -5.7400 pp
+CHOLAFIN | 2018-03 | OPM | data source issue | Computed 26.1018 vs source 1451.0000; diff -1424.8982 pp
+CHOLAFIN | 2018-03 | ROCE | data source issue | Computed 3.3391 vs company source 10.4000; difference -7.0609 pp
+CHOLAFIN | 2019-03 | OPM | data source issue | Computed 22.9600 vs source 1888.0000; diff -1865.0400 pp
+CHOLAFIN | 2019-03 | ROCE | data source issue | Computed 2.8745 vs company source 10.4000; difference -7.5255 pp
+CHOLAFIN | 2020-03 | OPM | data source issue | Computed 27.7893 vs source 1699.0000; diff -1671.2107 pp
+CHOLAFIN | 2020-03 | ROCE | data source issue | Computed 3.8304 vs company source 10.4000; difference -6.5696 pp
+CHOLAFIN | 2020-03 | ROE | version difference | Computed 12.8537 vs company source 20.2000; difference -7.3463 pp
+CHOLAFIN | 2021-03 | OPM | data source issue | Computed 30.3976 vs source 2094.0000; diff -2063.6024 pp
+CHOLAFIN | 2021-03 | ROCE | data source issue | Computed 3.9725 vs company source 10.4000; difference -6.4275 pp
+CHOLAFIN | 2022-03 | OPM | data source issue | Computed 28.8333 vs source 2924.0000; diff -2895.1667 pp
+CHOLAFIN | 2022-03 | ROCE | data source issue | Computed 3.6149 vs company source 10.4000; difference -6.7851 pp
+CHOLAFIN | 2023-03 | OPM | data source issue | Computed 28.1046 vs source 3515.0000; diff -3486.8954 pp
+CHOLAFIN | 2023-03 | ROCE | data source issue | Computed 3.2416 vs company source 10.4000; difference -7.1584 pp
+CHOLAFIN | 2024-03 | OPM | data source issue | Computed 28.1010 vs source 4548.0000; diff -4519.8990 pp
+CHOLAFIN | 2024-03 | ROCE | data source issue | Computed 3.4952 vs company source 10.4000; difference -6.9048 pp
+CIPLA | 2013-03 | OPM | data source issue | Computed 73.2576 vs source 2214.0000; diff -2140.7424 pp
+CIPLA | 2013-03 | ROCE | data source issue | Computed 60.7350 vs company source 22.8000; difference 37.9350 pp
+CIPLA | 2014-03 | OPM | data source issue | Computed 78.8951 vs source 2147.0000; diff -2068.1049 pp
+CIPLA | 2014-03 | ROCE | data source issue | Computed 71.0328 vs company source 22.8000; difference 48.2328 pp
+CIPLA | 2015-03 | OPM | data source issue | Computed 80.9431 vs source 2163.0000; diff -2082.0569 pp
+CIPLA | 2015-03 | ROCE | data source issue | Computed 73.4346 vs company source 22.8000; difference 50.6346 pp
+CIPLA | 2015-03 | ROE | version difference | Computed 11.3775 vs company source 16.8000; difference -5.4225 pp
+CIPLA | 2016-03 | OPM | data source issue | Computed 82.0160 vs source 2480.0000; diff -2397.9840 pp
+CIPLA | 2016-03 | ROCE | data source issue | Computed 67.6476 vs company source 22.8000; difference 44.8476 pp
+CIPLA | 2017-03 | OPM | data source issue | Computed 82.6594 vs source 2496.0000; diff -2413.3406 pp
+CIPLA | 2017-03 | ROCE | data source issue | Computed 71.4294 vs company source 22.8000; difference 48.6294 pp
+CIPLA | 2017-03 | ROE | version difference | Computed 8.2510 vs company source 16.8000; difference -8.5490 pp
+CIPLA | 2018-03 | OPM | data source issue | Computed 81.3473 vs source 2826.0000; diff -2744.6527 pp
+CIPLA | 2018-03 | ROCE | data source issue | Computed 67.2723 vs company source 22.8000; difference 44.4723 pp
+CIPLA | 2018-03 | ROE | version difference | Computed 9.9585 vs company source 16.8000; difference -6.8415 pp
+CIPLA | 2019-03 | OPM | data source issue | Computed 81.0720 vs source 3097.0000; diff -3015.9280 pp
+CIPLA | 2019-03 | ROCE | data source issue | Computed 68.6310 vs company source 22.8000; difference 45.8310 pp
+CIPLA | 2019-03 | ROE | version difference | Computed 9.9387 vs company source 16.8000; difference -6.8613 pp
+CIPLA | 2020-03 | OPM | data source issue | Computed 81.2865 vs source 3206.0000; diff -3124.7135 pp
+CIPLA | 2020-03 | ROCE | data source issue | Computed 74.9556 vs company source 22.8000; difference 52.1556 pp
+CIPLA | 2020-03 | ROE | version difference | Computed 9.5160 vs company source 16.8000; difference -7.2840 pp
+CIPLA | 2021-03 | OPM | data source issue | Computed 77.8027 vs source 4252.0000; diff -4174.1973 pp
+CIPLA | 2021-03 | ROCE | data source issue | Computed 73.2891 vs company source 22.8000; difference 50.4891 pp
+CIPLA | 2022-03 | OPM | data source issue | Computed 79.0838 vs source 4553.0000; diff -4473.9162 pp
+CIPLA | 2022-03 | ROCE | data source issue | Computed 78.5998 vs company source 22.8000; difference 55.7998 pp
+CIPLA | 2023-03 | OPM | data source issue | Computed 77.9062 vs source 5027.0000; diff -4949.0938 pp
+CIPLA | 2023-03 | ROCE | data source issue | Computed 73.2177 vs company source 22.8000; difference 50.4177 pp
+CIPLA | 2024-03 | OPM | data source issue | Computed 75.5917 vs source 6291.0000; diff -6215.4083 pp
+CIPLA | 2024-03 | ROCE | data source issue | Computed 71.4579 vs company source 22.8000; difference 48.6579 pp
+COALINDIA | 2013-03 | OPM | data source issue | Computed 73.5195 vs source 18087.0000; diff -18013.4805 pp
+COALINDIA | 2013-03 | ROCE | data source issue | Computed 100.8819 vs company source 63.6000; difference 37.2819 pp
+COALINDIA | 2013-03 | ROE | version difference | Computed 35.8062 vs company source 52.0000; difference -16.1938 pp
+COALINDIA | 2014-03 | OPM | data source issue | Computed 74.8385 vs source 17766.0000; diff -17691.1615 pp
+COALINDIA | 2014-03 | ROCE | data source issue | Computed 124.0947 vs company source 63.6000; difference 60.4947 pp
+COALINDIA | 2014-03 | ROE | version difference | Computed 35.6381 vs company source 52.0000; difference -16.3619 pp
+COALINDIA | 2015-03 | OPM | data source issue | Computed 76.6015 vs source 17343.0000; diff -17266.3985 pp
+COALINDIA | 2015-03 | ROCE | data source issue | Computed 139.2925 vs company source 63.6000; difference 75.6925 pp
+COALINDIA | 2015-03 | ROE | version difference | Computed 34.0173 vs company source 52.0000; difference -17.9827 pp
+COALINDIA | 2016-03 | OPM | data source issue | Computed 75.9649 vs source 18714.0000; diff -18638.0351 pp
+COALINDIA | 2016-03 | ROCE | data source issue | Computed 164.1513 vs company source 63.6000; difference 100.5513 pp
+COALINDIA | 2016-03 | ROE | version difference | Computed 40.9583 vs company source 52.0000; difference -11.0417 pp
+COALINDIA | 2017-03 | OPM | data source issue | Computed 84.0745 vs source 12448.0000; diff -12363.9255 pp
+COALINDIA | 2017-03 | ROCE | data source issue | Computed 238.6895 vs company source 63.6000; difference 175.0895 pp
+COALINDIA | 2017-03 | ROE | version difference | Computed 37.8497 vs company source 52.0000; difference -14.1503 pp
+COALINDIA | 2018-03 | OPM | data source issue | Computed 89.1042 vs source 9288.0000; diff -9198.8958 pp
+COALINDIA | 2018-03 | ROCE | data source issue | Computed 349.7698 vs company source 63.6000; difference 286.1698 pp
+COALINDIA | 2018-03 | ROE | version difference | Computed 34.8796 vs company source 52.0000; difference -17.1204 pp
+COALINDIA | 2019-03 | OPM | data source issue | Computed 74.8890 vs source 25007.0000; diff -24932.1110 pp
+COALINDIA | 2019-03 | ROCE | data source issue | Computed 260.1744 vs company source 63.6000; difference 196.5744 pp
+COALINDIA | 2019-03 | ROE | version difference | Computed 66.0140 vs company source 52.0000; difference 14.0140 pp
+COALINDIA | 2020-03 | OPM | data source issue | Computed 77.5396 vs source 21581.0000; diff -21503.4604 pp
+COALINDIA | 2020-03 | ROCE | data source issue | Computed 193.0502 vs company source 63.6000; difference 129.4502 pp
+COALINDIA | 2021-03 | OPM | data source issue | Computed 79.3082 vs source 18628.0000; diff -18548.6918 pp
+COALINDIA | 2021-03 | ROCE | data source issue | Computed 168.3836 vs company source 63.6000; difference 104.7836 pp
+COALINDIA | 2021-03 | ROE | version difference | Computed 34.7828 vs company source 52.0000; difference -17.2172 pp
+COALINDIA | 2022-03 | OPM | data source issue | Computed 77.4689 vs source 24721.0000; diff -24643.5311 pp
+COALINDIA | 2022-03 | ROCE | data source issue | Computed 182.1699 vs company source 63.6000; difference 118.5699 pp
+COALINDIA | 2022-03 | ROE | version difference | Computed 40.2800 vs company source 52.0000; difference -11.7200 pp
+COALINDIA | 2023-03 | OPM | data source issue | Computed 68.0062 vs source 44232.0000; diff -44163.9938 pp
+COALINDIA | 2023-03 | ROCE | data source issue | Computed 144.2600 vs company source 63.6000; difference 80.6600 pp
+COALINDIA | 2024-03 | OPM | data source issue | Computed 66.2938 vs source 47971.0000; diff -47904.7062 pp
+COALINDIA | 2024-03 | ROCE | data source issue | Computed 105.7130 vs company source 63.6000; difference 42.1130 pp
+COALINDIA | 2024-03 | ROE | version difference | Computed 45.1698 vs company source 52.0000; difference -6.8302 pp
+DABUR | 2013-03 | ROCE | data source issue | Computed 30.5607 vs company source 22.3000; difference 8.2607 pp
+DABUR | 2013-03 | ROE | version difference | Computed 36.5632 vs company source 19.2000; difference 17.3632 pp
+DABUR | 2014-03 | ROCE | data source issue | Computed 34.5422 vs company source 22.3000; difference 12.2422 pp
+DABUR | 2014-03 | ROE | version difference | Computed 34.4880 vs company source 19.2000; difference 15.2880 pp
+DABUR | 2015-03 | ROCE | data source issue | Computed 32.2896 vs company source 22.3000; difference 9.9896 pp
+DABUR | 2015-03 | ROE | version difference | Computed 31.8426 vs company source 19.2000; difference 12.6426 pp
+DABUR | 2016-03 | ROCE | data source issue | Computed 30.5064 vs company source 22.3000; difference 8.2064 pp
+DABUR | 2016-03 | ROE | version difference | Computed 30.0647 vs company source 19.2000; difference 10.8647 pp
+DABUR | 2017-03 | ROE | version difference | Computed 26.4081 vs company source 19.2000; difference 7.2081 pp
+DABUR | 2019-03 | ROCE | data source issue | Computed 27.4838 vs company source 22.3000; difference 5.1838 pp
+DABUR | 2019-03 | ROE | version difference | Computed 25.6747 vs company source 19.2000; difference 6.4747 pp
+DIVISLAB | 2013-03 | ROCE | data source issue | Computed 32.2021 vs company source 16.5000; difference 15.7021 pp
+DIVISLAB | 2013-03 | ROE | version difference | Computed 24.0704 vs company source 12.2000; difference 11.8704 pp
+DIVISLAB | 2014-03 | ROCE | data source issue | Computed 34.1382 vs company source 16.5000; difference 17.6382 pp
+DIVISLAB | 2014-03 | ROE | version difference | Computed 26.0796 vs company source 12.2000; difference 13.8796 pp
+DIVISLAB | 2015-03 | ROCE | data source issue | Computed 33.2955 vs company source 16.5000; difference 16.7955 pp
+DIVISLAB | 2015-03 | ROE | version difference | Computed 24.3707 vs company source 12.2000; difference 12.1707 pp
+DIVISLAB | 2016-03 | ROCE | data source issue | Computed 32.8258 vs company source 16.5000; difference 16.3258 pp
+DIVISLAB | 2016-03 | ROE | version difference | Computed 26.2287 vs company source 12.2000; difference 14.0287 pp
+DIVISLAB | 2017-03 | ROCE | data source issue | Computed 26.8867 vs company source 16.5000; difference 10.3867 pp
+DIVISLAB | 2017-03 | ROE | version difference | Computed 19.7872 vs company source 12.2000; difference 7.5872 pp
+DIVISLAB | 2019-03 | ROCE | data source issue | Computed 26.5326 vs company source 16.5000; difference 10.0326 pp
+DIVISLAB | 2019-03 | ROE | version difference | Computed 19.4480 vs company source 12.2000; difference 7.2480 pp
+DIVISLAB | 2020-03 | ROCE | data source issue | Computed 24.8469 vs company source 16.5000; difference 8.3469 pp
+DIVISLAB | 2020-03 | ROE | version difference | Computed 18.8372 vs company source 12.2000; difference 6.6372 pp
+DIVISLAB | 2021-03 | ROCE | data source issue | Computed 30.8280 vs company source 16.5000; difference 14.3280 pp
+DIVISLAB | 2021-03 | ROE | version difference | Computed 21.3448 vs company source 12.2000; difference 9.1448 pp
+DIVISLAB | 2022-03 | ROCE | data source issue | Computed 33.1146 vs company source 16.5000; difference 16.6146 pp
+DIVISLAB | 2022-03 | ROE | version difference | Computed 25.2387 vs company source 12.2000; difference 13.0387 pp
+DLF | 2015-03 | ROE | version difference | Computed 1.8525 vs company source 6.9500; difference -5.0975 pp
+DLF | 2016-03 | ROE | version difference | Computed 1.2672 vs company source 6.9500; difference -5.6828 pp
+DLF | 2018-03 | ROE | version difference | Computed 12.6788 vs company source 6.9500; difference 5.7288 pp
+DLF | 2020-03 | ROE | version difference | Computed -1.7128 vs company source 6.9500; difference -8.6628 pp
+DMART | 2016-03 | ROCE | data source issue | Computed 24.4748 vs company source 19.4000; difference 5.0748 pp
+DMART | 2016-03 | ROE | version difference | Computed 21.0388 vs company source 14.5000; difference 6.5388 pp
+DMART | 2018-03 | ROCE | data source issue | Computed 26.4879 vs company source 19.4000; difference 7.0879 pp
+DMART | 2019-03 | ROCE | data source issue | Computed 25.9742 vs company source 19.4000; difference 6.5742 pp
+DMART | 2021-03 | ROCE | data source issue | Computed 13.8745 vs company source 19.4000; difference -5.5255 pp
+DMART | 2021-03 | ROE | version difference | Computed 9.0200 vs company source 14.5000; difference -5.4800 pp
+DRREDDY | 2017-03 | ROCE | data source issue | Computed 14.3888 vs company source 26.5000; difference -12.1112 pp
+DRREDDY | 2017-03 | ROE | version difference | Computed 10.5366 vs company source 21.4000; difference -10.8634 pp
+DRREDDY | 2018-03 | ROCE | data source issue | Computed 13.3254 vs company source 26.5000; difference -13.1746 pp
+DRREDDY | 2018-03 | ROE | version difference | Computed 7.5326 vs company source 21.4000; difference -13.8674 pp
+DRREDDY | 2019-03 | ROCE | data source issue | Computed 17.7920 vs company source 26.5000; difference -8.7080 pp
+DRREDDY | 2019-03 | ROE | version difference | Computed 13.9047 vs company source 21.4000; difference -7.4953 pp
+DRREDDY | 2020-03 | ROCE | data source issue | Computed 13.9087 vs company source 26.5000; difference -12.5913 pp
+DRREDDY | 2020-03 | ROE | version difference | Computed 12.9880 vs company source 21.4000; difference -8.4120 pp
+DRREDDY | 2021-03 | ROCE | data source issue | Computed 18.7403 vs company source 26.5000; difference -7.7597 pp
+DRREDDY | 2021-03 | ROE | version difference | Computed 11.0651 vs company source 21.4000; difference -10.3349 pp
+DRREDDY | 2022-03 | ROCE | data source issue | Computed 16.6755 vs company source 26.5000; difference -9.8245 pp
+DRREDDY | 2022-03 | ROE | version difference | Computed 11.3575 vs company source 21.4000; difference -10.0425 pp
+EICHERMOT | 2014-12 | ROCE | data source issue | Computed 43.4343 vs company source 31.1000; difference 12.3343 pp
+EICHERMOT | 2016-03 | ROCE | data source issue | Computed 45.9739 vs company source 31.1000; difference 14.8739 pp
+EICHERMOT | 2016-03 | ROE | version difference | Computed 36.6274 vs company source 24.2000; difference 12.4274 pp
+EICHERMOT | 2017-03 | ROCE | data source issue | Computed 39.8387 vs company source 31.1000; difference 8.7387 pp
+EICHERMOT | 2017-03 | ROE | version difference | Computed 31.1880 vs company source 24.2000; difference 6.9880 pp
+EICHERMOT | 2018-03 | ROCE | data source issue | Computed 39.1171 vs company source 31.1000; difference 8.0171 pp
+EICHERMOT | 2020-03 | ROCE | data source issue | Computed 21.3392 vs company source 31.1000; difference -9.7608 pp
+EICHERMOT | 2020-03 | ROE | version difference | Computed 18.3048 vs company source 24.2000; difference -5.8952 pp
+EICHERMOT | 2021-03 | ROCE | data source issue | Computed 15.2955 vs company source 31.1000; difference -15.8045 pp
+EICHERMOT | 2021-03 | ROE | version difference | Computed 11.7765 vs company source 24.2000; difference -12.4235 pp
+EICHERMOT | 2022-03 | ROCE | data source issue | Computed 17.1280 vs company source 31.1000; difference -13.9720 pp
+EICHERMOT | 2022-03 | ROE | version difference | Computed 13.3011 vs company source 24.2000; difference -10.8989 pp
+EICHERMOT | 2023-03 | ROCE | data source issue | Computed 22.5553 vs company source 31.1000; difference -8.5447 pp
+EICHERMOT | 2024-03 | ROCE | data source issue | Computed 23.4456 vs company source 31.1000; difference -7.6544 pp
+GAIL | 2016-03 | ROE | version difference | Computed 5.1479 vs company source 14.0000; difference -8.8521 pp
+GAIL | 2017-03 | ROE | version difference | Computed 8.5841 vs company source 14.0000; difference -5.4159 pp
+GAIL | 2019-03 | ROCE | data source issue | Computed 20.6063 vs company source 14.7000; difference 5.9063 pp
+GAIL | 2020-03 | ROE | version difference | Computed 19.3127 vs company source 14.0000; difference 5.3127 pp
+GAIL | 2022-03 | ROCE | data source issue | Computed 20.6750 vs company source 14.7000; difference 5.9750 pp
+GAIL | 2022-03 | ROE | version difference | Computed 19.1908 vs company source 14.0000; difference 5.1908 pp
+GAIL | 2023-03 | ROCE | data source issue | Computed 9.0642 vs company source 14.7000; difference -5.6358 pp
+GAIL | 2023-03 | ROE | version difference | Computed 8.6189 vs company source 14.0000; difference -5.3811 pp
+GODREJCP | 2013-03 | ROCE | data source issue | Computed 17.2474 vs company source 26.4900; difference -9.2426 pp
+GODREJCP | 2013-03 | ROE | version difference | Computed 25.5056 vs company source 6.7700; difference 18.7356 pp
+GODREJCP | 2014-03 | ROCE | data source issue | Computed 19.0143 vs company source 26.4900; difference -7.4757 pp
+GODREJCP | 2014-03 | ROE | version difference | Computed 21.6954 vs company source 6.7700; difference 14.9254 pp
+GODREJCP | 2015-03 | ROCE | data source issue | Computed 19.6215 vs company source 26.4900; difference -6.8685 pp
+GODREJCP | 2015-03 | ROE | version difference | Computed 22.6398 vs company source 6.7700; difference 15.8698 pp
+GODREJCP | 2016-03 | ROE | version difference | Computed 19.4750 vs company source 6.7700; difference 12.7050 pp
+GODREJCP | 2017-03 | ROCE | data source issue | Computed 20.4988 vs company source 26.4900; difference -5.9912 pp
+GODREJCP | 2017-03 | ROE | version difference | Computed 24.6699 vs company source 6.7700; difference 17.8999 pp
+GODREJCP | 2018-03 | ROCE | data source issue | Computed 21.3393 vs company source 26.4900; difference -5.1507 pp
+GODREJCP | 2018-03 | ROE | version difference | Computed 26.1106 vs company source 6.7700; difference 19.3406 pp
+GODREJCP | 2019-03 | ROCE | data source issue | Computed 20.0207 vs company source 26.4900; difference -6.4693 pp
+GODREJCP | 2019-03 | ROE | version difference | Computed 32.2279 vs company source 6.7700; difference 25.4579 pp
+GODREJCP | 2020-03 | ROCE | data source issue | Computed 18.7745 vs company source 26.4900; difference -7.7155 pp
+GODREJCP | 2020-03 | ROE | version difference | Computed 18.9542 vs company source 6.7700; difference 12.1842 pp
+GODREJCP | 2021-03 | ROCE | data source issue | Computed 21.2245 vs company source 26.4900; difference -5.2655 pp
+GODREJCP | 2021-03 | ROE | version difference | Computed 18.2329 vs company source 6.7700; difference 11.4629 pp
+GODREJCP | 2022-03 | ROCE | data source issue | Computed 18.1674 vs company source 26.4900; difference -8.3226 pp
+GODREJCP | 2022-03 | ROE | version difference | Computed 15.4292 vs company source 6.7700; difference 8.6592 pp
+GODREJCP | 2023-03 | ROCE | data source issue | Computed 16.3696 vs company source 26.4900; difference -10.1204 pp
+GODREJCP | 2023-03 | ROE | version difference | Computed 12.3387 vs company source 6.7700; difference 5.5687 pp
+GODREJCP | 2024-03 | ROCE | data source issue | Computed 18.6915 vs company source 26.4900; difference -7.7985 pp
+GODREJCP | 2024-03 | ROE | version difference | Computed -4.4531 vs company source 6.7700; difference -11.2231 pp
+GRASIM | 2013-03 | ROCE | data source issue | Computed 20.2828 vs company source 9.3000; difference 10.9828 pp
+GRASIM | 2013-03 | ROE | version difference | Computed 19.2196 vs company source 6.9000; difference 12.3196 pp
+GRASIM | 2014-03 | ROCE | data source issue | Computed 15.7049 vs company source 9.3000; difference 6.4049 pp
+GRASIM | 2014-03 | ROE | version difference | Computed 13.6664 vs company source 6.9000; difference 6.7664 pp
+GRASIM | 2015-03 | ROCE | data source issue | Computed 14.6678 vs company source 9.3000; difference 5.3678 pp
+GRASIM | 2016-03 | ROCE | data source issue | Computed 14.8019 vs company source 9.3000; difference 5.5019 pp
+GRASIM | 2016-03 | ROE | version difference | Computed 12.5962 vs company source 6.9000; difference 5.6962 pp
+GRASIM | 2017-03 | ROCE | data source issue | Computed 18.1946 vs company source 9.3000; difference 8.8946 pp
+GRASIM | 2017-03 | ROE | version difference | Computed 13.5279 vs company source 6.9000; difference 6.6279 pp
+GRASIM | 2022-03 | ROE | version difference | Computed 14.8034 vs company source 6.9000; difference 7.9034 pp
+GRASIM | 2023-03 | ROE | version difference | Computed 14.0687 vs company source 6.9000; difference 7.1687 pp
+HAL | 2016-03 | ROCE | data source issue | Computed 1795.6522 vs company source 38.9000; difference 1756.7522 pp
+HAL | 2016-03 | ROE | version difference | Computed 1665.0000 vs company source 28.9000; difference 1636.1000 pp
+HAL | 2017-03 | ROCE | data source issue | Computed 2397.0370 vs company source 38.9000; difference 2358.1370 pp
+HAL | 2017-03 | ROE | version difference | Computed 1966.9173 vs company source 28.9000; difference 1938.0173 pp
+HAL | 2018-03 | ROCE | data source issue | Computed 2601.5038 vs company source 38.9000; difference 2562.6038 pp
+HAL | 2018-03 | ROE | version difference | Computed 1528.4615 vs company source 28.9000; difference 1499.5615 pp
+HAL | 2019-03 | ROCE | data source issue | Computed 3240.4255 vs company source 38.9000; difference 3201.5255 pp
+HAL | 2019-03 | ROE | version difference | Computed 1763.9098 vs company source 28.9000; difference 1735.0098 pp
+HAL | 2020-03 | ROCE | data source issue | Computed 3485.7143 vs company source 38.9000; difference 3446.8143 pp
+HAL | 2020-03 | ROE | version difference | Computed 2059.4203 vs company source 28.9000; difference 2030.5203 pp
+HAL | 2021-03 | ROCE | data source issue | Computed 3560.6667 vs company source 38.9000; difference 3521.7667 pp
+HAL | 2021-03 | ROE | version difference | Computed 2249.3056 vs company source 28.9000; difference 2220.4056 pp
+HAL | 2022-03 | ROCE | data source issue | Computed 3284.8485 vs company source 38.9000; difference 3245.9485 pp
+HAL | 2022-03 | ROE | version difference | Computed 3324.1830 vs company source 28.9000; difference 3295.2830 pp
+HAL | 2023-03 | ROCE | data source issue | Computed 2977.2321 vs company source 38.9000; difference 2938.3321 pp
+HAL | 2023-03 | ROE | version difference | Computed 3283.0508 vs company source 28.9000; difference 3254.1508 pp
+HAL | 2024-03 | ROCE | data source issue | Computed 3027.6398 vs company source 38.9000; difference 2988.7398 pp
+HAL | 2024-03 | ROE | version difference | Computed 3816.5829 vs company source 28.9000; difference 3787.6829 pp
+HAVELLS | 2013-03 | ROE | version difference | Computed 40.2913 vs company source 18.0000; difference 22.2913 pp
+HAVELLS | 2014-03 | ROE | version difference | Computed 26.7707 vs company source 18.0000; difference 8.7707 pp
+HAVELLS | 2015-03 | ROCE | data source issue | Computed 33.6753 vs company source 24.4000; difference 9.2753 pp
+HAVELLS | 2016-03 | ROE | version difference | Computed 42.9468 vs company source 18.0000; difference 24.9468 pp
+HCLTECH | 2013-06 | ROCE | data source issue | Computed 39.9775 vs company source 29.6000; difference 10.3775 pp
+HCLTECH | 2013-06 | ROE | version difference | Computed 30.6898 vs company source 23.3000; difference 7.3898 pp
+HCLTECH | 2014-06 | ROCE | data source issue | Computed 39.0655 vs company source 29.6000; difference 9.4655 pp
+HCLTECH | 2014-06 | ROE | version difference | Computed 33.3913 vs company source 23.3000; difference 10.0913 pp
+HCLTECH | 2015-06 | ROE | version difference | Computed 30.3088 vs company source 23.3000; difference 7.0088 pp
+HCLTECH | 2016-03 | ROCE | data source issue | Computed 23.3629 vs company source 29.6000; difference -6.2371 pp
+HDFCBANK | 2013-03 | OPM | data source issue | Computed 35.2221 vs source 3534.0000; diff -3498.7779 pp
+HDFCBANK | 2014-03 | OPM | data source issue | Computed 31.7425 vs source 5602.0000; diff -5570.2575 pp
+HDFCBANK | 2015-03 | OPM | data source issue | Computed 31.9031 vs source 7214.0000; diff -7182.0969 pp
+HDFCBANK | 2016-03 | OPM | data source issue | Computed 31.7517 vs source 9037.0000; diff -9005.2483 pp
+HDFCBANK | 2017-03 | OPM | data source issue | Computed 32.5586 vs source 11374.0000; diff -11341.4414 pp
+HDFCBANK | 2018-03 | OPM | data source issue | Computed 34.6262 vs source 13374.0000; diff -13339.3738 pp
+HDFCBANK | 2019-03 | OPM | data source issue | Computed 33.1454 vs source 16592.0000; diff -16558.8546 pp
+HDFCBANK | 2020-03 | OPM | data source issue | Computed 37.2038 vs source 14593.0000; diff -14555.7962 pp
+HDFCBANK | 2021-03 | OPM | data source issue | Computed 40.8061 vs source 16848.0000; diff -16807.1939 pp
+HDFCBANK | 2022-03 | OPM | data source issue | Computed 41.6056 vs source 20795.0000; diff -20753.3944 pp
+HDFCBANK | 2023-03 | OPM | data source issue | Computed 36.9198 vs source 29932.0000; diff -29895.0802 pp
+HDFCBANK | 2023-03 | ROCE | data source issue | Computed 2.5958 vs company source 7.6700; difference -5.0742 pp
+HDFCBANK | 2024-03 | OPM | data source issue | Computed 61.4125 vs source -44685.0000; diff 44746.4125 pp
+HDFCLIFE | 2013-03 | OPM | data source issue | Computed 96.2660 vs source 525.0000; diff -428.7340 pp
+HDFCLIFE | 2013-03 | ROCE | data source issue | Computed 1012.3411 vs company source 6.6100; difference 1005.7311 pp
+HDFCLIFE | 2013-03 | ROE | version difference | Computed 33.4331 vs company source 11.4000; difference 22.0331 pp
+HDFCLIFE | 2014-03 | OPM | data source issue | Computed 96.4756 vs source 605.0000; diff -508.5244 pp
+HDFCLIFE | 2014-03 | ROCE | data source issue | Computed 858.9730 vs company source 6.6100; difference 852.3630 pp
+HDFCLIFE | 2014-03 | ROE | version difference | Computed 37.6037 vs company source 11.4000; difference 26.2037 pp
+HDFCLIFE | 2015-03 | OPM | data source issue | Computed 96.7885 vs source 874.0000; diff -777.2115 pp
+HDFCLIFE | 2015-03 | ROCE | data source issue | Computed 1036.6391 vs company source 6.6100; difference 1030.0291 pp
+HDFCLIFE | 2015-03 | ROE | version difference | Computed 30.9327 vs company source 11.4000; difference 19.5327 pp
+HDFCLIFE | 2016-03 | OPM | data source issue | Computed 94.7412 vs source 953.0000; diff -858.2588 pp
+HDFCLIFE | 2016-03 | ROCE | data source issue | Computed 553.8833 vs company source 6.6100; difference 547.2733 pp
+HDFCLIFE | 2016-03 | ROE | version difference | Computed 26.3294 vs company source 11.4000; difference 14.9294 pp
+HDFCLIFE | 2017-03 | OPM | data source issue | Computed 96.8251 vs source 972.0000; diff -875.1749 pp
+HDFCLIFE | 2017-03 | ROCE | data source issue | Computed 775.5881 vs company source 6.6100; difference 768.9781 pp
+HDFCLIFE | 2017-03 | ROE | version difference | Computed 23.1835 vs company source 11.4000; difference 11.7835 pp
+HDFCLIFE | 2018-03 | OPM | data source issue | Computed 96.6708 vs source 1074.0000; diff -977.3292 pp
+HDFCLIFE | 2018-03 | ROCE | data source issue | Computed 662.8268 vs company source 6.6100; difference 656.2168 pp
+HDFCLIFE | 2018-03 | ROE | version difference | Computed 23.5282 vs company source 11.4000; difference 12.1282 pp
+HDFCLIFE | 2019-03 | OPM | data source issue | Computed 96.8730 vs source 1215.0000; diff -1118.1270 pp
+HDFCLIFE | 2019-03 | ROCE | data source issue | Computed 667.1393 vs company source 6.6100; difference 660.5293 pp
+HDFCLIFE | 2019-03 | ROE | version difference | Computed 22.6515 vs company source 11.4000; difference 11.2515 pp
+HDFCLIFE | 2020-03 | OPM | data source issue | Computed 96.1164 vs source 1141.0000; diff -1044.8836 pp
+HDFCLIFE | 2020-03 | ROCE | data source issue | Computed 414.8524 vs company source 6.6100; difference 408.2424 pp
+HDFCLIFE | 2020-03 | ROE | version difference | Computed 19.0539 vs company source 11.4000; difference 7.6539 pp
+HDFCLIFE | 2021-03 | OPM | data source issue | Computed 98.2748 vs source 1235.0000; diff -1136.7252 pp
+HDFCLIFE | 2021-03 | ROCE | data source issue | Computed 760.7576 vs company source 6.6100; difference 754.1476 pp
+HDFCLIFE | 2022-03 | OPM | data source issue | Computed 98.8410 vs source 778.0000; diff -679.1590 pp
+HDFCLIFE | 2022-03 | ROCE | data source issue | Computed 409.2019 vs company source 6.6100; difference 402.5919 pp
+HDFCLIFE | 2023-03 | OPM | data source issue | Computed 99.8861 vs source 80.0000; diff 19.8861 pp
+HDFCLIFE | 2023-03 | ROCE | data source issue | Computed 502.9549 vs company source 6.6100; difference 496.3449 pp
+HDFCLIFE | 2024-03 | OPM | data source issue | Computed 99.4768 vs source 531.0000; diff -431.5232 pp
+HDFCLIFE | 2024-03 | ROCE | data source issue | Computed 646.4588 vs company source 6.6100; difference 639.8488 pp
+HEROMOTOCO | 2014-03 | OPM | data source issue | Computed 85.9426 vs source 3553.0000; diff -3467.0574 pp
+HEROMOTOCO | 2014-03 | ROCE | data source issue | Computed 367.7332 vs company source 29.1000; difference 338.6332 pp
+HEROMOTOCO | 2014-03 | ROE | version difference | Computed 37.3822 vs company source 22.0000; difference 15.3822 pp
+HEROMOTOCO | 2015-03 | OPM | data source issue | Computed 87.2177 vs source 3520.0000; diff -3432.7823 pp
+HEROMOTOCO | 2015-03 | ROCE | data source issue | Computed 361.7169 vs company source 29.1000; difference 332.6169 pp
+HEROMOTOCO | 2015-03 | ROE | version difference | Computed 36.1468 vs company source 22.0000; difference 14.1468 pp
+HEROMOTOCO | 2016-03 | OPM | data source issue | Computed 84.4537 vs source 4424.0000; diff -4339.5463 pp
+HEROMOTOCO | 2016-03 | ROCE | data source issue | Computed 265.0893 vs company source 29.1000; difference 235.9893 pp
+HEROMOTOCO | 2016-03 | ROE | version difference | Computed 35.2275 vs company source 22.0000; difference 13.2275 pp
+HEROMOTOCO | 2017-03 | OPM | data source issue | Computed 83.9741 vs source 4585.0000; diff -4501.0259 pp
+HEROMOTOCO | 2017-03 | ROCE | data source issue | Computed 227.1438 vs company source 29.1000; difference 198.0438 pp
+HEROMOTOCO | 2017-03 | ROE | version difference | Computed 34.3738 vs company source 22.0000; difference 12.3738 pp
+HEROMOTOCO | 2018-03 | OPM | data source issue | Computed 83.5665 vs source 5334.0000; diff -5250.4335 pp
+HEROMOTOCO | 2018-03 | ROCE | data source issue | Computed 222.3279 vs company source 29.1000; difference 193.2279 pp
+HEROMOTOCO | 2018-03 | ROE | version difference | Computed 31.0892 vs company source 22.0000; difference 9.0892 pp
+HEROMOTOCO | 2019-03 | OPM | data source issue | Computed 85.2080 vs source 5025.0000; diff -4939.7920 pp
+HEROMOTOCO | 2019-03 | ROCE | data source issue | Computed 215.5003 vs company source 29.1000; difference 186.4003 pp
+HEROMOTOCO | 2020-03 | OPM | data source issue | Computed 86.0874 vs source 4070.0000; diff -3983.9126 pp
+HEROMOTOCO | 2020-03 | ROCE | data source issue | Computed 169.4865 vs company source 29.1000; difference 140.3865 pp
+HEROMOTOCO | 2021-03 | OPM | data source issue | Computed 86.8956 vs source 4058.0000; diff -3971.1044 pp
+HEROMOTOCO | 2021-03 | ROCE | data source issue | Computed 168.1375 vs company source 29.1000; difference 139.0375 pp
+HEROMOTOCO | 2022-03 | OPM | data source issue | Computed 88.9818 vs source 3256.0000; diff -3167.0182 pp
+HEROMOTOCO | 2022-03 | ROCE | data source issue | Computed 159.8286 vs company source 29.1000; difference 130.7286 pp
+HEROMOTOCO | 2022-03 | ROE | version difference | Computed 14.6968 vs company source 22.0000; difference -7.3032 pp
+HEROMOTOCO | 2023-03 | OPM | data source issue | Computed 88.0028 vs source 4099.0000; diff -4010.9972 pp
+HEROMOTOCO | 2023-03 | ROCE | data source issue | Computed 174.5239 vs company source 29.1000; difference 145.4239 pp
+HEROMOTOCO | 2023-03 | ROE | version difference | Computed 16.8108 vs company source 22.0000; difference -5.1892 pp
+HEROMOTOCO | 2024-03 | OPM | data source issue | Computed 86.1468 vs source 5235.0000; diff -5148.8532 pp
+HEROMOTOCO | 2024-03 | ROCE | data source issue | Computed 177.8421 vs company source 29.1000; difference 148.7421 pp
+HINDALCO | 2013-03 | OPM | data source issue | Computed 90.3994 vs source 7699.0000; diff -7608.6006 pp
+HINDALCO | 2013-03 | ROCE | data source issue | Computed 78.5579 vs company source 11.3000; difference 67.2579 pp
+HINDALCO | 2014-03 | OPM | data source issue | Computed 90.8501 vs source 8024.0000; diff -7933.1499 pp
+HINDALCO | 2014-03 | ROCE | data source issue | Computed 75.6179 vs company source 11.3000; difference 64.3179 pp
+HINDALCO | 2015-03 | OPM | data source issue | Computed 91.5191 vs source 8844.0000; diff -8752.4809 pp
+HINDALCO | 2015-03 | ROCE | data source issue | Computed 89.3630 vs company source 11.3000; difference 78.0630 pp
+HINDALCO | 2015-03 | ROE | version difference | Computed 0.6757 vs company source 10.2000; difference -9.5243 pp
+HINDALCO | 2016-03 | OPM | data source issue | Computed 92.1243 vs source 7778.0000; diff -7685.8757 pp
+HINDALCO | 2016-03 | ROCE | data source issue | Computed 84.1163 vs company source 11.3000; difference 72.8163 pp
+HINDALCO | 2016-03 | ROE | version difference | Computed -1.7287 vs company source 10.2000; difference -11.9287 pp
+HINDALCO | 2017-03 | OPM | data source issue | Computed 87.7056 vs source 12317.0000; diff -12229.2944 pp
+HINDALCO | 2017-03 | ROCE | data source issue | Computed 79.9692 vs company source 11.3000; difference 68.6692 pp
+HINDALCO | 2017-03 | ROE | version difference | Computed 4.0861 vs company source 10.2000; difference -6.1139 pp
+HINDALCO | 2018-03 | OPM | data source issue | Computed 88.1102 vs source 13695.0000; diff -13606.8898 pp
+HINDALCO | 2018-03 | ROCE | data source issue | Computed 94.9142 vs company source 11.3000; difference 83.6142 pp
+HINDALCO | 2019-03 | OPM | data source issue | Computed 88.1180 vs source 15511.0000; diff -15422.8820 pp
+HINDALCO | 2019-03 | ROCE | data source issue | Computed 104.6536 vs company source 11.3000; difference 93.3536 pp
+HINDALCO | 2020-03 | OPM | data source issue | Computed 87.8910 vs source 14306.0000; diff -14218.1090 pp
+HINDALCO | 2020-03 | ROCE | data source issue | Computed 81.9455 vs company source 11.3000; difference 70.6455 pp
+HINDALCO | 2021-03 | OPM | data source issue | Computed 86.6985 vs source 17559.0000; diff -17472.3015 pp
+HINDALCO | 2021-03 | ROCE | data source issue | Computed 85.5764 vs company source 11.3000; difference 74.2764 pp
+HINDALCO | 2022-03 | OPM | data source issue | Computed 85.4675 vs source 28347.0000; diff -28261.5325 pp
+HINDALCO | 2022-03 | ROCE | data source issue | Computed 116.8457 vs company source 11.3000; difference 105.5457 pp
+HINDALCO | 2022-03 | ROE | version difference | Computed 17.5596 vs company source 10.2000; difference 7.3596 pp
+HINDALCO | 2023-03 | OPM | data source issue | Computed 89.8451 vs source 22666.0000; diff -22576.1549 pp
+HINDALCO | 2023-03 | ROCE | data source issue | Computed 129.2971 vs company source 11.3000; difference 117.9971 pp
+HINDALCO | 2024-03 | OPM | data source issue | Computed 88.9462 vs source 23872.0000; diff -23783.0538 pp
+HINDALCO | 2024-03 | ROCE | data source issue | Computed 118.2078 vs company source 11.3000; difference 106.9078 pp
+HINDUNILVR | 2013-03 | OPM | data source issue | Computed 84.3727 vs source 4220.0000; diff -4135.6273 pp
+HINDUNILVR | 2013-03 | ROCE | data source issue | Computed 788.3737 vs company source 27.2000; difference 761.1737 pp
+HINDUNILVR | 2013-03 | ROE | version difference | Computed 133.9965 vs company source 20.2000; difference 113.7965 pp
+HINDUNILVR | 2014-03 | OPM | data source issue | Computed 83.7210 vs source 4759.0000; diff -4675.2790 pp
+HINDUNILVR | 2014-03 | ROCE | data source issue | Computed 683.0868 vs company source 27.2000; difference 655.8868 pp
+HINDUNILVR | 2014-03 | ROE | version difference | Computed 111.8462 vs company source 20.2000; difference 91.6462 pp
+HINDUNILVR | 2015-03 | OPM | data source issue | Computed 83.0727 vs source 5412.0000; diff -5328.9273 pp
+HINDUNILVR | 2015-03 | ROCE | data source issue | Computed 652.5799 vs company source 27.2000; difference 625.3799 pp
+HINDUNILVR | 2015-03 | ROE | version difference | Computed 108.6665 vs company source 20.2000; difference 88.4665 pp
+HINDUNILVR | 2016-03 | OPM | data source issue | Computed 81.6380 vs source 5910.0000; diff -5828.3620 pp
+HINDUNILVR | 2016-03 | ROCE | data source issue | Computed 389.2741 vs company source 27.2000; difference 362.0741 pp
+HINDUNILVR | 2016-03 | ROE | version difference | Computed 63.1523 vs company source 20.2000; difference 42.9523 pp
+HINDUNILVR | 2017-03 | OPM | data source issue | Computed 80.9179 vs source 6328.0000; diff -6247.0821 pp
+HINDUNILVR | 2017-03 | ROCE | data source issue | Computed 382.1963 vs company source 27.2000; difference 354.9963 pp
+HINDUNILVR | 2017-03 | ROE | version difference | Computed 66.5777 vs company source 20.2000; difference 46.3777 pp
+HINDUNILVR | 2018-03 | OPM | data source issue | Computed 78.9028 vs source 7499.0000; diff -7420.0972 pp
+HINDUNILVR | 2018-03 | ROCE | data source issue | Computed 385.1943 vs company source 27.2000; difference 357.9943 pp
+HINDUNILVR | 2018-03 | ROE | version difference | Computed 71.7896 vs company source 20.2000; difference 51.5896 pp
+HINDUNILVR | 2019-03 | OPM | data source issue | Computed 77.4103 vs source 8880.0000; diff -8802.5897 pp
+HINDUNILVR | 2019-03 | ROCE | data source issue | Computed 381.9985 vs company source 27.2000; difference 354.7985 pp
+HINDUNILVR | 2019-03 | ROE | version difference | Computed 77.0306 vs company source 20.2000; difference 56.8306 pp
+HINDUNILVR | 2020-03 | OPM | data source issue | Computed 75.2130 vs source 9861.0000; diff -9785.7870 pp
+HINDUNILVR | 2020-03 | ROCE | data source issue | Computed 363.6165 vs company source 27.2000; difference 336.4165 pp
+HINDUNILVR | 2020-03 | ROE | version difference | Computed 82.0999 vs company source 20.2000; difference 61.8999 pp
+HINDUNILVR | 2021-03 | OPM | data source issue | Computed 75.2786 vs source 11626.0000; diff -11550.7214 pp
+HINDUNILVR | 2021-03 | ROCE | data source issue | Computed 74.2585 vs company source 27.2000; difference 47.0585 pp
+HINDUNILVR | 2022-03 | OPM | data source issue | Computed 75.4853 vs source 12857.0000; diff -12781.5147 pp
+HINDUNILVR | 2022-03 | ROCE | data source issue | Computed 79.0137 vs company source 27.2000; difference 51.8137 pp
+HINDUNILVR | 2023-03 | OPM | data source issue | Computed 76.6474 vs source 14147.0000; diff -14070.3526 pp
+HINDUNILVR | 2023-03 | ROCE | data source issue | Computed 90.1209 vs company source 27.2000; difference 62.9209 pp
+HINDUNILVR | 2024-03 | OPM | data source issue | Computed 76.3167 vs source 14659.0000; diff -14582.6833 pp
+HINDUNILVR | 2024-03 | ROCE | data source issue | Computed 89.6304 vs company source 27.2000; difference 62.4304 pp
+ICICIBANK | 2013-03 | OPM | data source issue | Computed 70.5893 vs source -15085.0000; diff 15155.5893 pp
+ICICIBANK | 2014-03 | OPM | data source issue | Computed 66.3958 vs source -13084.0000; diff 13150.3958 pp
+ICICIBANK | 2015-03 | OPM | data source issue | Computed 70.5298 vs source -16120.0000; diff 16190.5298 pp
+ICICIBANK | 2016-03 | OPM | data source issue | Computed 88.1236 vs source -26955.0000; diff 27043.1236 pp
+ICICIBANK | 2016-03 | ROE | version difference | Computed 11.6108 vs company source 18.8000; difference -7.1892 pp
+ICICIBANK | 2017-03 | OPM | data source issue | Computed 104.7604 vs source -37737.0000; diff 37841.7604 pp
+ICICIBANK | 2017-03 | ROE | version difference | Computed 10.8380 vs company source 18.8000; difference -7.9620 pp
+ICICIBANK | 2018-03 | OPM | data source issue | Computed 117.1230 vs source -44906.0000; diff 45023.1230 pp
+ICICIBANK | 2018-03 | ROE | version difference | Computed 8.2256 vs company source 18.8000; difference -10.5744 pp
+ICICIBANK | 2019-03 | OPM | data source issue | Computed 116.3833 vs source -50971.0000; diff 51087.3833 pp
+ICICIBANK | 2019-03 | ROE | version difference | Computed 4.9793 vs company source 18.8000; difference -13.8207 pp
+ICICIBANK | 2020-03 | OPM | data source issue | Computed 100.6188 vs source -45190.0000; diff 45290.6188 pp
+ICICIBANK | 2020-03 | ROE | version difference | Computed 9.1290 vs company source 18.8000; difference -9.6710 pp
+ICICIBANK | 2021-03 | OPM | data source issue | Computed 102.4068 vs source -44805.0000; diff 44907.4068 pp
+ICICIBANK | 2021-03 | ROE | version difference | Computed 12.9224 vs company source 18.8000; difference -5.8776 pp
+ICICIBANK | 2022-03 | OPM | data source issue | Computed 84.6877 vs source -26558.0000; diff 26642.6877 pp
+ICICIBANK | 2023-03 | OPM | data source issue | Computed 72.5747 vs source -17341.0000; diff 17413.5747 pp
+ICICIBANK | 2024-03 | OPM | data source issue | Computed 62.4138 vs source -14152.0000; diff 14214.4138 pp
+ICICIGI | 2013-03 | OPM | data source issue | Computed 104.4616 vs source -178.0000; diff 282.4616 pp
+ICICIGI | 2013-03 | ROCE | data source issue | Computed 224.1176 vs company source 22.5000; difference 201.6176 pp
+ICICIGI | 2014-03 | OPM | data source issue | Computed 105.1930 vs source -225.0000; diff 330.1930 pp
+ICICIGI | 2014-03 | ROCE | data source issue | Computed 191.2281 vs company source 22.5000; difference 168.7281 pp
+ICICIGI | 2015-03 | OPM | data source issue | Computed 105.2433 vs source -221.0000; diff 326.2433 pp
+ICICIGI | 2015-03 | ROCE | data source issue | Computed 154.4006 vs company source 22.5000; difference 131.9006 pp
+ICICIGI | 2016-03 | OPM | data source issue | Computed 87.3363 vs source 764.0000; diff -676.6637 pp
+ICICIGI | 2016-03 | ROCE | data source issue | Computed 162.7742 vs company source 22.5000; difference 140.2742 pp
+ICICIGI | 2017-03 | OPM | data source issue | Computed 87.7793 vs source 919.0000; diff -831.2207 pp
+ICICIGI | 2017-03 | ROCE | data source issue | Computed 150.5016 vs company source 22.5000; difference 128.0016 pp
+ICICIGI | 2018-03 | OPM | data source issue | Computed 103.7905 vs source -262.0000; diff 365.7905 pp
+ICICIGI | 2018-03 | ROCE | data source issue | Computed 142.7378 vs company source 22.5000; difference 120.2378 pp
+ICICIGI | 2019-03 | OPM | data source issue | Computed 85.0488 vs source 1669.0000; diff -1583.9512 pp
+ICICIGI | 2019-03 | ROCE | data source issue | Computed 161.3254 vs company source 22.5000; difference 138.8254 pp
+ICICIGI | 2020-03 | OPM | data source issue | Computed 84.6140 vs source 1772.0000; diff -1687.3860 pp
+ICICIGI | 2020-03 | ROCE | data source issue | Computed 147.2277 vs company source 22.5000; difference 124.7277 pp
+ICICIGI | 2021-03 | OPM | data source issue | Computed 82.9702 vs source 2072.0000; diff -1989.0298 pp
+ICICIGI | 2021-03 | ROCE | data source issue | Computed 124.8144 vs company source 22.5000; difference 102.3144 pp
+ICICIGI | 2022-03 | OPM | data source issue | Computed 93.6603 vs source 1016.0000; diff -922.3397 pp
+ICICIGI | 2022-03 | ROCE | data source issue | Computed 158.8696 vs company source 22.5000; difference 136.3696 pp
+ICICIGI | 2023-03 | OPM | data source issue | Computed 92.9291 vs source 1264.0000; diff -1171.0709 pp
+ICICIGI | 2023-03 | ROCE | data source issue | Computed 158.5266 vs company source 22.5000; difference 136.0266 pp
+ICICIGI | 2024-03 | OPM | data source issue | Computed 87.4213 vs source 2577.0000; diff -2489.5787 pp
+ICICIGI | 2024-03 | ROCE | data source issue | Computed 146.3235 vs company source 22.5000; difference 123.8235 pp
+ICICIPRULI | 2013-03 | OPM | data source issue | Computed 96.2797 vs source 745.0000; diff -648.7203 pp
+ICICIPRULI | 2013-03 | ROCE | data source issue | Computed 486.7458 vs company source 8.7500; difference 477.9958 pp
+ICICIPRULI | 2013-03 | ROE | version difference | Computed 38.2479 vs company source 8.0700; difference 30.1779 pp
+ICICIPRULI | 2014-03 | OPM | data source issue | Computed 93.1287 vs source 1504.0000; diff -1410.8713 pp
+ICICIPRULI | 2014-03 | ROCE | data source issue | Computed 465.0696 vs company source 8.7500; difference 456.3196 pp
+ICICIPRULI | 2014-03 | ROE | version difference | Computed 35.6149 vs company source 8.0700; difference 27.5449 pp
+ICICIPRULI | 2015-03 | OPM | data source issue | Computed 95.1964 vs source 1655.0000; diff -1559.8036 pp
+ICICIPRULI | 2015-03 | ROCE | data source issue | Computed 622.9440 vs company source 8.7500; difference 614.1940 pp
+ICICIPRULI | 2015-03 | ROE | version difference | Computed 31.1491 vs company source 8.0700; difference 23.0791 pp
+ICICIPRULI | 2016-03 | OPM | data source issue | Computed 91.1698 vs source 1842.0000; diff -1750.8302 pp
+ICICIPRULI | 2016-03 | ROCE | data source issue | Computed 299.2443 vs company source 8.7500; difference 290.4943 pp
+ICICIPRULI | 2016-03 | ROE | version difference | Computed 30.9976 vs company source 8.0700; difference 22.9276 pp
+ICICIPRULI | 2017-03 | OPM | data source issue | Computed 95.2242 vs source 1806.0000; diff -1710.7758 pp
+ICICIPRULI | 2017-03 | ROCE | data source issue | Computed 562.1293 vs company source 8.7500; difference 553.3793 pp
+ICICIPRULI | 2017-03 | ROE | version difference | Computed 26.2566 vs company source 8.0700; difference 18.1866 pp
+ICICIPRULI | 2018-03 | OPM | data source issue | Computed 95.4419 vs source 1771.0000; diff -1675.5581 pp
+ICICIPRULI | 2018-03 | ROCE | data source issue | Computed 563.7664 vs company source 8.7500; difference 555.0164 pp
+ICICIPRULI | 2018-03 | ROE | version difference | Computed 24.6273 vs company source 8.0700; difference 16.5573 pp
+ICICIPRULI | 2019-03 | OPM | data source issue | Computed 98.6952 vs source 541.0000; diff -442.3048 pp
+ICICIPRULI | 2019-03 | ROCE | data source issue | Computed 595.5756 vs company source 8.7500; difference 586.8256 pp
+ICICIPRULI | 2019-03 | ROE | version difference | Computed 16.5769 vs company source 8.0700; difference 8.5069 pp
+ICICIPRULI | 2020-03 | OPM | data source issue | Computed 101.5172 vs source -319.0000; diff 420.5172 pp
+ICICIPRULI | 2020-03 | ROCE | data source issue | Computed 295.9102 vs company source 8.7500; difference 287.1602 pp
+ICICIPRULI | 2020-03 | ROE | version difference | Computed 14.7927 vs company source 8.0700; difference 6.7227 pp
+ICICIPRULI | 2021-03 | OPM | data source issue | Computed 100.4689 vs source -390.0000; diff 490.4689 pp
+ICICIPRULI | 2021-03 | ROCE | data source issue | Computed 810.6703 vs company source 8.7500; difference 801.9203 pp
+ICICIPRULI | 2022-03 | OPM | data source issue | Computed 103.4044 vs source -2163.0000; diff 2266.4044 pp
+ICICIPRULI | 2022-03 | ROCE | data source issue | Computed 634.5627 vs company source 8.7500; difference 625.8127 pp
+ICICIPRULI | 2023-03 | OPM | data source issue | Computed 103.4807 vs source -1757.0000; diff 1860.4807 pp
+ICICIPRULI | 2023-03 | ROCE | data source issue | Computed 462.6661 vs company source 8.7500; difference 453.9161 pp
+ICICIPRULI | 2024-03 | OPM | data source issue | Computed 102.0253 vs source -1829.0000; diff 1931.0253 pp
+ICICIPRULI | 2024-03 | ROCE | data source issue | Computed 754.9037 vs company source 8.7500; difference 746.1537 pp
+INDIGO | 2013-03 | OPM | data source issue | Computed 90.7096 vs source 855.0000; diff -764.2904 pp
+INDIGO | 2013-03 | ROCE | data source issue | Computed 54207.7922 vs company source 24.5000; difference 54183.2922 pp
+INDIGO | 2014-03 | OPM | data source issue | Computed 96.1051 vs source 433.0000; diff -336.8949 pp
+INDIGO | 2014-03 | ROCE | data source issue | Computed 58065.2174 vs company source 24.5000; difference 58040.7174 pp
+INDIGO | 2015-03 | OPM | data source issue | Computed 86.3339 vs source 1904.0000; diff -1817.6661 pp
+INDIGO | 2015-03 | ROCE | data source issue | Computed 39546.0526 vs company source 24.5000; difference 39521.5526 pp
+INDIGO | 2016-03 | OPM | data source issue | Computed 80.3965 vs source 3164.0000; diff -3083.6035 pp
+INDIGO | 2016-03 | ROCE | data source issue | Computed 9443.9592 vs company source 24.5000; difference 9419.4592 pp
+INDIGO | 2017-03 | OPM | data source issue | Computed 88.0624 vs source 2219.0000; diff -2130.9376 pp
+INDIGO | 2017-03 | ROCE | data source issue | Computed 10908.0000 vs company source 24.5000; difference 10883.5000 pp
+INDIGO | 2018-03 | OPM | data source issue | Computed 86.8381 vs source 3030.0000; diff -2943.1619 pp
+INDIGO | 2018-03 | ROCE | data source issue | Computed 12981.1688 vs company source 24.5000; difference 12956.6688 pp
+INDIGO | 2019-03 | OPM | data source issue | Computed 100.5299 vs source -151.0000; diff 251.5299 pp
+INDIGO | 2019-03 | ROCE | data source issue | Computed 13201.8433 vs company source 24.5000; difference 13177.3433 pp
+INDIGO | 2020-03 | OPM | data source issue | Computed 88.6201 vs source 4069.0000; diff -3980.3799 pp
+INDIGO | 2020-03 | ROCE | data source issue | Computed 12475.1969 vs company source 24.5000; difference 12450.6969 pp
+INDIGO | 2021-03 | OPM | data source issue | Computed 99.9795 vs source 2.0000; diff 97.9795 pp
+INDIGO | 2021-03 | ROCE | data source issue | Computed 2554.6248 vs company source 24.5000; difference 2530.1248 pp
+INDIGO | 2022-03 | OPM | data source issue | Computed 97.8481 vs source 558.0000; diff -460.1519 pp
+INDIGO | 2022-03 | ROCE | data source issue | Computed 3832.7795 vs company source 24.5000; difference 3808.2795 pp
+INDIGO | 2023-03 | OPM | data source issue | Computed 88.0248 vs source 6521.0000; diff -6432.9752 pp
+INDIGO | 2023-03 | ROCE | data source issue | Computed 6074.2712 vs company source 24.5000; difference 6049.7712 pp
+INDIGO | 2024-03 | OPM | data source issue | Computed 76.2989 vs source 16331.0000; diff -16254.7011 pp
+INDIGO | 2024-03 | ROCE | data source issue | Computed 5640.8798 vs company source 24.5000; difference 5616.3798 pp
+INDUSINDBK | 2013-03 | OPM | data source issue | Computed 27.8820 vs source 286.0000; diff -258.1180 pp
+INDUSINDBK | 2013-03 | ROCE | data source issue | Computed 2.7343 vs company source 7.9300; difference -5.1957 pp
+INDUSINDBK | 2014-03 | OPM | data source issue | Computed 30.9547 vs source 335.0000; diff -304.0453 pp
+INDUSINDBK | 2015-03 | OPM | data source issue | Computed 32.3256 vs source 288.0000; diff -255.6744 pp
+INDUSINDBK | 2016-03 | OPM | data source issue | Computed 35.2763 vs source 329.0000; diff -293.7237 pp
+INDUSINDBK | 2017-03 | OPM | data source issue | Computed 39.4558 vs source 379.0000; diff -339.5442 pp
+INDUSINDBK | 2018-03 | OPM | data source issue | Computed 37.9318 vs source 942.0000; diff -904.0682 pp
+INDUSINDBK | 2019-03 | OPM | data source issue | Computed 41.7007 vs source -437.0000; diff 478.7007 pp
+INDUSINDBK | 2020-03 | OPM | data source issue | Computed 43.8141 vs source -553.0000; diff 596.8141 pp
+INDUSINDBK | 2021-03 | OPM | data source issue | Computed 55.1621 vs source -2469.0000; diff 2524.1621 pp
+INDUSINDBK | 2021-03 | ROE | version difference | Computed 6.5398 vs company source 15.2000; difference -8.6602 pp
+INDUSINDBK | 2022-03 | OPM | data source issue | Computed 51.3919 vs source -839.0000; diff 890.3919 pp
+INDUSINDBK | 2022-03 | ROE | version difference | Computed 9.6671 vs company source 15.2000; difference -5.5329 pp
+INDUSINDBK | 2023-03 | OPM | data source issue | Computed 42.6886 vs source 2067.0000; diff -2024.3114 pp
+INDUSINDBK | 2024-03 | OPM | data source issue | Computed 38.5547 vs source 2978.0000; diff -2939.4453 pp
+INFY | 2013-03 | ROCE | data source issue | Computed 30.3680 vs company source 40.0000; difference -9.6320 pp
+INFY | 2013-03 | ROE | version difference | Computed 24.8171 vs company source 31.8000; difference -6.9829 pp
+INFY | 2014-03 | ROCE | data source issue | Computed 30.0696 vs company source 40.0000; difference -9.9304 pp
+INFY | 2014-03 | ROE | version difference | Computed 23.9299 vs company source 31.8000; difference -7.8701 pp
+INFY | 2015-03 | ROCE | data source issue | Computed 29.3342 vs company source 40.0000; difference -10.6658 pp
+INFY | 2015-03 | ROE | version difference | Computed 24.3851 vs company source 31.8000; difference -7.4149 pp
+INFY | 2016-03 | ROCE | data source issue | Computed 27.6610 vs company source 40.0000; difference -12.3390 pp
+INFY | 2016-03 | ROE | version difference | Computed 21.8467 vs company source 31.8000; difference -9.9533 pp
+INFY | 2017-03 | ROCE | data source issue | Computed 26.9694 vs company source 40.0000; difference -13.0306 pp
+INFY | 2017-03 | ROE | version difference | Computed 20.8069 vs company source 31.8000; difference -10.9931 pp
+INFY | 2018-03 | ROCE | data source issue | Computed 28.9913 vs company source 40.0000; difference -11.0087 pp
+INFY | 2018-03 | ROE | version difference | Computed 24.6892 vs company source 31.8000; difference -7.1108 pp
+INFY | 2019-03 | ROCE | data source issue | Computed 31.0556 vs company source 40.0000; difference -8.9444 pp
+INFY | 2019-03 | ROE | version difference | Computed 23.7267 vs company source 31.8000; difference -8.0733 pp
+INFY | 2020-03 | ROCE | data source issue | Computed 31.7723 vs company source 40.0000; difference -8.2277 pp
+INFY | 2020-03 | ROE | version difference | Computed 25.4225 vs company source 31.8000; difference -6.3775 pp
+INFY | 2021-03 | ROCE | data source issue | Computed 34.1459 vs company source 40.0000; difference -5.8541 pp
+INFY | 2021-03 | ROE | version difference | Computed 25.4391 vs company source 31.8000; difference -6.3609 pp
+IOC | 2013-03 | ROCE | data source issue | Computed 9.0768 vs company source 21.3100; difference -12.2332 pp
+IOC | 2013-03 | ROE | version difference | Computed 5.7538 vs company source 25.4400; difference -19.6862 pp
+IOC | 2014-03 | ROCE | data source issue | Computed 10.5767 vs company source 21.3100; difference -10.7333 pp
+IOC | 2014-03 | ROE | version difference | Computed 10.2587 vs company source 25.4400; difference -15.1813 pp
+IOC | 2015-03 | ROCE | data source issue | Computed 7.9080 vs company source 21.3100; difference -13.4020 pp
+IOC | 2015-03 | ROE | version difference | Computed 7.0781 vs company source 25.4400; difference -18.3619 pp
+IOC | 2016-03 | ROCE | data source issue | Computed 14.8372 vs company source 21.3100; difference -6.4728 pp
+IOC | 2016-03 | ROE | version difference | Computed 13.7953 vs company source 25.4400; difference -11.6447 pp
+IOC | 2017-03 | ROE | version difference | Computed 19.9665 vs company source 25.4400; difference -5.4735 pp
+IOC | 2018-03 | ROE | version difference | Computed 19.8693 vs company source 25.4400; difference -5.5707 pp
+IOC | 2019-03 | ROE | version difference | Computed 15.3589 vs company source 25.4400; difference -10.0811 pp
+IOC | 2020-03 | ROCE | data source issue | Computed 7.1287 vs company source 21.3100; difference -14.1813 pp
+IOC | 2020-03 | ROE | version difference | Computed -1.9665 vs company source 25.4400; difference -27.4065 pp
+IOC | 2021-03 | ROE | version difference | Computed 19.4585 vs company source 25.4400; difference -5.9815 pp
+IOC | 2022-03 | ROE | version difference | Computed 19.2661 vs company source 25.4400; difference -6.1739 pp
+IOC | 2023-03 | ROCE | data source issue | Computed 10.6281 vs company source 21.3100; difference -10.6819 pp
+IOC | 2023-03 | ROE | version difference | Computed 8.3767 vs company source 25.4400; difference -17.0633 pp
+IRCTC | 2015-03 | ROCE | data source issue | Computed 34.2342 vs company source 53.8000; difference -19.5658 pp
+IRCTC | 2015-03 | ROE | version difference | Computed 29.5045 vs company source 40.4000; difference -10.8955 pp
+IRCTC | 2016-03 | ROCE | data source issue | Computed 35.0554 vs company source 53.8000; difference -18.7446 pp
+IRCTC | 2016-03 | ROE | version difference | Computed 34.8708 vs company source 40.4000; difference -5.5292 pp
+IRCTC | 2017-03 | ROCE | data source issue | Computed 39.8983 vs company source 53.8000; difference -13.9017 pp
+IRCTC | 2017-03 | ROE | version difference | Computed 29.0978 vs company source 40.4000; difference -11.3022 pp
+IRCTC | 2018-03 | ROCE | data source issue | Computed 28.6911 vs company source 53.8000; difference -25.1089 pp
+IRCTC | 2018-03 | ROE | version difference | Computed 23.1414 vs company source 40.4000; difference -17.2586 pp
+IRCTC | 2019-03 | ROCE | data source issue | Computed 35.7610 vs company source 53.8000; difference -18.0390 pp
+IRCTC | 2019-03 | ROE | version difference | Computed 28.8515 vs company source 40.4000; difference -11.5485 pp
+IRCTC | 2021-03 | ROCE | data source issue | Computed 12.2476 vs company source 53.8000; difference -41.5524 pp
+IRCTC | 2021-03 | ROE | version difference | Computed 12.8434 vs company source 40.4000; difference -27.5566 pp
+IRCTC | 2022-03 | ROCE | data source issue | Computed 44.2532 vs company source 53.8000; difference -9.5468 pp
+IRCTC | 2022-03 | ROE | version difference | Computed 35.2941 vs company source 40.4000; difference -5.1059 pp
+IRCTC | 2024-03 | ROCE | data source issue | Computed 44.5593 vs company source 53.8000; difference -9.2407 pp
+IRCTC | 2024-03 | ROE | version difference | Computed 34.3963 vs company source 40.4000; difference -6.0037 pp
+IRFC | 2013-03 | ROE | version difference | Computed 8.1639 vs company source 13.7000; difference -5.5361 pp
+IRFC | 2016-03 | ROE | version difference | Computed 7.3666 vs company source 13.7000; difference -6.3334 pp
+IRFC | 2017-03 | ROE | version difference | Computed 7.7775 vs company source 13.7000; difference -5.9225 pp
+ITC | 2013-03 | ROCE | data source issue | Computed 48.2416 vs company source 34.7600; difference 13.4816 pp
+ITC | 2014-03 | ROCE | data source issue | Computed 47.6000 vs company source 34.7600; difference 12.8400 pp
+ITC | 2015-03 | ROCE | data source issue | Computed 44.5305 vs company source 34.7600; difference 9.7705 pp
+ITC | 2016-03 | ROE | version difference | Computed 22.2610 vs company source 29.4700; difference -7.2090 pp
+ITC | 2017-03 | ROE | version difference | Computed 22.5734 vs company source 29.4700; difference -6.8966 pp
+ITC | 2018-03 | ROE | version difference | Computed 21.8873 vs company source 29.4700; difference -7.5827 pp
+ITC | 2019-03 | ROE | version difference | Computed 21.7041 vs company source 29.4700; difference -7.7659 pp
+ITC | 2020-03 | ROCE | data source issue | Computed 29.5103 vs company source 34.7600; difference -5.2497 pp
+ITC | 2020-03 | ROE | version difference | Computed 23.8889 vs company source 29.4700; difference -5.5811 pp
+ITC | 2021-03 | ROCE | data source issue | Computed 28.1517 vs company source 34.7600; difference -6.6083 pp
+ITC | 2021-03 | ROE | version difference | Computed 22.1767 vs company source 29.4700; difference -7.2933 pp
+JINDALSTEL | 2014-03 | ROE | version difference | Computed 8.3857 vs company source 14.1000; difference -5.7143 pp
+JINDALSTEL | 2015-03 | ROE | version difference | Computed -6.9005 vs company source 14.1000; difference -21.0005 pp
+JINDALSTEL | 2016-03 | ROCE | data source issue | Computed 4.3378 vs company source 13.2000; difference -8.8622 pp
+JINDALSTEL | 2016-03 | ROE | version difference | Computed -9.5172 vs company source 14.1000; difference -23.6172 pp
+JINDALSTEL | 2017-03 | ROCE | data source issue | Computed 6.2041 vs company source 13.2000; difference -6.9959 pp
+JINDALSTEL | 2017-03 | ROE | version difference | Computed -8.4456 vs company source 14.1000; difference -22.5456 pp
+JINDALSTEL | 2018-03 | ROE | version difference | Computed -5.3184 vs company source 14.1000; difference -19.4184 pp
+JINDALSTEL | 2019-03 | ROE | version difference | Computed -7.5175 vs company source 14.1000; difference -21.6175 pp
+JINDALSTEL | 2020-03 | ROE | version difference | Computed -1.2447 vs company source 14.1000; difference -15.3447 pp
+JINDALSTEL | 2022-03 | ROCE | data source issue | Computed 31.5814 vs company source 13.2000; difference 18.3814 pp
+JINDALSTEL | 2023-03 | ROCE | data source issue | Computed 19.2109 vs company source 13.2000; difference 6.0109 pp
+JIOFIN | 2023-03 | OPM | data source issue | Computed 86.6667 vs source 88.0000; diff -1.3333 pp
+JSWENERGY | 2013-03 | ROCE | data source issue | Computed 16.8928 vs company source 8.5900; difference 8.3028 pp
+JSWENERGY | 2013-03 | ROE | version difference | Computed 14.5229 vs company source 8.4000; difference 6.1229 pp
+JSWENERGY | 2014-03 | ROCE | data source issue | Computed 19.5179 vs company source 8.5900; difference 10.9279 pp
+JSWENERGY | 2015-03 | ROCE | data source issue | Computed 21.5560 vs company source 8.5900; difference 12.9660 pp
+JSWENERGY | 2015-03 | ROE | version difference | Computed 18.0633 vs company source 8.4000; difference 9.6633 pp
+JSWENERGY | 2016-03 | ROCE | data source issue | Computed 16.4007 vs company source 8.5900; difference 7.8107 pp
+JSWENERGY | 2016-03 | ROE | version difference | Computed 15.0453 vs company source 8.4000; difference 6.6453 pp
+JSWENERGY | 2018-03 | ROE | version difference | Computed 0.7651 vs company source 8.4000; difference -7.6349 pp
+JSWENERGY | 2020-03 | ROCE | data source issue | Computed 13.7624 vs company source 8.5900; difference 5.1724 pp
+JSWSTEEL | 2013-03 | ROE | version difference | Computed 5.4439 vs company source 11.6600; difference -6.2161 pp
+JSWSTEEL | 2014-03 | ROE | version difference | Computed 1.8986 vs company source 11.6600; difference -9.7614 pp
+JSWSTEEL | 2016-03 | ROE | version difference | Computed -2.5361 vs company source 11.6600; difference -14.1961 pp
+JSWSTEEL | 2017-03 | ROCE | data source issue | Computed 18.6539 vs company source 13.3600; difference 5.2939 pp
+JSWSTEEL | 2018-03 | ROCE | data source issue | Computed 22.1335 vs company source 13.3600; difference 8.7735 pp
+JSWSTEEL | 2018-03 | ROE | version difference | Computed 21.8337 vs company source 11.6600; difference 10.1737 pp
+JSWSTEEL | 2019-03 | ROCE | data source issue | Computed 23.0317 vs company source 13.3600; difference 9.6717 pp
+JSWSTEEL | 2019-03 | ROE | version difference | Computed 21.6238 vs company source 11.6600; difference 9.9638 pp
+JSWSTEEL | 2021-03 | ROCE | data source issue | Computed 18.4855 vs company source 13.3600; difference 5.1255 pp
+JSWSTEEL | 2021-03 | ROE | version difference | Computed 16.8356 vs company source 11.6600; difference 5.1756 pp
+JSWSTEEL | 2022-03 | ROCE | data source issue | Computed 28.0319 vs company source 13.3600; difference 14.6719 pp
+JSWSTEEL | 2022-03 | ROE | version difference | Computed 31.1128 vs company source 11.6600; difference 19.4528 pp
+JSWSTEEL | 2023-03 | ROE | version difference | Computed 6.3003 vs company source 11.6600; difference -5.3597 pp
+KOTAKBANK | 2013-03 | OPM | data source issue | Computed 60.9245 vs source -1789.0000; diff 1849.9245 pp
+KOTAKBANK | 2014-03 | OPM | data source issue | Computed 58.8437 vs source -1379.0000; diff 1437.8437 pp
+KOTAKBANK | 2015-03 | OPM | data source issue | Computed 72.9634 vs source -3366.0000; diff 3438.9634 pp
+KOTAKBANK | 2016-03 | OPM | data source issue | Computed 56.5680 vs source -2263.0000; diff 2319.5680 pp
+KOTAKBANK | 2017-03 | OPM | data source issue | Computed 66.4397 vs source -3965.0000; diff 4031.4397 pp
+KOTAKBANK | 2018-03 | OPM | data source issue | Computed 66.8696 vs source -4141.0000; diff 4207.8696 pp
+KOTAKBANK | 2019-03 | OPM | data source issue | Computed 66.2331 vs source -5114.0000; diff 5180.2331 pp
+KOTAKBANK | 2020-03 | OPM | data source issue | Computed 67.4494 vs source -5005.0000; diff 5072.4494 pp
+KOTAKBANK | 2021-03 | OPM | data source issue | Computed 90.8349 vs source -9958.0000; diff 10048.8349 pp
+KOTAKBANK | 2022-03 | OPM | data source issue | Computed 90.9843 vs source -8512.0000; diff 8602.9843 pp
+KOTAKBANK | 2023-03 | OPM | data source issue | Computed 79.4406 vs source -5746.0000; diff 5825.4406 pp
+KOTAKBANK | 2024-03 | OPM | data source issue | Computed 83.6673 vs source -13382.0000; diff 13465.6673 pp
+LICI | 2019-03 | ROCE | data source issue | Computed 2.1909 vs company source 63.7900; difference -61.5991 pp
+LICI | 2019-03 | ROE | version difference | Computed 324.3210 vs company source 63.6100; difference 260.7110 pp
+LICI | 2020-03 | ROCE | data source issue | Computed -2.7306 vs company source 63.7900; difference -66.5206 pp
+LICI | 2020-03 | ROE | version difference | Computed 270.4591 vs company source 63.6100; difference 206.8491 pp
+LICI | 2021-03 | ROCE | data source issue | Computed -3.6585 vs company source 63.7900; difference -67.4485 pp
+LICI | 2021-03 | ROE | version difference | Computed 43.2016 vs company source 63.6100; difference -20.4084 pp
+LICI | 2022-03 | ROCE | data source issue | Computed 29.3324 vs company source 63.7900; difference -34.4576 pp
+LICI | 2022-03 | ROE | version difference | Computed 36.3821 vs company source 63.6100; difference -27.2279 pp
+LICI | 2023-03 | ROCE | data source issue | Computed 73.9883 vs company source 63.7900; difference 10.1983 pp
+LICI | 2023-03 | ROE | version difference | Computed 77.8600 vs company source 63.6100; difference 14.2500 pp
+LICI | 2024-03 | ROCE | data source issue | Computed 39.6135 vs company source 63.7900; difference -24.1765 pp
+LICI | 2024-03 | ROE | version difference | Computed 49.4471 vs company source 63.6100; difference -14.1629 pp
+LODHA | 2011-03 | ROE | version difference | Computed 35.4839 vs company source 10.7000; difference 24.7839 pp
+LODHA | 2012-03 | ROE | version difference | Computed 33.8366 vs company source 10.7000; difference 23.1366 pp
+LODHA | 2015-03 | ROE | version difference | Computed 24.2259 vs company source 10.7000; difference 13.5259 pp
+LODHA | 2016-03 | ROE | version difference | Computed 17.6944 vs company source 10.7000; difference 6.9944 pp
+LODHA | 2018-03 | ROCE | data source issue | Computed 6.0573 vs company source 11.1000; difference -5.0427 pp
+LODHA | 2019-03 | ROE | version difference | Computed 42.8014 vs company source 10.7000; difference 32.1014 pp
+LODHA | 2020-03 | ROE | version difference | Computed 16.3005 vs company source 10.7000; difference 5.6005 pp
+LODHA | 2021-03 | ROCE | data source issue | Computed 6.0679 vs company source 11.1000; difference -5.0321 pp
+LODHA | 2021-03 | ROE | version difference | Computed 1.0437 vs company source 10.7000; difference -9.6563 pp
+LODHA | 2023-03 | ROE | version difference | Computed 3.8695 vs company source 10.7000; difference -6.8305 pp
+LT | 2013-03 | ROCE | data source issue | Computed 724.3484 vs company source 17.1800; difference 707.1684 pp
+LT | 2013-03 | ROE | version difference | Computed 395.1456 vs company source 10.4900; difference 384.6556 pp
+LT | 2014-03 | ROCE | data source issue | Computed 818.9535 vs company source 17.1800; difference 801.7735 pp
+LT | 2014-03 | ROE | version difference | Computed 303.4161 vs company source 10.4900; difference 292.9261 pp
+LT | 2015-03 | ROCE | data source issue | Computed 698.9305 vs company source 17.1800; difference 681.7505 pp
+LT | 2015-03 | ROE | version difference | Computed 245.1135 vs company source 10.4900; difference 234.6235 pp
+LT | 2016-03 | ROCE | data source issue | Computed 710.3670 vs company source 17.1800; difference 693.1870 pp
+LT | 2016-03 | ROE | version difference | Computed 216.0941 vs company source 10.4900; difference 205.6041 pp
+LT | 2017-03 | ROCE | data source issue | Computed 528.6260 vs company source 17.1800; difference 511.4460 pp
+LT | 2017-03 | ROE | version difference | Computed 206.2977 vs company source 10.4900; difference 195.8077 pp
+LT | 2018-03 | ROCE | data source issue | Computed 521.0104 vs company source 17.1800; difference 503.8304 pp
+LT | 2018-03 | ROE | version difference | Computed 207.3575 vs company source 10.4900; difference 196.8675 pp
+LT | 2019-03 | ROCE | data source issue | Computed 467.3207 vs company source 17.1800; difference 450.1407 pp
+LT | 2019-03 | ROE | version difference | Computed 208.8085 vs company source 10.4900; difference 198.3185 pp
+LT | 2020-03 | ROCE | data source issue | Computed 388.7429 vs company source 17.1800; difference 371.5629 pp
+LT | 2020-03 | ROE | version difference | Computed 201.5914 vs company source 10.4900; difference 191.1014 pp
+LT | 2021-03 | ROCE | data source issue | Computed 289.5581 vs company source 17.1800; difference 272.3781 pp
+LT | 2021-03 | ROE | version difference | Computed 176.9031 vs company source 10.4900; difference 166.4131 pp
+LT | 2022-03 | ROCE | data source issue | Computed 167.1525 vs company source 17.1800; difference 149.9725 pp
+LT | 2022-03 | ROE | version difference | Computed 72.9213 vs company source 10.4900; difference 62.4313 pp
+LT | 2023-03 | ROCE | data source issue | Computed 149.8153 vs company source 17.1800; difference 132.6353 pp
+LT | 2023-03 | ROE | version difference | Computed 75.5243 vs company source 10.4900; difference 65.0343 pp
+LT | 2024-03 | ROCE | data source issue | Computed 135.2030 vs company source 17.1800; difference 118.0230 pp
+LT | 2024-03 | ROE | version difference | Computed 77.6651 vs company source 10.4900; difference 67.1751 pp
+LTIM | 2013-03 | ROCE | data source issue | Computed 55.3083 vs company source 34.1000; difference 21.2083 pp
+LTIM | 2013-03 | ROE | version difference | Computed 41.9716 vs company source 26.0400; difference 15.9316 pp
+LTIM | 2014-03 | ROCE | data source issue | Computed 66.6860 vs company source 34.1000; difference 32.5860 pp
+LTIM | 2014-03 | ROE | version difference | Computed 61.8634 vs company source 26.0400; difference 35.8234 pp
+LTIM | 2015-03 | ROCE | data source issue | Computed 44.7861 vs company source 34.1000; difference 10.6861 pp
+LTIM | 2015-03 | ROE | version difference | Computed 37.9566 vs company source 26.0400; difference 11.9166 pp
+LTIM | 2016-03 | ROCE | data source issue | Computed 47.1560 vs company source 34.1000; difference 13.0560 pp
+LTIM | 2016-03 | ROE | version difference | Computed 39.3412 vs company source 26.0400; difference 13.3012 pp
+LTIM | 2017-03 | ROCE | data source issue | Computed 39.1221 vs company source 34.1000; difference 5.0221 pp
+LTIM | 2024-03 | ROCE | data source issue | Computed 28.9148 vs company source 34.1000; difference -5.1852 pp
+M&M | 2013-03 | ROCE | data source issue | Computed 18.7295 vs company source 26.9800; difference -8.2505 pp
+M&M | 2014-03 | ROCE | data source issue | Computed 17.3923 vs company source 26.9800; difference -9.5877 pp
+M&M | 2015-03 | ROCE | data source issue | Computed 13.7890 vs company source 26.9800; difference -13.1910 pp
+M&M | 2016-03 | ROCE | data source issue | Computed 14.8167 vs company source 26.9800; difference -12.1633 pp
+M&M | 2017-03 | ROCE | data source issue | Computed 13.6682 vs company source 26.9800; difference -13.3118 pp
+M&M | 2018-03 | ROCE | data source issue | Computed 14.2717 vs company source 26.9800; difference -12.7083 pp
+M&M | 2019-03 | ROCE | data source issue | Computed 13.7209 vs company source 26.9800; difference -13.2591 pp
+M&M | 2020-03 | ROCE | data source issue | Computed 8.3221 vs company source 26.9800; difference -18.6579 pp
+M&M | 2020-03 | ROE | version difference | Computed -0.8031 vs company source 17.9900; difference -18.7931 pp
+M&M | 2021-03 | ROCE | data source issue | Computed 9.3996 vs company source 26.9800; difference -17.5804 pp
+M&M | 2021-03 | ROE | version difference | Computed 3.6362 vs company source 17.9900; difference -14.3538 pp
+M&M | 2022-03 | ROCE | data source issue | Computed 11.7720 vs company source 26.9800; difference -15.2080 pp
+M&M | 2023-03 | ROCE | data source issue | Computed 13.6495 vs company source 26.9800; difference -13.3305 pp
+M&M | 2024-03 | ROCE | data source issue | Computed 14.2373 vs company source 26.9800; difference -12.7427 pp
+MARUTI | 2016-03 | ROCE | data source issue | Computed 29.2541 vs company source 23.6700; difference 5.5841 pp
+MARUTI | 2020-03 | ROCE | data source issue | Computed 14.8295 vs company source 23.6700; difference -8.8405 pp
+MARUTI | 2021-03 | ROCE | data source issue | Computed 10.2013 vs company source 23.6700; difference -13.4687 pp
+MARUTI | 2021-03 | ROE | version difference | Computed 8.3598 vs company source 15.7500; difference -7.3902 pp
+MARUTI | 2022-03 | ROCE | data source issue | Computed 10.3158 vs company source 23.6700; difference -13.3542 pp
+MARUTI | 2022-03 | ROE | version difference | Computed 7.0121 vs company source 15.7500; difference -8.7379 pp
+MARUTI | 2023-03 | ROCE | data source issue | Computed 17.3004 vs company source 23.6700; difference -6.3696 pp
+MOTHERSON | 2013-03 | ROCE | data source issue | Computed 20.5756 vs company source 13.7000; difference 6.8756 pp
+MOTHERSON | 2013-03 | ROE | version difference | Computed 19.7466 vs company source 11.8000; difference 7.9466 pp
+MOTHERSON | 2014-03 | ROCE | data source issue | Computed 30.7347 vs company source 13.7000; difference 17.0347 pp
+MOTHERSON | 2014-03 | ROE | version difference | Computed 37.0733 vs company source 11.8000; difference 25.2733 pp
+MOTHERSON | 2015-03 | ROCE | data source issue | Computed 33.6369 vs company source 13.7000; difference 19.9369 pp
+MOTHERSON | 2015-03 | ROE | version difference | Computed 38.8688 vs company source 11.8000; difference 27.0688 pp
+MOTHERSON | 2016-03 | ROCE | data source issue | Computed 33.9002 vs company source 13.7000; difference 20.2002 pp
+MOTHERSON | 2016-03 | ROE | version difference | Computed 40.3457 vs company source 11.8000; difference 28.5457 pp
+MOTHERSON | 2017-03 | ROCE | data source issue | Computed 22.3994 vs company source 13.7000; difference 8.6994 pp
+MOTHERSON | 2017-03 | ROE | version difference | Computed 26.2573 vs company source 11.8000; difference 14.4573 pp
+MOTHERSON | 2018-03 | ROCE | data source issue | Computed 25.3135 vs company source 13.7000; difference 11.6135 pp
+MOTHERSON | 2018-03 | ROE | version difference | Computed 22.8652 vs company source 11.8000; difference 11.0652 pp
+MOTHERSON | 2019-03 | ROCE | data source issue | Computed 23.7721 vs company source 13.7000; difference 10.0721 pp
+MOTHERSON | 2019-03 | ROE | version difference | Computed 19.1371 vs company source 11.8000; difference 7.3371 pp
+MOTHERSON | 2020-03 | ROCE | data source issue | Computed 19.0761 vs company source 13.7000; difference 5.3761 pp
+MOTHERSON | 2022-03 | ROE | version difference | Computed 5.7412 vs company source 11.8000; difference -6.0588 pp
+MOTHERSON | 2024-03 | ROCE | data source issue | Computed 20.2314 vs company source 13.7000; difference 6.5314 pp
+NAUKRI | 2013-03 | ROCE | data source issue | Computed 19.8686 vs company source 3.6500; difference 16.2186 pp
+NAUKRI | 2013-03 | ROE | version difference | Computed 12.5000 vs company source 2.4400; difference 10.0600 pp
+NAUKRI | 2014-03 | ROCE | data source issue | Computed 14.4131 vs company source 3.6500; difference 10.7631 pp
+NAUKRI | 2014-03 | ROE | version difference | Computed 8.9286 vs company source 2.4400; difference 6.4886 pp
+NAUKRI | 2016-03 | ROE | version difference | Computed 7.6474 vs company source 2.4400; difference 5.2074 pp
+NAUKRI | 2017-03 | ROE | version difference | Computed -2.7010 vs company source 2.4400; difference -5.1410 pp
+NAUKRI | 2018-03 | ROCE | data source issue | Computed 10.7038 vs company source 3.6500; difference 7.0538 pp
+NAUKRI | 2018-03 | ROE | version difference | Computed 24.4988 vs company source 2.4400; difference 22.0588 pp
+NAUKRI | 2019-03 | ROE | version difference | Computed 23.2796 vs company source 2.4400; difference 20.8396 pp
+NAUKRI | 2020-03 | ROCE | data source issue | Computed -15.4049 vs company source 3.6500; difference -19.0549 pp
+NAUKRI | 2020-03 | ROE | version difference | Computed -11.2073 vs company source 2.4400; difference -13.6473 pp
+NAUKRI | 2021-03 | ROE | version difference | Computed 26.2787 vs company source 2.4400; difference 23.8387 pp
+NAUKRI | 2022-03 | ROE | version difference | Computed 74.7129 vs company source 2.4400; difference 72.2729 pp
+NESTLEIND | 2013-12 | ROCE | data source issue | Computed 54.7653 vs company source 185.4300; difference -130.6647 pp
+NESTLEIND | 2013-12 | ROE | version difference | Computed 47.1706 vs company source 135.6100; difference -88.4394 pp
+NESTLEIND | 2014-12 | ROCE | data source issue | Computed 71.3686 vs company source 185.4300; difference -114.0614 pp
+NESTLEIND | 2014-12 | ROE | version difference | Computed 41.7695 vs company source 135.6100; difference -93.8405 pp
+NESTLEIND | 2015-12 | ROCE | data source issue | Computed 54.8501 vs company source 185.4300; difference -130.5799 pp
+NESTLEIND | 2015-12 | ROE | version difference | Computed 19.9858 vs company source 135.6100; difference -115.6242 pp
+NESTLEIND | 2016-12 | ROCE | data source issue | Computed 55.8069 vs company source 185.4300; difference -129.6231 pp
+NESTLEIND | 2016-12 | ROE | version difference | Computed 30.4997 vs company source 135.6100; difference -105.1103 pp
+NESTLEIND | 2017-12 | ROCE | data source issue | Computed 60.6946 vs company source 185.4300; difference -124.7354 pp
+NESTLEIND | 2017-12 | ROE | version difference | Computed 35.8187 vs company source 135.6100; difference -99.7913 pp
+NESTLEIND | 2018-12 | ROCE | data source issue | Computed 70.6041 vs company source 185.4300; difference -114.8259 pp
+NESTLEIND | 2018-12 | ROE | version difference | Computed 43.7517 vs company source 135.6100; difference -91.8583 pp
+NESTLEIND | 2019-12 | ROCE | data source issue | Computed 138.8704 vs company source 185.4300; difference -46.5596 pp
+NESTLEIND | 2019-12 | ROE | version difference | Computed 102.6069 vs company source 135.6100; difference -33.0031 pp
+NESTLEIND | 2020-12 | ROCE | data source issue | Computed 147.8301 vs company source 185.4300; difference -37.5999 pp
+NESTLEIND | 2020-12 | ROE | version difference | Computed 103.1204 vs company source 135.6100; difference -32.4896 pp
+NESTLEIND | 2021-12 | ROCE | data source issue | Computed 161.0307 vs company source 185.4300; difference -24.3993 pp
+NESTLEIND | 2021-12 | ROE | version difference | Computed 108.8386 vs company source 135.6100; difference -26.7714 pp
+NESTLEIND | 2022-12 | ROCE | data source issue | Computed 135.7509 vs company source 185.4300; difference -49.6791 pp
+NESTLEIND | 2022-12 | ROE | version difference | Computed 97.2346 vs company source 135.6100; difference -38.3754 pp
+NESTLEIND | 2023-12 | ROCE | data source issue | Computed 163.7729 vs company source 185.4300; difference -21.6571 pp
+NESTLEIND | 2023-12 | ROE | version difference | Computed 121.9601 vs company source 135.6100; difference -13.6499 pp
+NESTLEIND | 2024-03 | ROCE | data source issue | Computed 157.7476 vs company source 185.4300; difference -27.6824 pp
+NESTLEIND | 2024-03 | ROE | version difference | Computed 117.7545 vs company source 135.6100; difference -17.8555 pp
+ONGC | 2013-03 | ROCE | data source issue | Computed 25.1140 vs company source 19.7100; difference 5.4040 pp
+ONGC | 2016-03 | ROE | version difference | Computed 6.6234 vs company source 14.3200; difference -7.6966 pp
+ONGC | 2020-03 | ROE | version difference | Computed 5.5855 vs company source 14.3200; difference -8.7345 pp
+ONGC | 2021-03 | ROCE | data source issue | Computed 13.9688 vs company source 19.7100; difference -5.7412 pp
+PFC | 2013-03 | ROCE | data source issue | Computed 3.6696 vs company source 9.9600; difference -6.2904 pp
+PFC | 2014-03 | ROCE | data source issue | Computed 4.0736 vs company source 9.9600; difference -5.8864 pp
+PFC | 2015-03 | ROCE | data source issue | Computed 3.8278 vs company source 9.9600; difference -6.1322 pp
+PFC | 2016-03 | ROCE | data source issue | Computed 3.8709 vs company source 9.9600; difference -6.0891 pp
+PFC | 2017-03 | ROCE | data source issue | Computed 2.1994 vs company source 9.9600; difference -7.7606 pp
+PFC | 2017-03 | ROE | version difference | Computed 6.0687 vs company source 19.4900; difference -13.4213 pp
+PFC | 2018-03 | ROCE | data source issue | Computed 2.4433 vs company source 9.9600; difference -7.5167 pp
+PFC | 2019-03 | ROCE | data source issue | Computed 3.0315 vs company source 9.9600; difference -6.9285 pp
+PFC | 2019-03 | ROE | version difference | Computed 26.8246 vs company source 19.4900; difference 7.3346 pp
+PFC | 2020-03 | ROCE | data source issue | Computed 2.1692 vs company source 9.9600; difference -7.7908 pp
+PFC | 2021-03 | ROCE | data source issue | Computed 2.7581 vs company source 9.9600; difference -7.2019 pp
+PFC | 2021-03 | ROE | version difference | Computed 25.8627 vs company source 19.4900; difference 6.3727 pp
+PFC | 2022-03 | ROCE | data source issue | Computed 3.1876 vs company source 9.9600; difference -6.7724 pp
+PFC | 2022-03 | ROE | version difference | Computed 26.1845 vs company source 19.4900; difference 6.6945 pp
+PFC | 2023-03 | ROCE | data source issue | Computed 3.1726 vs company source 9.9600; difference -6.7874 pp
+PFC | 2023-03 | ROE | version difference | Computed 25.1658 vs company source 19.4900; difference 5.6758 pp
+PFC | 2024-03 | ROCE | data source issue | Computed 3.4859 vs company source 9.9600; difference -6.4741 pp
+PFC | 2024-03 | ROE | version difference | Computed 26.1609 vs company source 19.4900; difference 6.6709 pp
+PIDILITIND | 2016-03 | ROCE | data source issue | Computed 43.1567 vs company source 29.7000; difference 13.4567 pp
+PIDILITIND | 2016-03 | ROE | version difference | Computed 30.5914 vs company source 22.8000; difference 7.7914 pp
+PIDILITIND | 2017-03 | ROCE | data source issue | Computed 35.3600 vs company source 29.7000; difference 5.6600 pp
+PIDILITIND | 2018-03 | ROCE | data source issue | Computed 36.2530 vs company source 29.7000; difference 6.5530 pp
+PNB | 2013-03 | ROE | version difference | Computed 812.2977 vs company source 8.7000; difference 803.5977 pp
+PNB | 2014-03 | ROE | version difference | Computed 393.3619 vs company source 8.7000; difference 384.6619 pp
+PNB | 2015-03 | ROE | version difference | Computed 223.2426 vs company source 8.7000; difference 214.5426 pp
+PNB | 2016-03 | ROE | version difference | Computed -163.5601 vs company source 8.7000; difference -172.2601 pp
+PNB | 2017-03 | ROE | version difference | Computed 22.2123 vs company source 8.7000; difference 13.5123 pp
+PNB | 2018-03 | ROE | version difference | Computed -184.3660 vs company source 8.7000; difference -193.0660 pp
+PNB | 2019-03 | ROE | version difference | Computed -128.4465 vs company source 8.7000; difference -137.1465 pp
+PNB | 2021-03 | ROE | version difference | Computed 30.3936 vs company source 8.7000; difference 21.6936 pp
+PNB | 2022-03 | ROE | version difference | Computed 39.8735 vs company source 8.7000; difference 31.1735 pp
+PNB | 2023-03 | ROE | version difference | Computed 30.6674 vs company source 8.7000; difference 21.9674 pp
+PNB | 2024-03 | ROE | version difference | Computed 61.3206 vs company source 8.7000; difference 52.6206 pp
+POWERGRID | 2014-03 | ROE | version difference | Computed 13.1074 vs company source 19.0000; difference -5.8926 pp
+POWERGRID | 2015-03 | ROE | version difference | Computed 13.1273 vs company source 19.0000; difference -5.8727 pp
+POWERGRID | 2016-03 | ROE | version difference | Computed 13.5524 vs company source 19.0000; difference -5.4476 pp
+POWERGRID | 2023-03 | ROCE | data source issue | Computed 18.7023 vs company source 13.2000; difference 5.5023 pp
+POWERGRID | 2024-03 | ROCE | data source issue | Computed 18.9052 vs company source 13.2000; difference 5.7052 pp
+RECLTD | 2018-03 | ROE | version difference | Computed 13.6584 vs company source 22.2000; difference -8.5416 pp
+RECLTD | 2019-03 | ROE | version difference | Computed 16.6184 vs company source 22.2000; difference -5.5816 pp
+RECLTD | 2020-03 | ROE | version difference | Computed 14.0464 vs company source 22.2000; difference -8.1536 pp
+SBILIFE | 2013-03 | ROE | version difference | Computed 23.0263 vs company source 12.0000; difference 11.0263 pp
+SBILIFE | 2014-03 | ROE | version difference | Computed 21.6925 vs company source 12.0000; difference 9.6925 pp
+SBILIFE | 2015-03 | ROCE | data source issue | Computed 19.5759 vs company source 13.2000; difference 6.3759 pp
+SBILIFE | 2015-03 | ROE | version difference | Computed 20.0937 vs company source 12.0000; difference 8.0937 pp
+SBILIFE | 2016-03 | ROCE | data source issue | Computed 19.4380 vs company source 13.2000; difference 6.2380 pp
+SBILIFE | 2016-03 | ROE | version difference | Computed 17.8322 vs company source 12.0000; difference 5.8322 pp
+SBILIFE | 2017-03 | ROCE | data source issue | Computed 19.2363 vs company source 13.2000; difference 6.0363 pp
+SBILIFE | 2017-03 | ROE | version difference | Computed 17.2010 vs company source 12.0000; difference 5.2010 pp
+SBILIFE | 2018-03 | ROCE | data source issue | Computed 20.4044 vs company source 13.2000; difference 7.2044 pp
+SBILIFE | 2018-03 | ROE | version difference | Computed 17.6164 vs company source 12.0000; difference 5.6164 pp
+SBILIFE | 2019-03 | ROCE | data source issue | Computed 19.4562 vs company source 13.2000; difference 6.2562 pp
+SBILIFE | 2019-03 | ROE | version difference | Computed 17.5158 vs company source 12.0000; difference 5.5158 pp
+SBILIFE | 2022-03 | ROCE | data source issue | Computed 6.2812 vs company source 13.2000; difference -6.9188 pp
+SBILIFE | 2023-03 | ROCE | data source issue | Computed 0.9372 vs company source 13.2000; difference -12.2628 pp
+SBILIFE | 2024-03 | ROCE | data source issue | Computed 1.6501 vs company source 13.2000; difference -11.5499 pp
+SHREECEM | 2013-06 | ROCE | data source issue | Computed 30.4170 vs company source 14.8000; difference 15.6170 pp
+SHREECEM | 2013-06 | ROE | version difference | Computed 26.1186 vs company source 12.2000; difference 13.9186 pp
+SHREECEM | 2014-06 | ROCE | data source issue | Computed 23.5155 vs company source 14.8000; difference 8.7155 pp
+SHREECEM | 2015-06 | ROCE | data source issue | Computed 21.7019 vs company source 14.8000; difference 6.9019 pp
+SHREECEM | 2017-03 | ROCE | data source issue | Computed 27.9502 vs company source 14.8000; difference 13.1502 pp
+SHREECEM | 2017-03 | ROE | version difference | Computed 17.3941 vs company source 12.2000; difference 5.1941 pp
+SHREECEM | 2018-03 | ROCE | data source issue | Computed 20.1057 vs company source 14.8000; difference 5.3057 pp
+SHREECEM | 2019-03 | ROCE | data source issue | Computed 22.4226 vs company source 14.8000; difference 7.6226 pp
+SHREECEM | 2020-03 | ROCE | data source issue | Computed 23.1137 vs company source 14.8000; difference 8.3137 pp
+SHREECEM | 2021-03 | ROCE | data source issue | Computed 23.2087 vs company source 14.8000; difference 8.4087 pp
+SHREECEM | 2024-03 | ROCE | data source issue | Computed 20.2066 vs company source 14.8000; difference 5.4066 pp
+SHRIRAMFIN | 2013-03 | ROCE | data source issue | Computed 5.3507 vs company source 11.3000; difference -5.9493 pp
+SHRIRAMFIN | 2014-03 | ROCE | data source issue | Computed 4.2406 vs company source 11.3000; difference -7.0594 pp
+SHRIRAMFIN | 2015-03 | ROCE | data source issue | Computed 3.0217 vs company source 11.3000; difference -8.2783 pp
+SHRIRAMFIN | 2016-03 | ROCE | data source issue | Computed 3.0417 vs company source 11.3000; difference -8.2583 pp
+SHRIRAMFIN | 2017-03 | ROCE | data source issue | Computed 3.0615 vs company source 11.3000; difference -8.2385 pp
+SHRIRAMFIN | 2018-03 | ROCE | data source issue | Computed 3.9709 vs company source 11.3000; difference -7.3291 pp
+SHRIRAMFIN | 2019-03 | ROCE | data source issue | Computed 3.6591 vs company source 11.3000; difference -7.6409 pp
+SHRIRAMFIN | 2020-03 | ROCE | data source issue | Computed 3.1583 vs company source 11.3000; difference -8.1417 pp
+SHRIRAMFIN | 2021-03 | ROCE | data source issue | Computed 2.6524 vs company source 11.3000; difference -8.6476 pp
+SHRIRAMFIN | 2022-03 | ROCE | data source issue | Computed 2.6011 vs company source 11.3000; difference -8.6989 pp
+SHRIRAMFIN | 2022-03 | ROE | version difference | Computed 10.4273 vs company source 15.9000; difference -5.4727 pp
+SHRIRAMFIN | 2023-03 | ROCE | data source issue | Computed 4.2361 vs company source 11.3000; difference -7.0639 pp
+SHRIRAMFIN | 2024-03 | ROCE | data source issue | Computed 4.3049 vs company source 11.3000; difference -6.9951 pp
+SIEMENS | 2011-09 | ROCE | data source issue | Computed 30.6866 vs company source 25.6000; difference 5.0866 pp
+SIEMENS | 2014-09 | ROCE | data source issue | Computed 2.7200 vs company source 25.6000; difference -22.8800 pp
+SIEMENS | 2014-09 | ROE | version difference | Computed 13.7829 vs company source 19.1000; difference -5.3171 pp
+SIEMENS | 2015-09 | ROCE | data source issue | Computed 19.4088 vs company source 25.6000; difference -6.1912 pp
+SIEMENS | 2016-09 | ROCE | data source issue | Computed 14.9531 vs company source 25.6000; difference -10.6469 pp
+SIEMENS | 2016-09 | ROE | version difference | Computed 42.8340 vs company source 19.1000; difference 23.7340 pp
+SIEMENS | 2017-09 | ROCE | data source issue | Computed 13.7321 vs company source 25.6000; difference -11.8679 pp
+SIEMENS | 2018-09 | ROCE | data source issue | Computed 15.9899 vs company source 25.6000; difference -9.6101 pp
+SIEMENS | 2018-09 | ROE | version difference | Computed 10.8567 vs company source 19.1000; difference -8.2433 pp
+SIEMENS | 2019-09 | ROCE | data source issue | Computed 16.4659 vs company source 25.6000; difference -9.1341 pp
+SIEMENS | 2019-09 | ROE | version difference | Computed 12.1450 vs company source 19.1000; difference -6.9550 pp
+SIEMENS | 2020-09 | ROCE | data source issue | Computed 10.5668 vs company source 25.6000; difference -15.0332 pp
+SIEMENS | 2020-09 | ROE | version difference | Computed 8.1016 vs company source 19.1000; difference -10.9984 pp
+SIEMENS | 2021-09 | ROCE | data source issue | Computed 14.0276 vs company source 25.6000; difference -11.5724 pp
+SIEMENS | 2021-09 | ROE | version difference | Computed 10.5248 vs company source 19.1000; difference -8.5752 pp
+SIEMENS | 2022-09 | ROCE | data source issue | Computed 15.7734 vs company source 25.6000; difference -9.8266 pp
+SIEMENS | 2022-09 | ROE | version difference | Computed 13.2903 vs company source 19.1000; difference -5.8097 pp
+SIEMENS | 2023-09 | ROCE | data source issue | Computed 18.7528 vs company source 25.6000; difference -6.8472 pp
+SIEMENS | 2024-09 | ROCE | data source issue | Computed 19.8516 vs company source 25.6000; difference -5.7484 pp
+SUNPHARMA | 2013-03 | ROCE | data source issue | Computed 31.3705 vs company source 17.3000; difference 14.0705 pp
+SUNPHARMA | 2013-03 | ROE | version difference | Computed 23.1421 vs company source 16.7000; difference 6.4421 pp
+SUNPHARMA | 2014-03 | ROCE | data source issue | Computed 33.2116 vs company source 17.3000; difference 15.9116 pp
+SUNPHARMA | 2015-03 | ROCE | data source issue | Computed 22.7926 vs company source 17.3000; difference 5.4926 pp
+SUNPHARMA | 2018-03 | ROCE | data source issue | Computed 11.5629 vs company source 17.3000; difference -5.7371 pp
+SUNPHARMA | 2018-03 | ROE | version difference | Computed 6.6347 vs company source 16.7000; difference -10.0653 pp
+SUNPHARMA | 2019-03 | ROCE | data source issue | Computed 12.2816 vs company source 17.3000; difference -5.0184 pp
+SUNPHARMA | 2019-03 | ROE | version difference | Computed 7.7471 vs company source 16.7000; difference -8.9529 pp
+SUNPHARMA | 2020-03 | ROE | version difference | Computed 9.2168 vs company source 16.7000; difference -7.4832 pp
+SUNPHARMA | 2021-03 | ROE | version difference | Computed 4.8899 vs company source 16.7000; difference -11.8101 pp
+SUNPHARMA | 2022-03 | ROE | version difference | Computed 7.0588 vs company source 16.7000; difference -9.6412 pp
+SUNPHARMA | 2024-03 | OPM | data source issue | Computed 26.8429 vs source 28.0000; diff -1.1571 pp
+TATACONSUM | 2016-03 | ROCE | data source issue | Computed 4.8152 vs company source 10.6000; difference -5.7848 pp
+TATACONSUM | 2016-03 | ROE | version difference | Computed -0.5923 vs company source 8.3200; difference -8.9123 pp
+TATAMOTORS | 2013-03 | ROCE | data source issue | Computed 26.9241 vs company source 20.1000; difference 6.8241 pp
+TATAMOTORS | 2013-03 | ROE | version difference | Computed 26.5058 vs company source 49.4000; difference -22.8942 pp
+TATAMOTORS | 2014-03 | ROCE | data source issue | Computed 27.6072 vs company source 20.1000; difference 7.5072 pp
+TATAMOTORS | 2014-03 | ROE | version difference | Computed 21.4164 vs company source 49.4000; difference -27.9836 pp
+TATAMOTORS | 2015-03 | ROCE | data source issue | Computed 30.2136 vs company source 20.1000; difference 10.1136 pp
+TATAMOTORS | 2015-03 | ROE | version difference | Computed 25.0133 vs company source 49.4000; difference -24.3867 pp
+TATAMOTORS | 2016-03 | ROCE | data source issue | Computed 25.8880 vs company source 20.1000; difference 5.7880 pp
+TATAMOTORS | 2016-03 | ROE | version difference | Computed 14.7913 vs company source 49.4000; difference -34.6087 pp
+TATAMOTORS | 2017-03 | ROE | version difference | Computed 13.0154 vs company source 49.4000; difference -36.3846 pp
+TATAMOTORS | 2018-03 | ROE | version difference | Computed 9.5266 vs company source 49.4000; difference -39.8734 pp
+TATAMOTORS | 2019-03 | ROCE | data source issue | Computed 14.8262 vs company source 20.1000; difference -5.2738 pp
+TATAMOTORS | 2019-03 | ROE | version difference | Computed -47.7309 vs company source 49.4000; difference -97.1309 pp
+TATAMOTORS | 2020-03 | ROCE | data source issue | Computed 9.5743 vs company source 20.1000; difference -10.5257 pp
+TATAMOTORS | 2020-03 | ROE | version difference | Computed -18.9841 vs company source 49.4000; difference -68.3841 pp
+TATAMOTORS | 2021-03 | ROE | version difference | Computed -24.2457 vs company source 49.4000; difference -73.6457 pp
+TATAMOTORS | 2022-03 | ROCE | data source issue | Computed 12.9417 vs company source 20.1000; difference -7.1583 pp
+TATAMOTORS | 2022-03 | ROE | version difference | Computed -25.3787 vs company source 49.4000; difference -74.7787 pp
+TATAMOTORS | 2023-03 | ROE | version difference | Computed 5.9353 vs company source 49.4000; difference -43.4647 pp
+TATAMOTORS | 2024-03 | ROCE | data source issue | Computed 30.9803 vs company source 20.1000; difference 10.8803 pp
+TATAMOTORS | 2024-03 | ROE | version difference | Computed 37.4561 vs company source 49.4000; difference -11.9439 pp
+TATAPOWER | 2013-03 | ROE | version difference | Computed 0.9972 vs company source 11.3000; difference -10.3028 pp
+TATAPOWER | 2014-03 | ROE | version difference | Computed 0.0968 vs company source 11.3000; difference -11.2032 pp
+TATAPOWER | 2015-03 | ROE | version difference | Computed 3.1918 vs company source 11.3000; difference -8.1082 pp
+TATAPOWER | 2016-03 | ROCE | data source issue | Computed 4.1698 vs company source 11.1000; difference -6.9302 pp
+TATAPOWER | 2018-03 | ROCE | data source issue | Computed 3.5314 vs company source 11.1000; difference -7.5686 pp
+TATAPOWER | 2019-03 | ROCE | data source issue | Computed 4.5951 vs company source 11.1000; difference -6.5049 pp
+TATASTEEL | 2013-03 | ROE | version difference | Computed -21.2806 vs company source 6.5500; difference -27.8306 pp
+TATASTEEL | 2014-03 | ROCE | data source issue | Computed 13.2481 vs company source 7.0200; difference 6.2281 pp
+TATASTEEL | 2015-03 | ROE | version difference | Computed -12.5650 vs company source 6.5500; difference -19.1150 pp
+TATASTEEL | 2016-03 | ROCE | data source issue | Computed -0.4971 vs company source 7.0200; difference -7.5171 pp
+TATASTEEL | 2016-03 | ROE | version difference | Computed -1.1365 vs company source 6.5500; difference -7.6865 pp
+TATASTEEL | 2017-03 | ROE | version difference | Computed -11.0236 vs company source 6.5500; difference -17.5736 pp
+TATASTEEL | 2018-03 | ROCE | data source issue | Computed 14.0068 vs company source 7.0200; difference 6.9868 pp
+TATASTEEL | 2018-03 | ROE | version difference | Computed 29.1485 vs company source 6.5500; difference 22.5985 pp
+TATASTEEL | 2019-03 | ROCE | data source issue | Computed 17.2722 vs company source 7.0200; difference 10.2522 pp
+TATASTEEL | 2019-03 | ROE | version difference | Computed 13.2347 vs company source 6.5500; difference 6.6847 pp
+TATASTEEL | 2021-03 | ROCE | data source issue | Computed 18.7440 vs company source 7.0200; difference 11.7240 pp
+TATASTEEL | 2022-03 | ROCE | data source issue | Computed 33.4151 vs company source 7.0200; difference 26.3951 pp
+TATASTEEL | 2022-03 | ROE | version difference | Computed 36.4802 vs company source 6.5500; difference 29.9302 pp
+TATASTEEL | 2023-03 | ROCE | data source issue | Computed 17.1831 vs company source 7.0200; difference 10.1631 pp
+TATASTEEL | 2024-03 | ROCE | data source issue | Computed 12.4209 vs company source 7.0200; difference 5.4009 pp
+TATASTEEL | 2024-03 | ROE | version difference | Computed -5.3349 vs company source 6.5500; difference -11.8849 pp
+TCS | 2013-03 | ROCE | data source issue | Computed 46.4016 vs company source 64.3000; difference -17.8984 pp
+TCS | 2013-03 | ROE | data source issue | Computed 36.5174 vs company source 0.5200; difference 35.9974 pp
+TCS | 2014-03 | ROCE | data source issue | Computed 50.8224 vs company source 64.3000; difference -13.4776 pp
+TCS | 2014-03 | ROE | data source issue | Computed 39.2967 vs company source 0.5200; difference 38.7767 pp
+TCS | 2015-03 | ROCE | data source issue | Computed 48.0105 vs company source 64.3000; difference -16.2895 pp
+TCS | 2015-03 | ROE | data source issue | Computed 39.6169 vs company source 0.5200; difference 39.0969 pp
+TCS | 2016-03 | ROCE | data source issue | Computed 43.0150 vs company source 64.3000; difference -21.2850 pp
+TCS | 2016-03 | ROE | data source issue | Computed 34.2441 vs company source 0.5200; difference 33.7241 pp
+TCS | 2017-03 | ROCE | data source issue | Computed 37.3525 vs company source 64.3000; difference -26.9475 pp
+TCS | 2017-03 | ROE | data source issue | Computed 30.5716 vs company source 0.5200; difference 30.0516 pp
+TCS | 2018-03 | ROCE | data source issue | Computed 38.0861 vs company source 64.3000; difference -26.2139 pp
+TCS | 2018-03 | ROE | data source issue | Computed 30.4013 vs company source 0.5200; difference 29.8813 pp
+TCS | 2019-03 | ROCE | data source issue | Computed 44.1368 vs company source 64.3000; difference -20.1632 pp
+TCS | 2019-03 | ROE | data source issue | Computed 35.2861 vs company source 0.5200; difference 34.7661 pp
+TCS | 2020-03 | ROCE | data source issue | Computed 45.6219 vs company source 64.3000; difference -18.6781 pp
+TCS | 2020-03 | ROE | data source issue | Computed 38.5695 vs company source 0.5200; difference 38.0495 pp
+TCS | 2021-03 | ROCE | data source issue | Computed 49.3972 vs company source 64.3000; difference -14.9028 pp
+TCS | 2021-03 | ROE | data source issue | Computed 37.6731 vs company source 0.5200; difference 37.1531 pp
+TCS | 2022-03 | ROCE | data source issue | Computed 54.7222 vs company source 64.3000; difference -9.5778 pp
+TCS | 2022-03 | ROE | data source issue | Computed 43.1338 vs company source 0.5200; difference 42.6138 pp
+TCS | 2023-03 | ROE | data source issue | Computed 46.7829 vs company source 0.5200; difference 46.2629 pp
+TCS | 2024-03 | ROE | data source issue | Computed 50.9443 vs company source 0.5200; difference 50.4243 pp
+TECHM | 2013-03 | ROCE | data source issue | Computed 20.8933 vs company source 11.9000; difference 8.9933 pp
+TECHM | 2013-03 | ROE | version difference | Computed 24.0877 vs company source 8.6300; difference 15.4577 pp
+TECHM | 2014-03 | ROCE | data source issue | Computed 43.7087 vs company source 11.9000; difference 31.8087 pp
+TECHM | 2014-03 | ROE | version difference | Computed 33.3479 vs company source 8.6300; difference 24.7179 pp
+TECHM | 2015-03 | ROCE | data source issue | Computed 32.3834 vs company source 11.9000; difference 20.4834 pp
+TECHM | 2015-03 | ROE | version difference | Computed 21.7097 vs company source 8.6300; difference 13.0797 pp
+TECHM | 2016-03 | ROCE | data source issue | Computed 27.1649 vs company source 11.9000; difference 15.2649 pp
+TECHM | 2016-03 | ROE | version difference | Computed 20.7457 vs company source 8.6300; difference 12.1157 pp
+TECHM | 2017-03 | ROCE | data source issue | Computed 23.5017 vs company source 11.9000; difference 11.6017 pp
+TECHM | 2017-03 | ROE | version difference | Computed 17.3450 vs company source 8.6300; difference 8.7150 pp
+TECHM | 2018-03 | ROCE | data source issue | Computed 22.1751 vs company source 11.9000; difference 10.2751 pp
+TECHM | 2018-03 | ROE | version difference | Computed 20.0923 vs company source 8.6300; difference 11.4623 pp
+TECHM | 2019-03 | ROCE | data source issue | Computed 28.1451 vs company source 11.9000; difference 16.2451 pp
+TECHM | 2019-03 | ROE | version difference | Computed 21.1437 vs company source 8.6300; difference 12.5137 pp
+TECHM | 2020-03 | ROCE | data source issue | Computed 21.5948 vs company source 11.9000; difference 9.6948 pp
+TECHM | 2020-03 | ROE | version difference | Computed 17.8655 vs company source 8.6300; difference 9.2355 pp
+TECHM | 2021-03 | ROCE | data source issue | Computed 24.4760 vs company source 11.9000; difference 12.5760 pp
+TECHM | 2021-03 | ROE | version difference | Computed 17.5065 vs company source 8.6300; difference 8.8765 pp
+TECHM | 2022-03 | ROCE | data source issue | Computed 27.1828 vs company source 11.9000; difference 15.2828 pp
+TECHM | 2022-03 | ROE | version difference | Computed 20.9403 vs company source 8.6300; difference 12.3103 pp
+TECHM | 2023-03 | ROCE | data source issue | Computed 25.3163 vs company source 11.9000; difference 13.4163 pp
+TECHM | 2023-03 | ROE | version difference | Computed 17.3936 vs company source 8.6300; difference 8.7636 pp
+TITAN | 2013-03 | ROCE | data source issue | Computed 51.4721 vs company source 22.7000; difference 28.7721 pp
+TITAN | 2014-03 | ROCE | data source issue | Computed 31.4414 vs company source 22.7000; difference 8.7414 pp
+TITAN | 2015-03 | ROCE | data source issue | Computed 36.2123 vs company source 22.7000; difference 13.5123 pp
+TITAN | 2015-03 | ROE | version difference | Computed 26.4591 vs company source 32.9000; difference -6.4409 pp
+TITAN | 2016-03 | ROE | version difference | Computed 19.2472 vs company source 32.9000; difference -13.6528 pp
+TITAN | 2017-03 | ROE | version difference | Computed 16.4659 vs company source 32.9000; difference -16.4341 pp
+TITAN | 2018-03 | ROE | version difference | Computed 21.6503 vs company source 32.9000; difference -11.2497 pp
+TITAN | 2019-03 | ROE | version difference | Computed 22.8830 vs company source 32.9000; difference -10.0170 pp
+TITAN | 2020-03 | ROE | version difference | Computed 22.3872 vs company source 32.9000; difference -10.5128 pp
+TITAN | 2021-03 | ROCE | data source issue | Computed 13.1329 vs company source 22.7000; difference -9.5671 pp
+TITAN | 2021-03 | ROE | version difference | Computed 12.9919 vs company source 32.9000; difference -19.9081 pp
+TITAN | 2022-03 | ROE | version difference | Computed 23.6268 vs company source 32.9000; difference -9.2732 pp
+TITAN | 2023-03 | ROE | version difference | Computed 27.6264 vs company source 32.9000; difference -5.2736 pp
+TORNTPHARM | 2013-03 | ROCE | data source issue | Computed 32.9551 vs company source 23.2000; difference 9.7551 pp
+TORNTPHARM | 2013-03 | ROE | version difference | Computed 30.5907 vs company source 24.2000; difference 6.3907 pp
+TORNTPHARM | 2014-03 | ROCE | data source issue | Computed 31.4662 vs company source 23.2000; difference 8.2662 pp
+TORNTPHARM | 2014-03 | ROE | version difference | Computed 34.8923 vs company source 24.2000; difference 10.6923 pp
+TORNTPHARM | 2015-03 | ROE | version difference | Computed 30.1485 vs company source 24.2000; difference 5.9485 pp
+TORNTPHARM | 2016-03 | ROCE | data source issue | Computed 46.7499 vs company source 23.2000; difference 23.5499 pp
+TORNTPHARM | 2016-03 | ROE | version difference | Computed 49.5993 vs company source 24.2000; difference 25.3993 pp
+TORNTPHARM | 2018-03 | ROCE | data source issue | Computed 12.1696 vs company source 23.2000; difference -11.0304 pp
+TORNTPHARM | 2018-03 | ROE | version difference | Computed 14.6658 vs company source 24.2000; difference -9.5342 pp
+TORNTPHARM | 2019-03 | ROE | version difference | Computed 9.2275 vs company source 24.2000; difference -14.9725 pp
+TORNTPHARM | 2022-03 | ROE | version difference | Computed 13.0522 vs company source 24.2000; difference -11.1478 pp
+TORNTPHARM | 2024-03 | ROCE | data source issue | Computed 30.9616 vs company source 23.2000; difference 7.7616 pp
+TRENT | 2013-03 | ROCE | data source issue | Computed 0.3177 vs company source 23.8000; difference -23.4823 pp
+TRENT | 2013-03 | ROE | version difference | Computed -2.1933 vs company source 27.2000; difference -29.3933 pp
+TRENT | 2014-03 | ROCE | data source issue | Computed -0.7559 vs company source 23.8000; difference -24.5559 pp
+TRENT | 2014-03 | ROE | version difference | Computed -1.9173 vs company source 27.2000; difference -29.1173 pp
+TRENT | 2015-03 | ROCE | data source issue | Computed 5.2102 vs company source 23.8000; difference -18.5898 pp
+TRENT | 2015-03 | ROE | version difference | Computed 9.0717 vs company source 27.2000; difference -18.1283 pp
+TRENT | 2016-03 | ROCE | data source issue | Computed 4.8283 vs company source 23.8000; difference -18.9717 pp
+TRENT | 2016-03 | ROE | version difference | Computed 3.7568 vs company source 27.2000; difference -23.4432 pp
+TRENT | 2017-03 | ROCE | data source issue | Computed 6.9108 vs company source 23.8000; difference -16.8892 pp
+TRENT | 2017-03 | ROE | version difference | Computed 5.4945 vs company source 27.2000; difference -21.7055 pp
+TRENT | 2018-03 | ROCE | data source issue | Computed 10.4733 vs company source 23.8000; difference -13.3267 pp
+TRENT | 2018-03 | ROE | version difference | Computed 5.4545 vs company source 27.2000; difference -21.7455 pp
+TRENT | 2019-03 | ROCE | data source issue | Computed 11.2617 vs company source 23.8000; difference -12.5383 pp
+TRENT | 2019-03 | ROE | version difference | Computed 5.7716 vs company source 27.2000; difference -21.4284 pp
+TRENT | 2020-03 | ROE | version difference | Computed 4.4389 vs company source 27.2000; difference -22.7611 pp
+TRENT | 2021-03 | ROCE | data source issue | Computed 4.3628 vs company source 23.8000; difference -19.4372 pp
+TRENT | 2021-03 | ROE | version difference | Computed -7.8253 vs company source 27.2000; difference -35.0253 pp
+TRENT | 2022-03 | ROCE | data source issue | Computed 8.3933 vs company source 23.8000; difference -15.4067 pp
+TRENT | 2022-03 | ROE | version difference | Computed 1.4805 vs company source 27.2000; difference -25.7195 pp
+TRENT | 2023-03 | ROCE | data source issue | Computed 15.7790 vs company source 23.8000; difference -8.0210 pp
+TRENT | 2023-03 | ROE | version difference | Computed 15.1772 vs company source 27.2000; difference -12.0228 pp
+TRENT | 2024-03 | ROCE | data source issue | Computed 33.8602 vs company source 23.8000; difference 10.0602 pp
+TRENT | 2024-03 | ROE | version difference | Computed 36.3078 vs company source 27.2000; difference 9.1078 pp
