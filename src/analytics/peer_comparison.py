@@ -11,6 +11,16 @@ from openpyxl.utils import get_column_letter
 # PATHS
 # ============================================================
 
+def table_exists(conn, table_name):
+    """Return True when the requested SQLite table exists."""
+    row = conn.execute(
+        "SELECT 1 FROM sqlite_master WHERE type = ? AND name = ? LIMIT 1",
+        ("table", table_name),
+    ).fetchone()
+    return row is not None
+
+
+
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 DB_PATH = PROJECT_ROOT / "nifty100.db"
@@ -61,6 +71,72 @@ def load_peer_data():
     return df
 
 
+
+# ============================================================
+# LOAD ALL PEER GROUPS
+# ============================================================
+
+EXPECTED_PEER_GROUPS = [
+    "Automobiles",
+    "Consumer Finance",
+    "FMCG",
+    "IT Services",
+    "Life Insurance",
+    "Oil & Gas",
+    "Pharmaceuticals",
+    "Power & Utilities",
+    "Private Banks",
+    "Public Sector Banks",
+    "Steel",
+]
+
+
+def load_peer_groups():
+    """
+    Use peer_groups as the authoritative source for the 11 required
+    sheets. Do not derive sheet names only from the latest
+    peer_percentiles rows, because that can make valid groups disappear.
+    """
+    conn = sqlite3.connect(DB_PATH)
+
+    try:
+        columns = pd.read_sql_query(
+            "PRAGMA table_info(peer_groups)",
+            conn,
+        )["name"].tolist()
+
+        if "peer_group_name" not in columns:
+            return EXPECTED_PEER_GROUPS.copy()
+
+        rows = pd.read_sql_query(
+            """
+            SELECT DISTINCT peer_group_name
+            FROM peer_groups
+            WHERE peer_group_name IS NOT NULL
+              AND TRIM(peer_group_name) <> ''
+            ORDER BY peer_group_name
+            """,
+            conn,
+        )
+    finally:
+        conn.close()
+
+    groups = (
+        rows["peer_group_name"]
+        .astype(str)
+        .str.strip()
+        .tolist()
+        if not rows.empty
+        else []
+    )
+
+    for expected in EXPECTED_PEER_GROUPS:
+        if expected not in groups:
+            groups.append(expected)
+
+    return sorted(set(groups))
+
+
 # ============================================================
 # LOAD COMPANY NAMES
 # ============================================================
@@ -76,6 +152,7 @@ def load_company_names():
 
     # Try to find a ticker/company-id style column.
     possible_id_columns = [
+        "id",
         "company_id",
         "symbol",
         "ticker",
@@ -136,81 +213,152 @@ def load_benchmarks():
 # ============================================================
 
 def build_wide_table(group_df, company_names):
-    # Metric values
+    """
+    Convert long peer-percentile data into:
+      company_id + company_name
+      10 metric columns
+      10 percentile columns
+
+    The old implementation used:
+        fillna(result.index.astype(str))
+    which raises:
+        TypeError: value parameter must be a scalar, dict or Series,
+        but you passed a Index
+
+    This version uses an index-aligned Series instead.
+    """
+    if group_df.empty:
+        columns = (
+            ["company_id", "company_name"]
+            + list(METRICS.keys())
+            + [
+                f"{key}_percentile"
+                for key in METRICS
+            ]
+        )
+        return pd.DataFrame(columns=columns)
+
+    group_df = group_df.copy()
+
+    group_df["company_id"] = (
+        group_df["company_id"]
+        .astype(str)
+        .str.strip()
+    )
+
+    # Keep the newest available record for each company + metric.
+    group_df["_year_sort"] = (
+        group_df["year"].astype(str)
+    )
+
+    group_df = (
+        group_df
+        .sort_values(
+            ["company_id", "metric", "_year_sort"]
+        )
+        .drop_duplicates(
+            subset=["company_id", "metric"],
+            keep="last",
+        )
+        .drop(columns=["_year_sort"])
+    )
+
     values = group_df.pivot_table(
         index="company_id",
         columns="metric",
         values="value",
-        aggfunc="first"
+        aggfunc="first",
     )
 
-    # Percentile ranks
     percentiles = group_df.pivot_table(
         index="company_id",
         columns="metric",
         values="percentile_rank",
-        aggfunc="first"
+        aggfunc="first",
     )
 
-    # Company names
     result = values.copy()
 
-    if not company_names.empty:
-        names = company_names.drop_duplicates(
-            subset=["company_id"]
-        ).set_index("company_id")
+    # Add company names using company_id as the join key.
+    if (
+        company_names is not None
+        and not company_names.empty
+    ):
+        names = (
+            company_names[
+                ["company_id", "company_name"]
+            ]
+            .drop_duplicates(
+                subset=["company_id"],
+                keep="first",
+            )
+            .set_index("company_id")
+        )
 
         result = names.join(
             result,
-            how="right"
+            how="right",
         )
 
-    # If company name was not available,
-    # use company_id as fallback.
+    # Safe fallback for missing company names.
     if "company_name" not in result.columns:
         result.insert(
             0,
             "company_name",
-            result.index.astype(str)
+            pd.Series(
+                result.index.astype(str),
+                index=result.index,
+            ),
+        )
+    else:
+        fallback_names = pd.Series(
+            result.index.astype(str),
+            index=result.index,
         )
 
-    # Add percentile columns in required order.
-    for metric_key in METRICS:
-        if metric_key in percentiles.columns:
-            result[
-                f"{metric_key}_percentile"
-            ] = percentiles[metric_key]
-        else:
-            result[
-                f"{metric_key}_percentile"
-            ] = None
+        result["company_name"] = (
+            result["company_name"]
+            .fillna(fallback_names)
+            .astype(str)
+        )
 
-    # Reset index
+    # Ensure all 10 metric columns exist.
+    for metric_key in METRICS:
+        if metric_key not in result.columns:
+            result[metric_key] = None
+
+    # Add all 10 percentile columns.
+    for metric_key in METRICS:
+        percentile_column = (
+            f"{metric_key}_percentile"
+        )
+
+        if metric_key in percentiles.columns:
+            result[percentile_column] = (
+                percentiles[metric_key]
+            )
+        else:
+            result[percentile_column] = None
+
+    result.index.name = "company_id"
     result = result.reset_index()
 
-    # Keep company_id and company_name first.
-    ordered_columns = [
-        "company_id",
-        "company_name"
-    ]
+    result["company_id"] = (
+        result["company_id"]
+        .astype(str)
+        .str.strip()
+    )
 
-    # Add 10 metric columns.
-    for metric_key in METRICS:
-        if metric_key in result.columns:
-            ordered_columns.append(metric_key)
+    ordered_columns = (
+        ["company_id", "company_name"]
+        + list(METRICS.keys())
+        + [
+            f"{key}_percentile"
+            for key in METRICS
+        ]
+    )
 
-    # Add 10 percentile columns.
-    for metric_key in METRICS:
-        percentile_column = f"{metric_key}_percentile"
-
-        if percentile_column in result.columns:
-            ordered_columns.append(percentile_column)
-
-    result = result[
-        [col for col in ordered_columns if col in result.columns]
-    ]
-
-    return result
+    return result[ordered_columns]
 
 
 # ============================================================
@@ -257,57 +405,93 @@ def add_median_row(df):
 # WRITE EXCEL FILE
 # ============================================================
 
-def generate_excel(peer_df, company_names, benchmarks):
+def generate_excel(
+    peer_df,
+    company_names,
+    benchmarks,
+    peer_groups,
+):
     OUTPUT_DIR.mkdir(
         parents=True,
-        exist_ok=True
-    )
-
-    peer_groups = sorted(
-        peer_df["peer_group_name"]
-        .dropna()
-        .unique()
+        exist_ok=True,
     )
 
     print()
     print("=" * 60)
     print("PEER COMPARISON EXCEL REPORT")
     print("=" * 60)
-    print(f"Peer groups found: {len(peer_groups)}")
+    print(
+        f"Peer groups found: {len(peer_groups)}"
+    )
+
+    # Remove the old workbook before creating a fresh one.
+    if OUTPUT_FILE.exists():
+        try:
+            OUTPUT_FILE.unlink()
+        except PermissionError as exc:
+            raise PermissionError(
+                "Cannot replace peer_comparison.xlsx. "
+                "Close the Excel file if it is open, then run again."
+            ) from exc
 
     with pd.ExcelWriter(
         OUTPUT_FILE,
-        engine="openpyxl"
+        engine="openpyxl",
     ) as writer:
 
-        for peer_group in peer_groups:
+        used_sheet_names = set()
 
+        for peer_group in peer_groups:
             print(
                 f"Creating sheet: {peer_group}"
             )
 
             group_df = peer_df[
-                peer_df["peer_group_name"] == peer_group
+                peer_df["peer_group_name"]
+                == peer_group
             ].copy()
 
             wide_df = build_wide_table(
                 group_df,
-                company_names
+                company_names,
             )
 
-            wide_df = add_median_row(wide_df)
+            wide_df = add_median_row(
+                wide_df
+            )
 
-            # Excel sheet names cannot exceed 31 characters.
-            sheet_name = str(peer_group)[:31]
+            # Excel sheet names have a 31-character limit.
+            sheet_name = str(
+                peer_group
+            ).strip()[:31]
+
+            # Avoid duplicate sheet names after truncation.
+            base_name = sheet_name or "Peer Group"
+            sheet_name = base_name
+            counter = 2
+
+            while sheet_name in used_sheet_names:
+                suffix = f" ({counter})"
+                sheet_name = (
+                    base_name[
+                        :31 - len(suffix)
+                    ]
+                    + suffix
+                )
+                counter += 1
+
+            used_sheet_names.add(sheet_name)
 
             wide_df.to_excel(
                 writer,
                 sheet_name=sheet_name,
-                index=False
+                index=False,
             )
 
     print()
-    print(f"Excel created: {OUTPUT_FILE}")
+    print(
+        f"Excel created: {OUTPUT_FILE}"
+    )
 
     return OUTPUT_FILE
 
@@ -606,44 +790,141 @@ def validate_output(filename):
 
 def main():
     print()
-    print("Starting Day 20 - Peer Comparison Report")
+    print(
+        "Starting Day 20 - Peer Comparison Report"
+    )
+
+    print(f"\nProject root: {PROJECT_ROOT}")
+    print(
+        f"Database: {DB_PATH}"
+    )
+    print(
+        f"Output: {OUTPUT_FILE}"
+    )
+
+    if not DB_PATH.exists():
+        raise FileNotFoundError(
+            f"Database not found: {DB_PATH}"
+        )
+
+    # --------------------------------------------------------
+    # Load database data
+    # --------------------------------------------------------
 
     peer_df = load_peer_data()
 
     if peer_df.empty:
-        print(
-            "ERROR: peer_percentiles table is empty."
+        raise RuntimeError(
+            "peer_percentiles table is empty or contains "
+            "no supported metric records."
         )
-        return
-
-    print(
-        f"Peer percentile records: {len(peer_df)}"
-    )
 
     company_names = load_company_names()
-
-    print(
-        f"Company names loaded: {len(company_names)}"
-    )
-
     benchmarks = load_benchmarks()
+    peer_groups = load_peer_groups()
+
+    # --------------------------------------------------------
+    # Database check
+    # --------------------------------------------------------
+
+    print()
+    print("=" * 60)
+    print("DATABASE CHECK")
+    print("=" * 60)
+
+    conn = sqlite3.connect(DB_PATH)
+
+    try:
+        if table_exists(conn, "companies"):
+            company_count = conn.execute(
+                "SELECT COUNT(*) FROM companies"
+            ).fetchone()[0]
+
+            print(
+                f"Companies in database: "
+                f"{company_count}"
+            )
+
+        if table_exists(conn, "peer_groups"):
+            group_rows = conn.execute(
+                """
+                SELECT
+                    peer_group_name,
+                    COUNT(DISTINCT company_id)
+                FROM peer_groups
+                WHERE peer_group_name IS NOT NULL
+                GROUP BY peer_group_name
+                ORDER BY peer_group_name
+                """
+            ).fetchall()
+
+            print(
+                f"Peer groups in database: "
+                f"{len(group_rows)}"
+            )
+
+            for group_name, count in group_rows:
+                print(
+                    f"  {group_name}: "
+                    f"{count} companies"
+                )
+
+    finally:
+        conn.close()
 
     print(
-        f"Benchmark assignments: {len(benchmarks)}"
+        f"Peer percentile records: "
+        f"{len(peer_df)}"
     )
+
+    if not peer_df.empty:
+        print(
+            "Latest reporting year in table: "
+            f"{peer_df['year'].astype(str).max()}"
+        )
+
+    print(
+        f"Peer groups used for workbook: "
+        f"{len(peer_groups)}"
+    )
+
+    print(
+        f"Company names loaded: "
+        f"{len(company_names)}"
+    )
+
+    print(
+        f"Benchmark assignments: "
+        f"{len(benchmarks)}"
+    )
+
+    # --------------------------------------------------------
+    # Generate workbook
+    # --------------------------------------------------------
 
     filename = generate_excel(
         peer_df,
         company_names,
-        benchmarks
+        benchmarks,
+        peer_groups,
     )
+
+    # --------------------------------------------------------
+    # Apply formatting
+    # --------------------------------------------------------
 
     format_excel(
         filename,
-        benchmarks
+        benchmarks,
     )
 
-    validate_output(filename)
+    # --------------------------------------------------------
+    # Validate
+    # --------------------------------------------------------
+
+    validate_output(
+        filename,
+    )
 
     print()
     print("=" * 60)
