@@ -151,6 +151,16 @@ def get_peers(group_name: str) -> pd.DataFrame:
     ].copy()
 
 
+@st.cache_data(ttl=600)
+def get_peer_group_names() -> list[str]:
+    """Return the distinct peer groups available to the dashboard."""
+
+    df = _load_excel("peer_groups.xlsx", header=0, supporting=True)
+    if "peer_group_name" not in df.columns:
+        return []
+    return sorted(df["peer_group_name"].dropna().astype(str).str.strip().unique().tolist())
+
+
 # ============================================================
 # VALUATION
 # ============================================================
