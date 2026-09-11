@@ -4,6 +4,8 @@ load:
 	$(PYTHON) -m src.etl.loader
 ratios:
 	$(PYTHON) scripts/populate_ratios.py
+valuation:
+	$(PYTHON) -m src.analytics.valuation
 test:
 	pytest -q
 report:
