@@ -19,6 +19,12 @@ def display_value(value, suffix=""):
     return "N/A" if value is None or pd.isna(value) else f"{value:,.2f}{suffix}"
 
 
+def numeric_column(frame, column):
+    if column not in frame:
+        return pd.Series(float("nan"), index=frame.index, dtype="float64")
+    return pd.to_numeric(frame[column], errors="coerce")
+
+
 @st.cache_data(ttl=600)
 def build_home_data(year):
     companies = get_companies().copy()
@@ -66,10 +72,12 @@ if dashboard_df.empty:
     st.error("No company data is available.")
     st.stop()
 
-roe = pd.to_numeric(dashboard_df.get("return_on_equity_pct"), errors="coerce")
-pe = pd.to_numeric(dashboard_df.get("pe_ratio"), errors="coerce")
-de = pd.to_numeric(dashboard_df.get("debt_to_equity"), errors="coerce")
-revenue_cagr = pd.to_numeric(dashboard_df.get("revenue_cagr_5yr", dashboard_df.get("revenue_cagr_5yr_calculated")), errors="coerce")
+roe = numeric_column(dashboard_df, "return_on_equity_pct")
+pe = numeric_column(dashboard_df, "pe_ratio")
+de = numeric_column(dashboard_df, "debt_to_equity")
+revenue_cagr = numeric_column(dashboard_df, "revenue_cagr_5yr").combine_first(
+    numeric_column(dashboard_df, "revenue_cagr_5yr_calculated")
+)
 
 st.title("Nifty 100 Analytics")
 st.caption(f"Financial overview of Nifty 100 companies - FY {year}")
@@ -111,6 +119,6 @@ with right:
     st.dataframe(top5.reset_index(drop=True), width="stretch", hide_index=True)
 
 with st.expander("Data availability"):
-    ratio_count = dashboard_df["return_on_equity_pct"].notna().sum() if "return_on_equity_pct" in dashboard_df else 0
+    ratio_count = numeric_column(dashboard_df, "return_on_equity_pct").notna().sum()
     st.write(f"Companies loaded: **{dashboard_df['company_id'].nunique()}**")
     st.write(f"Companies with ratio data for {year}: **{ratio_count}**")

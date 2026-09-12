@@ -53,13 +53,18 @@ if not selected_columns:
 	st.stop()
 
 chart_data = history.groupby("Year", as_index=False)[selected_columns].mean(numeric_only=True)
+chart_data[selected_columns] = chart_data[selected_columns].apply(pd.to_numeric, errors="coerce")
+chart_data = chart_data.dropna(subset=selected_columns, how="all")
+if chart_data.empty:
+	st.info("No numeric history is available for the selected metrics.")
+	st.stop()
 figure = go.Figure()
 for label in metric_labels:
 	column = METRICS[label]
 	if column not in chart_data:
 		continue
 	values = pd.to_numeric(chart_data[column], errors="coerce")
-	yoy = values.pct_change().mul(100)
+	yoy = values.replace(0, pd.NA).pct_change().mul(100).replace([float("inf"), -float("inf")], pd.NA)
 	text = ["" if pd.isna(value) else f"YoY {value:+.1f}%" for value in yoy]
 	figure.add_trace(go.Scatter(x=chart_data["Year"], y=values, mode="lines+markers+text", text=text, textposition="top center", name=label, connectgaps=False))
 figure.update_layout(height=520, hovermode="x unified", margin=dict(l=10, r=10, t=35, b=10), yaxis_title="Metric value")

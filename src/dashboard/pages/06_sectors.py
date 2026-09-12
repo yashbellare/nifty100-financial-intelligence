@@ -57,9 +57,15 @@ if selected.empty:
 	st.info("No companies are available for this sector.")
 	st.stop()
 
-figure = px.scatter(selected, x="Revenue", y="ROE", size="Market cap", color="sub_sector", hover_name="company_name", hover_data=["company_id", "D/E"], size_max=48)
+plot_data = selected.dropna(subset=["Revenue", "ROE"]).copy()
+if plot_data.empty:
+	st.info("No complete revenue and ROE data is available for this sector.")
+else:
+	plot_data["Market cap"] = plot_data["Market cap"].fillna(1).clip(lower=1)
+figure = px.scatter(plot_data, x="Revenue", y="ROE", size="Market cap", color="sub_sector", hover_name="company_name", hover_data=["company_id", "D/E"], size_max=48)
 figure.update_layout(height=520, margin=dict(l=10, r=10, t=35, b=10), legend_title="Sub-sector")
-st.plotly_chart(figure, width="stretch")
+if not plot_data.empty:
+	st.plotly_chart(figure, width="stretch")
 
 median_data = selected[["ROE", "D/E", "Net profit margin"]].median().rename_axis("Metric").reset_index(name="Median")
 bar = px.bar(median_data, x="Metric", y="Median", color="Metric", title=f"{sector} median KPIs")

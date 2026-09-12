@@ -193,7 +193,8 @@ def get_market_cap(ticker: str, year=None) -> pd.DataFrame:
 
     if year is not None and "year" in df.columns:
         df = df[
-            df["year"].astype(str) == str(year)
+            df["year"].astype(str).str.extract(r"(20\d{2})", expand=False)
+            == str(year)
         ].copy()
 
     return df

@@ -60,17 +60,19 @@ metric_columns = {
 	"FCF (cr)": "free_cash_flow_cr", "ICR": "interest_coverage", "Asset turnover": "asset_turnover", "Dividend payout (%)": "dividend_payout_ratio_pct",
 }
 selected_row = peer_data[peer_data["company_id"] == selected].iloc[0]
-peer_average = peer_data[list(metric_columns.values())].apply(pd.to_numeric, errors="coerce").mean()
+metric_names = list(metric_columns.values())
+peer_metrics = peer_data.reindex(columns=metric_names).apply(pd.to_numeric, errors="coerce")
+peer_average = peer_metrics.mean()
 categories = list(metric_columns)
-selected_values = [pd.to_numeric(selected_row.get(column), errors="coerce") for column in metric_columns.values()]
-average_values = [peer_average.get(column) for column in metric_columns.values()]
+selected_values = [pd.to_numeric(selected_row.get(column), errors="coerce") for column in metric_names]
+average_values = [peer_average.get(column) for column in metric_names]
 figure = go.Figure()
 figure.add_trace(go.Scatterpolar(r=selected_values + selected_values[:1], theta=categories + categories[:1], fill="toself", name=selected))
 figure.add_trace(go.Scatterpolar(r=average_values + average_values[:1], theta=categories + categories[:1], fill="toself", name="Peer average"))
 figure.update_layout(polar=dict(radialaxis=dict(visible=True)), height=500, margin=dict(l=30, r=30, t=45, b=30))
 st.plotly_chart(figure, width="stretch")
 
-table_columns = ["company_id", "company_name", "is_benchmark", *metric_columns.values()]
-table = peer_data[table_columns].copy()
+table_columns = ["company_id", "company_name", "is_benchmark", *metric_names]
+table = peer_data.reindex(columns=table_columns).copy()
 table = table.rename(columns={"is_benchmark": "Benchmark", **dict(zip(metric_columns.values(), metric_columns))})
 st.dataframe(table.round(2), width="stretch", hide_index=True)

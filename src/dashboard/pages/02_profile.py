@@ -23,11 +23,12 @@ def format_metric(value, suffix=""):
 
 
 def latest_row(frame):
-    if frame.empty:
+    if frame.empty or "year" not in frame:
         return pd.Series(dtype="object")
     result = frame.copy()
     result["year_number"] = result["year"].map(year_number)
-    return result.sort_values("year_number").iloc[-1]
+    result = result.dropna(subset=["year_number"])
+    return result.sort_values("year_number").iloc[-1] if not result.empty else pd.Series(dtype="object")
 
 
 def split_items(value):
@@ -70,7 +71,9 @@ latest_pl = latest_row(pl)
 latest_bs = latest_row(bs)
 latest_ratios = latest_row(ratios)
 
-roe = number(latest_ratios.get("return_on_equity_pct")) or number(company.get("roe_percentage"))
+roe = number(latest_ratios.get("return_on_equity_pct"))
+if roe is None:
+    roe = number(company.get("roe_percentage"))
 roce = number(company.get("roce_percentage"))
 if latest_pl.get("operating_profit") is not None and not latest_bs.empty:
     capital = sum(number(latest_bs.get(column)) or 0 for column in ["equity_capital", "reserves", "borrowings"])
@@ -94,6 +97,11 @@ if pl.empty:
     st.info("Financial history is not available for this company.")
 else:
     chart_data = pl[["year_number", "sales", "net_profit"]].dropna(subset=["year_number"]).sort_values("year_number").tail(10)
+    chart_data[["sales", "net_profit"]] = chart_data[["sales", "net_profit"]].apply(pd.to_numeric, errors="coerce")
+    chart_data = chart_data.dropna(subset=["sales", "net_profit"], how="all")
+    if chart_data.empty:
+        st.info("No chartable financial history is available for this company.")
+        st.stop()
     chart_data = chart_data.rename(columns={"year_number": "Year", "sales": "Revenue", "net_profit": "Net profit"})
     bar = go.Figure()
     bar.add_bar(x=chart_data["Year"], y=chart_data["Revenue"], name="Revenue")
