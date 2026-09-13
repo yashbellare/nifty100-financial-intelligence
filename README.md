@@ -1,6 +1,6 @@
-# Nifty 100 Financial Intelligence Platform — Sprint 1
+# Nifty 100 Financial Intelligence Platform — Sprint 4
 
-This package implements Sprint 1 Data Foundation against the supplied project specification and 12 source datasets.
+This package implements the Nifty 100 data foundation, financial ratio engine, valuation outputs, and an eight-screen Streamlit dashboard against the supplied project specification and 12 source datasets.
 
 ## Run
 ```bash
@@ -13,6 +13,30 @@ copy .env.template .env   # Windows
 make load
 make test
 ```
+
+## Dashboard
+
+Generate the valuation outputs and start the dashboard with:
+
+```bash
+make valuation
+streamlit run src/dashboard/app.py --server.port 8501
+```
+
+Open `http://localhost:8501`. The app uses cached shared loaders with a ten-minute TTL and safely displays `N/A` when a company has partial history.
+
+### Screen guide
+
+- **Home**: year-aware KPI tiles, sector mix, and the top five quality scores.
+- **Company profile**: searchable company card, latest KPIs, financial history, ROE/ROCE trend, and pros/cons.
+- **Screener**: live metric filters, six presets, result count, and CSV export.
+- **Peer comparison**: peer-group selection, benchmark radar, and peer KPI table.
+- **Trend analysis**: up to three metrics with year-over-year annotations.
+- **Sector analysis**: revenue/ROE bubble chart and sector median KPIs.
+- **Capital allocation**: interactive pattern treemap and company drill-down.
+- **Annual reports**: report-year list with availability status and BSE links.
+
+Valuation artifacts are written to `output/valuation_summary.xlsx` and `output/valuation_flags.csv`.
 
 ## Outputs
 - `nifty100.db` — SQLite data foundation

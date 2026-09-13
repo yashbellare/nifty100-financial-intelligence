@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
-from src.dashboard.utils.db import get_companies, get_ratios, get_sectors
+from src.dashboard.utils.db import get_companies, get_market_cap, get_ratios, get_sectors
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
@@ -49,12 +49,18 @@ def load_screener_data():
 		companies = companies.merge(sectors[["company_id", "broad_sector", "sub_sector"]], on="company_id", how="left")
 
 	ratio_rows = []
+	market_rows = []
 	for ticker in companies["company_id"].dropna().unique():
 		ratios = get_ratios(ticker).copy()
 		if not ratios.empty and "year" in ratios:
 			ratios["year_number"] = ratios["year"].map(_year_number)
 			ratio_rows.append(ratios.sort_values("year_number").iloc[-1])
+		market = get_market_cap(ticker)
+		if not market.empty and "year" in market:
+			market["year_number"] = pd.to_numeric(market["year"], errors="coerce")
+			market_rows.append(market.sort_values("year_number").iloc[-1])
 	latest_ratios = pd.DataFrame(ratio_rows).drop(columns=["year_number"], errors="ignore")
+	latest_market = pd.DataFrame(market_rows).drop(columns=["year_number"], errors="ignore")
 
 	export_rows = []
 	for path in OUTPUT_DIR.glob("*.csv"):
@@ -70,15 +76,19 @@ def load_screener_data():
 		exports = exports.sort_values("year_number").groupby("company_id", as_index=False).last()
 
 	result = companies.merge(latest_ratios, on="company_id", how="left", suffixes=("", "_ratio"))
+	result = result.merge(
+		latest_market[[column for column in ["company_id", "pe_ratio", "pb_ratio", "dividend_yield_pct"] if column in latest_market.columns]],
+		on="company_id", how="left", suffixes=("", "_market")
+	)
 	if not exports.empty:
 		result = result.merge(exports, on="company_id", how="left", suffixes=("", "_export"))
 
 	aliases = {
 		"revenue_cagr_5yr": ["revenue_cagr_5yr_export", "revenue_cagr_5yr"],
 		"pat_cagr_5yr": ["pat_cagr_5yr_export", "pat_cagr_5yr"],
-		"pe_ratio": ["pe_export", "pe_ratio"],
-		"pb_ratio": ["pb_export", "pb_ratio"],
-		"dividend_yield": ["dividend_yield_export", "dividend_yield"],
+		"pe_ratio": ["pe_export", "pe_ratio", "pe_ratio_market"],
+		"pb_ratio": ["pb_export", "pb_ratio", "pb_ratio_market"],
+		"dividend_yield": ["dividend_yield_export", "dividend_yield", "dividend_yield_pct"],
 		"composite_score": ["composite_quality_score_export", "composite_quality_score"],
 	}
 	for target, candidates in aliases.items():

@@ -38,13 +38,13 @@ if documents.empty:
 	st.info("No annual reports are available for this company.")
 	st.stop()
 
-documents["Year"] = pd.to_numeric(documents.get("Year"), errors="coerce")
-documents = documents.sort_values("Year", ascending=False)
+documents["year"] = pd.to_numeric(documents.get("year"), errors="coerce")
+documents = documents.sort_values("year", ascending=False)
 rows = []
 for _, report in documents.iterrows():
-	url = report.get("Annual_Report")
+	url = report.get("annual_report")
 	available, status = check_report(url)
-	rows.append({"Year": int(report["Year"]) if pd.notna(report["Year"]) else "N/A", "url": url, "available": available, "status": status})
+	rows.append({"Year": int(report["year"]) if pd.notna(report["year"]) else "N/A", "url": url, "available": available, "status": status})
 
 st.subheader(f"Reports for {labels.get(ticker, ticker)}")
 for report in rows:

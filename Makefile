@@ -11,7 +11,7 @@ test:
 report:
 	@echo "Sprint 2 reports are in output/"
 dashboard:
-	@echo "Sprint 5 target"
+	$(PYTHON) -m streamlit run src/dashboard/app.py --server.port 8501
 api:
 	@echo "Sprint 6 target"
 clean:
