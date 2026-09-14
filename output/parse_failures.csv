@@ -1,0 +1,16 @@
+company_id,metric_type,raw_value,reason,source_row
+SBILIFE,revenue_cagr,TTM:            43%,pattern_mismatch,6
+SBILIFE,pat_cagr,TTM:                 18%,pattern_mismatch,6
+SBILIFE,roe,Last Year:      12%,pattern_mismatch,6
+TCS,revenue_cagr,TTM:            5%             ,pattern_mismatch,10
+TCS,pat_cagr,TTM:                 8%,pattern_mismatch,10
+TCS,roe,Last Year:       52%,pattern_mismatch,10
+WIPRO,revenue_cagr,TTM:           -3%,pattern_mismatch,15
+WIPRO,pat_cagr,TTM:                 1%,pattern_mismatch,15
+WIPRO,roe,Last Year:       14%,pattern_mismatch,15
+HDFCBANK,revenue_cagr,TTM:            47%,pattern_mismatch,17
+HDFCBANK,pat_cagr,TTM:                27%,pattern_mismatch,17
+HDFCBANK,roe,Last Year:    17%,pattern_mismatch,17
+INFY,revenue_cagr,TTM:            3%,pattern_mismatch,21
+INFY,pat_cagr,TTM:                 8%,pattern_mismatch,21
+INFY,roe,Last Year:     32%,pattern_mismatch,21
