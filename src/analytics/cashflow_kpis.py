@@ -24,6 +24,11 @@ REQUIRED_COLUMNS = [
 	"fcf_conversion_pct", "distress_flag", "deleveraging_flag",
 	"capital_allocation_label",
 ]
+ALLOCATION_COLUMNS = ["company_id", "year", "pattern_label"]
+ALLOCATION_PATTERNS = [
+	"Reinvestor", "Shareholder Returns", "Liquidating Assets", "Distress Signal",
+	"Growth Funded by Debt", "Cash Accumulator", "Pre-Revenue", "Mixed",
+]
 
 
 def _number(value) -> Optional[float]:
@@ -52,6 +57,58 @@ def _clean_frame(frame: Optional[pd.DataFrame], columns: list[str]) -> pd.DataFr
 def _latest_and_history(frame: pd.DataFrame, company_id: str):
 	rows = frame[frame.company_id == company_id].sort_values("year_number")
 	return (rows.iloc[-1] if not rows.empty else None), rows
+
+
+def load_capital_allocation(path: Path = PROJECT_ROOT / "output" / "capital_allocation.csv") -> pd.DataFrame:
+	"""Load the canonical company-year allocation patterns with normalized years."""
+	if not path.exists():
+		return pd.DataFrame(columns=ALLOCATION_COLUMNS + ["year_number"])
+	allocation = pd.read_csv(path)
+	for column in ALLOCATION_COLUMNS:
+		if column not in allocation:
+			allocation[column] = pd.NA
+	allocation = allocation[ALLOCATION_COLUMNS].copy()
+	allocation["company_id"] = allocation["company_id"].astype(str).str.strip().str.upper()
+	allocation["pattern_label"] = allocation["pattern_label"].astype("string").str.strip()
+	allocation["year_number"] = allocation["year"].map(_year)
+	return allocation.dropna(subset=["company_id", "year_number", "pattern_label"])
+
+
+def validate_capital_allocation(allocation: pd.DataFrame, company_ids: pd.Series | list[str]) -> pd.DataFrame:
+	"""Return one validation row per expected company and source integrity check."""
+	expected = pd.Series(company_ids, dtype="string").astype(str).str.strip().str.upper().drop_duplicates()
+	present = set(allocation["company_id"])
+	rows = []
+	for company_id in expected:
+		company_rows = allocation[allocation["company_id"] == company_id]
+		duplicate_keys = int(company_rows.duplicated(["company_id", "year_number"]).sum())
+		rows.append({
+			"company_id": company_id,
+			"status": "PASS" if company_id in present and duplicate_keys == 0 else "FAIL",
+			"allocation_years": int(company_rows["year_number"].nunique()),
+			"duplicate_company_years": duplicate_keys,
+			"issue": "missing cash-flow coverage" if company_id not in present else ("duplicate company-year key" if duplicate_keys else ""),
+		})
+	unknown = sorted(present - set(expected))
+	for company_id in unknown:
+		rows.append({"company_id": company_id, "status": "FAIL", "allocation_years": int((allocation["company_id"] == company_id).sum()), "duplicate_company_years": 0, "issue": "not present in companies table"})
+	return pd.DataFrame(rows, columns=["company_id", "status", "allocation_years", "duplicate_company_years", "issue"])
+
+
+def latest_allocation_distribution(allocation: pd.DataFrame) -> pd.DataFrame:
+	"""Count each pattern using the latest available year for each company."""
+	latest = allocation.sort_values(["company_id", "year_number"]).groupby("company_id", as_index=False).tail(1)
+	counts = latest.groupby("pattern_label")["company_id"].nunique()
+	return pd.DataFrame({"pattern_label": ALLOCATION_PATTERNS, "company_count": [int(counts.get(pattern, 0)) for pattern in ALLOCATION_PATTERNS]})
+
+
+def allocation_pattern_changes(allocation: pd.DataFrame) -> pd.DataFrame:
+	"""Return company-year transitions where the allocation pattern changed."""
+	ordered = allocation.sort_values(["company_id", "year_number"]).copy()
+	ordered["prior_pattern"] = ordered.groupby("company_id")["pattern_label"].shift()
+	ordered["prior_year"] = ordered.groupby("company_id")["year"].shift()
+	changed = ordered[ordered["prior_pattern"].notna() & ordered["pattern_label"].ne(ordered["prior_pattern"])].copy()
+	return changed.rename(columns={"prior_year": "from_year", "year": "to_year", "prior_pattern": "from_pattern", "pattern_label": "to_pattern"})[["company_id", "from_year", "to_year", "from_pattern", "to_pattern"]]
 
 
 def _fcf_cagr(rows: pd.DataFrame) -> Optional[float]:
@@ -147,17 +204,25 @@ def compute_cashflow_intelligence(
 
 
 def generate_cashflow_intelligence(db_path: Path = PROJECT_ROOT / "nifty100.db", output_dir: Path = PROJECT_ROOT / "output") -> pd.DataFrame:
-	"""Read the project database and write the Day 31 workbook and alerts CSV."""
+	"""Read the database and write cash-flow intelligence plus Day 32 allocation artifacts."""
 	with sqlite3.connect(db_path) as connection:
 		tables = {name: pd.read_sql(f"SELECT * FROM {name}", connection) for name in ("companies", "cashflow", "profitandloss", "balancesheet", "sectors")}
 	result, alerts = compute_cashflow_intelligence(**tables)
 	output_dir.mkdir(parents=True, exist_ok=True)
+	allocation = load_capital_allocation(output_dir / "capital_allocation.csv")
+	validation = validate_capital_allocation(allocation, tables["companies"].iloc[:, 0])
+	validation.to_csv(output_dir / "capital_allocation_validation.csv", index=False)
+	latest = allocation.sort_values(["company_id", "year_number"]).groupby("company_id", as_index=False).tail(1)
+	canonical_labels = latest.set_index("company_id")["pattern_label"]
+	result["capital_allocation_label"] = result["company_id"].map(canonical_labels).fillna(result["capital_allocation_label"])
+	latest_allocation_distribution(allocation).to_csv(output_dir / "capital_allocation_distribution.csv", index=False)
+	allocation_pattern_changes(allocation).to_csv(output_dir / "pattern_changes.csv", index=False)
 	result.to_excel(output_dir / "cashflow_intelligence.xlsx", index=False)
 	alerts.to_csv(output_dir / "distress_alerts.csv", index=False)
 	return result
 
 
-__all__ = ["compute_cashflow_intelligence", "generate_cashflow_intelligence", "cfo_quality_score", "cfo_quality_label", "capex_intensity", "capex_intensity_label", "capital_allocation_pattern"]
+__all__ = ["compute_cashflow_intelligence", "generate_cashflow_intelligence", "load_capital_allocation", "validate_capital_allocation", "latest_allocation_distribution", "allocation_pattern_changes", "cfo_quality_score", "cfo_quality_label", "capex_intensity", "capex_intensity_label", "capital_allocation_pattern"]
 
 
 if __name__ == "__main__":

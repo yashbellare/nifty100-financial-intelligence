@@ -9,6 +9,8 @@ from src.analytics.ratios import (
     book_value_per_share,
 )
 from src.analytics.cagr import cagr
+from src.analytics.cashflow_kpis import allocation_pattern_changes, latest_allocation_distribution, validate_capital_allocation
+import pandas as pd
 
 # 8 profitability tests
 def test_profitability_npm_normal_and_zero(): assert net_profit_margin(100,1000)==10 and net_profit_margin(100,0) is None
@@ -39,3 +41,24 @@ def test_cash_quality_allocation_and_bvps():
     assert cfo_quality_score([1,2])==1.5 and cfo_quality_label(1.2)=="High Quality"
     assert capital_allocation_pattern(200,-100,-100,1.2)=="Shareholder Returns"
     assert book_value_per_share(20,80,10)==50
+
+
+def test_day32_allocation_summary_and_changes():
+    allocation = pd.DataFrame([
+        {"company_id": "AAA", "year": "2023-03", "pattern_label": "Reinvestor"},
+        {"company_id": "AAA", "year": "2024-03", "pattern_label": "Mixed"},
+        {"company_id": "BBB", "year": "2024-03", "pattern_label": "Reinvestor"},
+    ])
+    allocation["year_number"] = allocation["year"].str[:4].astype(int)
+    distribution = latest_allocation_distribution(allocation)
+    assert distribution.set_index("pattern_label").loc["Mixed", "company_count"] == 1
+    changes = allocation_pattern_changes(allocation)
+    assert changes.iloc[0].to_dict() == {"company_id": "AAA", "from_year": "2023-03", "to_year": "2024-03", "from_pattern": "Reinvestor", "to_pattern": "Mixed"}
+
+
+def test_day32_validation_flags_missing_company():
+    allocation = pd.DataFrame([
+        {"company_id": "AAA", "year": "2024-03", "pattern_label": "Mixed", "year_number": 2024},
+    ])
+    validation = validate_capital_allocation(allocation, ["AAA", "BBB"])
+    assert validation.set_index("company_id").loc["BBB", "issue"] == "missing cash-flow coverage"
