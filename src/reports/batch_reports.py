@@ -11,6 +11,7 @@ from typing import Iterable
 import pandas as pd
 
 from .sector_report import DEFAULT_DB, DEFAULT_OUTPUT, generate_sector_reports
+from .portfolio import DEFAULT_OUTPUT as DEFAULT_PORTFOLIO_OUTPUT, generate_portfolio_summary
 from .tearsheet import DEFAULT_OUTPUT_DIR, generate_tearsheet
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -48,9 +49,10 @@ def generate_batch_reports(db_path: Path = DEFAULT_DB, tearsheet_dir: Path = DEF
         except Exception as exc:  # Keep the batch moving and make failures inspectable.
             errors.append({"company_id": ticker, "reason": str(exc)})
     sector_paths = generate_sector_reports(db_path, sector_dir, include_overview=True)
+    portfolio_path = generate_portfolio_summary(db_path, DEFAULT_PORTFOLIO_OUTPUT)
     if errors:
         pd.DataFrame(errors).to_csv(tearsheet_dir.parent / "tearsheet_errors.csv", index=False)
-    return {"generated": generated, "skipped": skipped, "sectors": sector_paths, "errors": errors}
+    return {"generated": generated, "skipped": skipped, "sectors": sector_paths, "portfolio": portfolio_path, "errors": errors}
 
 
 def main(argv: Iterable[str] | None = None) -> None:

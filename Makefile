@@ -9,7 +9,12 @@ valuation:
 test:
 	pytest -q
 report:
-	@echo "Sprint 2 reports are in output/"
+	$(PYTHON) -m src.reports.batch_reports
+sprint5:
+	$(PYTHON) -m src.nlp.parser
+	$(PYTHON) -m src.nlp.pros_cons_generator
+	$(PYTHON) -m src.analytics.cashflow_kpis
+	$(PYTHON) -m src.reports.batch_reports
 dashboard:
 	$(PYTHON) -m streamlit run src/dashboard/app.py --server.port 8501
 api:
