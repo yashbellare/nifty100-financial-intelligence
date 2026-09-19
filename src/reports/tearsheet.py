@@ -17,7 +17,8 @@ from reportlab.lib.enums import TA_LEFT
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import mm
-from reportlab.pdfbase.pdfmetrics import stringWidth
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import Paragraph
 from reportlab.pdfgen import canvas
 
@@ -33,6 +34,9 @@ INK = colors.HexColor("#243B53")
 MUTED = colors.HexColor("#627D98")
 GRID = colors.HexColor("#D9E2EC")
 PALE = colors.HexColor("#F5F7FA")
+FONT_DIR = Path(__import__("reportlab").__file__).resolve().parent / "fonts"
+pdfmetrics.registerFont(TTFont("Vera", str(FONT_DIR / "Vera.ttf")))
+pdfmetrics.registerFont(TTFont("VeraBd", str(FONT_DIR / "VeraBd.ttf")))
 
 
 def _year(value) -> int | None:
@@ -104,10 +108,10 @@ def load_company_data(ticker: str, db_path: Path = DEFAULT_DB, output_dir: Path 
 def _styles() -> dict[str, ParagraphStyle]:
     base = getSampleStyleSheet()["BodyText"]
     return {
-        "body": ParagraphStyle("body", parent=base, fontName="Helvetica", fontSize=7.2, leading=9.2, textColor=INK, alignment=TA_LEFT),
-        "small": ParagraphStyle("small", parent=base, fontName="Helvetica", fontSize=6.5, leading=8, textColor=MUTED),
-        "section": ParagraphStyle("section", parent=base, fontName="Helvetica-Bold", fontSize=10, leading=12, textColor=NAVY),
-        "bullet": ParagraphStyle("bullet", parent=base, fontName="Helvetica", fontSize=7.1, leading=9.2, leftIndent=9, firstLineIndent=-7, textColor=INK),
+        "body": ParagraphStyle("body", parent=base, fontName="Vera", fontSize=7.2, leading=9.2, textColor=INK, alignment=TA_LEFT),
+        "small": ParagraphStyle("small", parent=base, fontName="Vera", fontSize=6.5, leading=8, textColor=MUTED),
+        "section": ParagraphStyle("section", parent=base, fontName="VeraBd", fontSize=10, leading=12, textColor=NAVY),
+        "bullet": ParagraphStyle("bullet", parent=base, fontName="Vera", fontSize=7.1, leading=9.2, leftIndent=9, firstLineIndent=-7, textColor=INK),
     }
 
 
@@ -131,11 +135,11 @@ def _draw_header(pdf: canvas.Canvas, company: pd.Series, sector: pd.Series, tick
     pdf.rect(0, PAGE_HEIGHT - 34 * mm, PAGE_WIDTH, 34 * mm, fill=1, stroke=0)
     name = _safe_text(company.get("company_name"), ticker)
     pdf.setFillColor(colors.white)
-    pdf.setFont("Helvetica-Bold", 19)
+    pdf.setFont("VeraBd", 19)
     pdf.drawString(16 * mm, PAGE_HEIGHT - 16 * mm, name[:52])
-    pdf.setFont("Helvetica", 9)
+    pdf.setFont("Vera", 9)
     pdf.drawString(16 * mm, PAGE_HEIGHT - 23 * mm, f"{ticker}  |  {_safe_text(sector.get('broad_sector'))}  |  {_safe_text(sector.get('sub_sector'))}")
-    pdf.setFont("Helvetica", 7)
+    pdf.setFont("Vera", 7)
     pdf.drawRightString(PAGE_WIDTH - 16 * mm, PAGE_HEIGHT - 28 * mm, f"NIFTY 100 INTELLIGENCE  |  PAGE {page}")
 
 
@@ -160,10 +164,10 @@ def _draw_kpi_tiles(pdf: canvas.Canvas, ratios: pd.DataFrame, pl: pd.DataFrame, 
         pdf.setStrokeColor(GRID)
         pdf.roundRect(tile_x, tile_y - tile_height, tile_width, tile_height, 2 * mm, fill=1, stroke=1)
         pdf.setFillColor(MUTED)
-        pdf.setFont("Helvetica-Bold", 7)
+        pdf.setFont("VeraBd", 7)
         pdf.drawString(tile_x + 5 * mm, tile_y - 7 * mm, label.upper())
         pdf.setFillColor(NAVY)
-        pdf.setFont("Helvetica-Bold", 14)
+        pdf.setFont("VeraBd", 14)
         pdf.drawString(tile_x + 5 * mm, tile_y - 16 * mm, value)
 
 
@@ -172,7 +176,7 @@ def _chart_frame(pdf: canvas.Canvas, title: str, x: float, y: float, width: floa
     pdf.setStrokeColor(GRID)
     pdf.roundRect(x, y, width, height, 2 * mm, fill=1, stroke=1)
     pdf.setFillColor(NAVY)
-    pdf.setFont("Helvetica-Bold", 8)
+    pdf.setFont("VeraBd", 8)
     pdf.drawString(x + 5 * mm, y + height - 8 * mm, title)
     return x + 10 * mm, y + 9 * mm, width - 15 * mm, height - 22 * mm
 
@@ -193,7 +197,7 @@ def _draw_bar_chart(pdf: canvas.Canvas, frame: pd.DataFrame, x: float, y: float,
             pdf.setFillColor(color)
             pdf.rect(bar_x, bottom, bar_width - 0.5, value * scale, fill=1, stroke=0)
         pdf.setFillColor(MUTED)
-        pdf.setFont("Helvetica", 5.2)
+        pdf.setFont("Vera", 5.2)
         pdf.drawCentredString(center, bottom - 6, str(int(row["year_number"])))
     pdf.setStrokeColor(GRID)
     pdf.line(left, bottom, left + plot_width, bottom)
@@ -225,7 +229,7 @@ def _draw_line_chart(pdf: canvas.Canvas, frame: pd.DataFrame, x: float, y: float
         for px, py in points:
             pdf.circle(px, py, 1.5, fill=1, stroke=0)
     pdf.setFillColor(MUTED)
-    pdf.setFont("Helvetica", 5.2)
+    pdf.setFont("Vera", 5.2)
     for index, (_, row) in enumerate(frame.iterrows()):
         px = left + (index / max(count - 1, 1)) * plot_width
         pdf.drawCentredString(px, bottom - 6, str(int(row["year_number"])))
@@ -249,7 +253,7 @@ def _draw_stacked_balance(pdf: canvas.Canvas, frame: pd.DataFrame, x: float, y: 
             pdf.rect(bar_x, current_y, bar_width, bar_height, fill=1, stroke=0)
             current_y += bar_height
         pdf.setFillColor(MUTED)
-        pdf.setFont("Helvetica", 5.2)
+        pdf.setFont("Vera", 5.2)
         pdf.drawCentredString(bar_x + bar_width / 2, bottom - 6, str(int(row["year_number"])))
 
 
@@ -267,7 +271,7 @@ def _draw_waterfall(pdf: canvas.Canvas, latest: pd.Series, x: float, y: float, w
         pdf.setFillColor(GREEN if value >= 0 else RED)
         pdf.rect(bar_x, zero if value >= 0 else zero - bar_height, group_width * 0.6, bar_height, fill=1, stroke=0)
         pdf.setFillColor(MUTED)
-        pdf.setFont("Helvetica", 6)
+        pdf.setFont("Vera", 6)
         pdf.drawCentredString(bar_x + group_width * 0.3, bottom - 7, label)
     pdf.setStrokeColor(GRID)
     pdf.line(left, zero, left + plot_width, zero)
@@ -283,7 +287,7 @@ def _draw_bullets(pdf: canvas.Canvas, items: list[str], x: float, y_top: float, 
 
 def _render(data: dict[str, object], output_path: Path) -> Path:
     styles = _styles()
-    pdf = canvas.Canvas(str(output_path), pagesize=A4)
+    pdf = canvas.Canvas(str(output_path), pagesize=A4, pageCompression=0)
     company, sector = data["company"], data["sector"]
     ticker = data["ticker"]
     _draw_header(pdf, company, sector, ticker, 1)
@@ -329,12 +333,12 @@ def _render(data: dict[str, object], output_path: Path) -> Path:
     pdf.setFillColor(NAVY)
     pdf.roundRect(badge_x, badge_y, content_width, 14 * mm, 2 * mm, fill=1, stroke=0)
     pdf.setFillColor(colors.white)
-    pdf.setFont("Helvetica-Bold", 8)
+    pdf.setFont("VeraBd", 8)
     pdf.drawString(badge_x + 5 * mm, badge_y + 9 * mm, "CAPITAL ALLOCATION")
-    pdf.setFont("Helvetica-Bold", 13)
+    pdf.setFont("VeraBd", 13)
     pdf.drawRightString(badge_x + content_width - 5 * mm, badge_y + 7 * mm, latest_pattern[:42])
     pdf.setFillColor(MUTED)
-    pdf.setFont("Helvetica", 6.5)
+    pdf.setFont("Vera", 6.5)
     pdf.drawString(margin, 27 * mm, "Source: canonical Nifty 100 SQLite financial statements and generated intelligence outputs.")
     pdf.save()
     return output_path
