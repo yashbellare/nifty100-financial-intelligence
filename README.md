@@ -38,6 +38,17 @@ Open `http://localhost:8501`. The app uses cached shared loaders with a ten-minu
 
 Valuation artifacts are written to `output/valuation_summary.xlsx` and `output/valuation_flags.csv`.
 
+## API
+
+Start the Day 38 FastAPI server with:
+
+```bash
+make api
+# or: uvicorn src.api.main:app --host 0.0.0.0 --port 8000
+```
+
+The health check is available at `http://localhost:8000/api/v1/health` and the interactive OpenAPI documentation is at `http://localhost:8000/docs`.
+
 ## Outputs
 - `nifty100.db` — SQLite data foundation
 - `output/load_audit.csv` — per-table input/output/rejections

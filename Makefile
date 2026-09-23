@@ -18,6 +18,6 @@ sprint5:
 dashboard:
 	$(PYTHON) -m streamlit run src/dashboard/app.py --server.port 8501
 api:
-	@echo "Sprint 6 target"
+	$(PYTHON) -m uvicorn src.api.main:app --host 0.0.0.0 --port 8000
 clean:
 	rm -f nifty100.db output/*.csv output/*.log
