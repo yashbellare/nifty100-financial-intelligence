@@ -1,4 +1,5 @@
 """FastAPI entry point for the Nifty 100 data API."""
+
 from __future__ import annotations
 
 import logging
@@ -7,8 +8,16 @@ from time import perf_counter
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
-from .routers import companies, documents, health, peers, portfolio, screener, sectors, valuation
-
+from .routers import (
+    companies,
+    documents,
+    health,
+    peers,
+    portfolio,
+    screener,
+    sectors,
+    valuation,
+)
 
 logger = logging.getLogger("nifty100.api")
 

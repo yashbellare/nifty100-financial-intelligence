@@ -1,4 +1,5 @@
 """Company routes for company master data and financial history endpoints."""
+
 from __future__ import annotations
 
 import re
@@ -10,7 +11,6 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from fastapi.responses import FileResponse
 
 from ..database import get_db
-
 
 router = APIRouter(prefix="/companies", tags=["companies"])
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
@@ -84,7 +84,9 @@ def list_companies(
         conditions.append("LOWER(COALESCE(s.market_cap_category, '')) = LOWER(?)")
         params.append(market_cap_category)
     if search:
-        conditions.append("(LOWER(c.company_name) LIKE LOWER(?) OR LOWER(c.id) LIKE LOWER(?))")
+        conditions.append(
+            "(LOWER(c.company_name) LIKE LOWER(?) OR LOWER(c.id) LIKE LOWER(?))"
+        )
         search_term = f"%{search}%"
         params.extend([search_term, search_term])
 
@@ -166,17 +168,24 @@ def compare_company_peers(
     if company is None:
         raise HTTPException(status_code=404, detail="Company not found")
     group = connection.execute(
-        "SELECT peer_group_name FROM peer_groups WHERE company_id = ? LIMIT 1", [normalized_ticker]
+        "SELECT peer_group_name FROM peer_groups WHERE company_id = ? LIMIT 1",
+        [normalized_ticker],
     ).fetchone()
     if group is None:
         raise HTTPException(status_code=404, detail="Peer group not found")
     metrics = [
-        "return_on_equity_pct", "return_on_capital_employed_pct", "net_profit_margin_pct",
-        "debt_to_equity", "interest_coverage", "revenue_cagr_5yr", "pat_cagr_5yr",
+        "return_on_equity_pct",
+        "return_on_capital_employed_pct",
+        "net_profit_margin_pct",
+        "debt_to_equity",
+        "interest_coverage",
+        "revenue_cagr_5yr",
+        "pat_cagr_5yr",
         "free_cash_flow_cr",
     ]
     latest = connection.execute(
-        "SELECT * FROM financial_ratios WHERE company_id = ? ORDER BY year DESC LIMIT 1", [normalized_ticker]
+        "SELECT * FROM financial_ratios WHERE company_id = ? ORDER BY year DESC LIMIT 1",
+        [normalized_ticker],
     ).fetchone()
     peers = connection.execute(
         """SELECT r.* FROM financial_ratios r JOIN peer_groups p ON p.company_id = r.company_id
@@ -190,11 +199,19 @@ def compare_company_peers(
     ).fetchone()
 
     def values(row: sqlite3.Row | None) -> dict[str, object]:
-        return {metric: (row[metric] if row and metric in row.keys() else None) for metric in metrics}
+        """Extract the radar metrics from a ratio row."""
+        return {
+            metric: (row[metric] if row and metric in row.keys() else None)
+            for metric in metrics
+        }
 
     averages = {
-        metric: sum(float(row[metric]) for row in peers if row[metric] is not None) / sum(row[metric] is not None for row in peers)
-        if any(row[metric] is not None for row in peers) else None
+        metric: (
+            sum(float(row[metric]) for row in peers if row[metric] is not None)
+            / sum(row[metric] is not None for row in peers)
+            if any(row[metric] is not None for row in peers)
+            else None
+        )
         for metric in metrics
     }
     return {
@@ -218,7 +235,12 @@ def get_company_documents(
         [ticker.strip().upper()],
     ).fetchall()
     return [
-        {**dict(row), "is_url_valid": bool(urlparse(str(row["annual_report"] or "")).scheme in {"http", "https"})}
+        {
+            **dict(row),
+            "is_url_valid": bool(
+                urlparse(str(row["annual_report"] or "")).scheme in {"http", "https"}
+            ),
+        }
         for row in rows
     ]
 
@@ -313,5 +335,9 @@ def get_company_tearsheet(ticker: str) -> FileResponse:
     ]
     for path in candidate_paths:
         if path.exists() and path.is_file():
-            return FileResponse(path, media_type="application/pdf", filename=f"{normalized_ticker}_tearsheet.pdf")
+            return FileResponse(
+                path,
+                media_type="application/pdf",
+                filename=f"{normalized_ticker}_tearsheet.pdf",
+            )
     raise HTTPException(status_code=404, detail="Tearsheet not found")

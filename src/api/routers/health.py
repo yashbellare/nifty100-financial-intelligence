@@ -1,4 +1,5 @@
 """Health-check routes."""
+
 from __future__ import annotations
 
 import sqlite3
@@ -8,7 +9,6 @@ from time import monotonic
 from fastapi import APIRouter, Depends, HTTPException
 
 from ..database import get_db
-
 
 router = APIRouter(tags=["health"])
 _started_at = monotonic()

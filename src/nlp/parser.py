@@ -1,4 +1,5 @@
 """Parse analysis workbook metrics and cross-check available CAGR values."""
+
 from __future__ import annotations
 
 import argparse
@@ -34,8 +35,7 @@ DIVERGENCE_COLUMNS = [
 
 # The optional colon and flexible whitespace match the source workbook's variants.
 VALUE_PATTERN = re.compile(
-    r"(?P<period>\d+)\s*Years?:?\s*"
-    r"(?P<value>[+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*%",
+    r"(?P<period>\d+)\s*Years?:?\s*" r"(?P<value>[+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*%",
     re.IGNORECASE,
 )
 
@@ -55,12 +55,18 @@ def parse_analysis_frame(frame: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFram
     required = {"company_id", *METRIC_COLUMNS}
     missing = sorted(required.difference(frame.columns))
     if missing:
-        raise ValueError(f"analysis data is missing required columns: {', '.join(missing)}")
+        raise ValueError(
+            f"analysis data is missing required columns: {', '.join(missing)}"
+        )
 
     parsed: list[dict[str, object]] = []
     failures: list[dict[str, object]] = []
     for source_index, row in frame.iterrows():
-        company_id = None if pd.isna(row["company_id"]) else str(row["company_id"]).strip().upper()
+        company_id = (
+            None
+            if pd.isna(row["company_id"])
+            else str(row["company_id"]).strip().upper()
+        )
         for field, metric_type in METRIC_COLUMNS.items():
             raw_value = row[field]
             result = parse_metric_value(raw_value)
@@ -106,10 +112,14 @@ def cross_validate(
         if item["metric_type"] not in {"revenue_cagr", "pat_cagr"}:
             continue
         column = f"{item['metric_type']}_{int(item['period_years'])}yr"
-        matches = ratios[
-            (ratios["company_id"].astype(str).str.upper() == item["company_id"])
-            & ratios[column].notna()
-        ] if column in ratios.columns else pd.DataFrame()
+        matches = (
+            ratios[
+                (ratios["company_id"].astype(str).str.upper() == item["company_id"])
+                & ratios[column].notna()
+            ]
+            if column in ratios.columns
+            else pd.DataFrame()
+        )
         if matches.empty:
             continue
         if "year" in matches.columns:
@@ -156,6 +166,7 @@ def run(
 
 
 def main(argv: Iterable[str] | None = None) -> None:
+    """Run the parser command-line workflow."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, default=DEFAULT_INPUT)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)

@@ -16,7 +16,6 @@ import sqlite3
 from pathlib import Path
 from typing import Optional
 
-
 # ---------------------------------------------------------------------
 # DATABASE PATH
 # ---------------------------------------------------------------------
@@ -56,6 +55,7 @@ LOWER_IS_BETTER = {
 # DATABASE HELPERS
 # ---------------------------------------------------------------------
 
+
 def get_connection(db_path: Optional[Path] = None):
     """Create and return a SQLite connection."""
     path = db_path or DB_PATH
@@ -83,9 +83,7 @@ def table_exists(conn, table_name: str) -> bool:
 
 def get_columns(conn, table_name: str):
     """Return column names for a table."""
-    rows = conn.execute(
-        f"PRAGMA table_info({table_name})"
-    ).fetchall()
+    rows = conn.execute(f"PRAGMA table_info({table_name})").fetchall()
 
     return [row[1] for row in rows]
 
@@ -93,6 +91,7 @@ def get_columns(conn, table_name: str):
 # ---------------------------------------------------------------------
 # PEER GROUPS
 # ---------------------------------------------------------------------
+
 
 def get_peer_groups(conn):
     """
@@ -113,9 +112,7 @@ def get_peer_groups(conn):
     columns = get_columns(conn, "peer_groups")
 
     if "company_id" not in columns:
-        raise RuntimeError(
-            "peer_groups table does not contain 'company_id'."
-        )
+        raise RuntimeError("peer_groups table does not contain 'company_id'.")
 
     if "peer_group_name" in columns:
         group_column = "peer_group_name"
@@ -123,18 +120,15 @@ def get_peer_groups(conn):
         group_column = "peer_group"
     else:
         raise RuntimeError(
-            "peer_groups table does not contain "
-            "'peer_group_name' or 'peer_group'."
+            "peer_groups table does not contain " "'peer_group_name' or 'peer_group'."
         )
 
-    rows = conn.execute(
-        f"""
+    rows = conn.execute(f"""
         SELECT company_id, {group_column}
         FROM peer_groups
         WHERE company_id IS NOT NULL
           AND {group_column} IS NOT NULL
-        """
-    ).fetchall()
+        """).fetchall()
 
     return rows
 
@@ -142,6 +136,7 @@ def get_peer_groups(conn):
 # ---------------------------------------------------------------------
 # PERCENTILE CALCULATION
 # ---------------------------------------------------------------------
+
 
 def calculate_percentile_rank(values, target_value, lower_is_better=False):
     """
@@ -190,11 +185,11 @@ def calculate_percentile_rank(values, target_value, lower_is_better=False):
 # PEER PERCENTILE TABLE
 # ---------------------------------------------------------------------
 
+
 def create_peer_percentiles_table(conn):
     """Create the peer_percentiles table if it does not exist."""
 
-    conn.execute(
-        """
+    conn.execute("""
         CREATE TABLE IF NOT EXISTS peer_percentiles (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             company_id TEXT NOT NULL,
@@ -204,8 +199,7 @@ def create_peer_percentiles_table(conn):
             percentile_rank REAL,
             year TEXT
         )
-        """
-    )
+        """)
 
     conn.commit()
 
@@ -213,6 +207,7 @@ def create_peer_percentiles_table(conn):
 # ---------------------------------------------------------------------
 # FINANCIAL DATA
 # ---------------------------------------------------------------------
+
 
 def get_financial_data(conn):
     """
@@ -223,9 +218,7 @@ def get_financial_data(conn):
     """
 
     if not table_exists(conn, "financial_ratios"):
-        raise RuntimeError(
-            "Table 'financial_ratios' does not exist."
-        )
+        raise RuntimeError("Table 'financial_ratios' does not exist.")
 
     columns = get_columns(conn, "financial_ratios")
 
@@ -236,14 +229,10 @@ def get_financial_data(conn):
 
     for column in required_columns:
         if column not in columns:
-            raise RuntimeError(
-                f"financial_ratios table does not contain '{column}'."
-            )
+            raise RuntimeError(f"financial_ratios table does not contain '{column}'.")
 
     available_metrics = {
-        metric: column
-        for metric, column in METRIC_COLUMNS.items()
-        if column in columns
+        metric: column for metric, column in METRIC_COLUMNS.items() if column in columns
     }
 
     if not available_metrics:
@@ -257,9 +246,7 @@ def get_financial_data(conn):
         "year",
     ]
 
-    select_columns.extend(
-        available_metrics.values()
-    )
+    select_columns.extend(available_metrics.values())
 
     sql = f"""
         SELECT {", ".join(select_columns)}
@@ -289,6 +276,7 @@ def get_financial_data(conn):
 # ---------------------------------------------------------------------
 # BUILD PEER DATA
 # ---------------------------------------------------------------------
+
 
 def build_peer_data(conn):
     """
@@ -336,6 +324,7 @@ def build_peer_data(conn):
 # GENERATE PERCENTILES
 # ---------------------------------------------------------------------
 
+
 def generate_peer_percentiles(conn):
     """
     Calculate percentile rankings for all peer groups and metrics.
@@ -358,17 +347,13 @@ def generate_peer_percentiles(conn):
             metric_records = [
                 record
                 for record in records
-                if metric in record
-                and record[metric] is not None
+                if metric in record and record[metric] is not None
             ]
 
             if not metric_records:
                 continue
 
-            values = [
-                float(record[metric])
-                for record in metric_records
-            ]
+            values = [float(record[metric]) for record in metric_records]
 
             lower_is_better = metric in LOWER_IS_BETTER
 
@@ -414,6 +399,7 @@ def generate_peer_percentiles(conn):
 # ---------------------------------------------------------------------
 # QUERY FUNCTIONS
 # ---------------------------------------------------------------------
+
 
 def get_peer_ranking(
     peer_group_name: str,
@@ -500,55 +486,44 @@ def get_company_peer_percentiles(
 # SUMMARY
 # ---------------------------------------------------------------------
 
+
 def print_summary(conn):
     """Print a simple validation summary."""
 
     print("\n========== PEER ANALYSIS SUMMARY ==========")
 
-    groups = conn.execute(
-        """
+    groups = conn.execute("""
         SELECT
             peer_group_name,
             COUNT(DISTINCT company_id)
         FROM peer_percentiles
         GROUP BY peer_group_name
         ORDER BY peer_group_name
-        """
-    ).fetchall()
+        """).fetchall()
 
     print(f"Peer groups: {len(groups)}")
 
     for group_name, company_count in groups:
-        print(
-            f"  {group_name}: "
-            f"{company_count} companies"
-        )
+        print(f"  {group_name}: " f"{company_count} companies")
 
-    metrics = conn.execute(
-        """
+    metrics = conn.execute("""
         SELECT
             metric,
             COUNT(*)
         FROM peer_percentiles
         GROUP BY metric
         ORDER BY metric
-        """
-    ).fetchall()
+        """).fetchall()
 
     print(f"\nMetrics: {len(metrics)}")
 
     for metric, count in metrics:
-        print(
-            f"  {metric}: "
-            f"{count} records"
-        )
+        print(f"  {metric}: " f"{count} records")
 
-    total = conn.execute(
-        """
+    total = conn.execute("""
         SELECT COUNT(*)
         FROM peer_percentiles
-        """
-    ).fetchone()[0]
+        """).fetchone()[0]
 
     print(f"\nTotal percentile records: {total}")
 
@@ -558,6 +533,7 @@ def print_summary(conn):
 # ---------------------------------------------------------------------
 # MAIN
 # ---------------------------------------------------------------------
+
 
 def main():
     """Run the complete peer analysis pipeline."""
@@ -580,17 +556,13 @@ def main():
                 print(f"  ✓ {table}")
             else:
                 print(f"  ✗ {table} NOT FOUND")
-                raise RuntimeError(
-                    f"Required table '{table}' does not exist."
-                )
+                raise RuntimeError(f"Required table '{table}' does not exist.")
 
         print("\nGenerating peer percentile rankings...")
 
         inserted = generate_peer_percentiles(conn)
 
-        print(
-            f"✓ Inserted {inserted} percentile records."
-        )
+        print(f"✓ Inserted {inserted} percentile records.")
 
         print_summary(conn)
 

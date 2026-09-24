@@ -2,24 +2,34 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-from src.dashboard.utils.db import get_companies, get_market_cap, get_pl, get_ratios, get_sectors
+from src.dashboard.utils.db import (
+    get_companies,
+    get_market_cap,
+    get_pl,
+    get_ratios,
+    get_sectors,
+)
 
 
 def year_number(value):
+    """Extract a calendar year from a source period."""
     match = pd.Series([value]).astype(str).str.extract(r"(20\d{2})").iloc[0, 0]
     return int(match) if pd.notna(match) else None
 
 
 def numeric(value):
+    """Convert a value to float or return None."""
     converted = pd.to_numeric(value, errors="coerce")
     return None if pd.isna(converted) else float(converted)
 
 
 def display_value(value, suffix=""):
+    """Format a numeric dashboard value for display."""
     return "N/A" if value is None or pd.isna(value) else f"{value:,.2f}{suffix}"
 
 
 def numeric_column(frame, column):
+    """Return a numeric dataframe column with a missing-column fallback."""
     if column not in frame:
         return pd.Series(float("nan"), index=frame.index, dtype="float64")
     return pd.to_numeric(frame[column], errors="coerce")
@@ -27,10 +37,15 @@ def numeric_column(frame, column):
 
 @st.cache_data(ttl=600)
 def build_home_data(year):
+    """Build the KPI dataset displayed on the dashboard home screen."""
     companies = get_companies().copy()
     sectors = get_sectors().copy()
     if not sectors.empty:
-        companies = companies.merge(sectors[["company_id", "broad_sector", "sub_sector"]], on="company_id", how="left")
+        companies = companies.merge(
+            sectors[["company_id", "broad_sector", "sub_sector"]],
+            on="company_id",
+            how="left",
+        )
 
     rows = []
     for ticker in companies["company_id"].dropna().unique():
@@ -38,15 +53,25 @@ def build_home_data(year):
         selected_ratios = ratios.copy()
         if not selected_ratios.empty:
             selected_ratios["year_number"] = selected_ratios["year"].map(year_number)
-            selected_ratios = selected_ratios[selected_ratios["year_number"] == year].tail(1)
+            selected_ratios = selected_ratios[
+                selected_ratios["year_number"] == year
+            ].tail(1)
 
         market_cap = get_market_cap(ticker, year)
-        selected_market_cap = market_cap.tail(1) if not market_cap.empty else pd.DataFrame()
+        selected_market_cap = (
+            market_cap.tail(1) if not market_cap.empty else pd.DataFrame()
+        )
         pl = get_pl(ticker).copy()
         if not pl.empty:
             pl["year_number"] = pl["year"].map(year_number)
-        current = pl[pl["year_number"] == year].tail(1) if not pl.empty else pd.DataFrame()
-        previous = pl[pl["year_number"] == year - 5].tail(1) if not pl.empty else pd.DataFrame()
+        current = (
+            pl[pl["year_number"] == year].tail(1) if not pl.empty else pd.DataFrame()
+        )
+        previous = (
+            pl[pl["year_number"] == year - 5].tail(1)
+            if not pl.empty
+            else pd.DataFrame()
+        )
 
         row = {"company_id": ticker}
         if not selected_ratios.empty:
@@ -57,11 +82,15 @@ def build_home_data(year):
             sales_now = numeric(current.iloc[0].get("sales"))
             sales_then = numeric(previous.iloc[0].get("sales"))
             if sales_now is not None and sales_then and sales_then > 0:
-                row["revenue_cagr_5yr_calculated"] = ((sales_now / sales_then) ** 0.2 - 1) * 100
+                row["revenue_cagr_5yr_calculated"] = (
+                    (sales_now / sales_then) ** 0.2 - 1
+                ) * 100
         rows.append(row)
 
     metrics = pd.DataFrame(rows)
-    return companies.merge(metrics, on="company_id", how="left", suffixes=("", "_metric"))
+    return companies.merge(
+        metrics, on="company_id", how="left", suffixes=("", "_metric")
+    )
 
 
 st.sidebar.header("Dashboard filters")
@@ -94,7 +123,12 @@ st.divider()
 left, right = st.columns(2)
 with left:
     st.subheader("Sector breakdown")
-    sector_data = dashboard_df.assign(Sector=dashboard_df["broad_sector"].fillna("Unknown")).groupby("Sector", as_index=False)["company_id"].nunique().rename(columns={"company_id": "Companies"})
+    sector_data = (
+        dashboard_df.assign(Sector=dashboard_df["broad_sector"].fillna("Unknown"))
+        .groupby("Sector", as_index=False)["company_id"]
+        .nunique()
+        .rename(columns={"company_id": "Companies"})
+    )
     figure = px.pie(sector_data, names="Sector", values="Companies", hole=0.55)
     figure.update_layout(height=430, margin=dict(l=10, r=10, t=30, b=10))
     st.plotly_chart(figure, width="stretch")
@@ -103,19 +137,39 @@ with right:
     st.subheader("Top 5 companies by composite quality score")
     quality = dashboard_df.copy()
     if "composite_quality_score" in quality:
-        quality["composite_score"] = pd.to_numeric(quality["composite_quality_score"], errors="coerce")
+        quality["composite_score"] = pd.to_numeric(
+            quality["composite_quality_score"], errors="coerce"
+        )
     else:
         components = []
-        for column in ["return_on_equity_pct", "net_profit_margin_pct", "interest_coverage"]:
+        for column in [
+            "return_on_equity_pct",
+            "net_profit_margin_pct",
+            "interest_coverage",
+        ]:
             if column in quality:
-                components.append(pd.to_numeric(quality[column], errors="coerce").rank(pct=True))
+                components.append(
+                    pd.to_numeric(quality[column], errors="coerce").rank(pct=True)
+                )
         if "debt_to_equity" in quality:
-            components.append(pd.to_numeric(quality["debt_to_equity"], errors="coerce").rank(pct=True, ascending=False))
-        quality["composite_score"] = pd.concat(components, axis=1).mean(axis=1).mul(100) if components else pd.NA
-    columns = [column for column in ["company_id", "company_name", "broad_sector", "composite_score"] if column in quality]
+            components.append(
+                pd.to_numeric(quality["debt_to_equity"], errors="coerce").rank(
+                    pct=True, ascending=False
+                )
+            )
+        quality["composite_score"] = (
+            pd.concat(components, axis=1).mean(axis=1).mul(100) if components else pd.NA
+        )
+    columns = [
+        column
+        for column in ["company_id", "company_name", "broad_sector", "composite_score"]
+        if column in quality
+    ]
     top5 = quality.nlargest(5, "composite_score")[columns].copy()
     if "composite_score" in top5:
-        top5["composite_score"] = pd.to_numeric(top5["composite_score"], errors="coerce").round(2)
+        top5["composite_score"] = pd.to_numeric(
+            top5["composite_score"], errors="coerce"
+        ).round(2)
     st.dataframe(top5.reset_index(drop=True), width="stretch", hide_index=True)
 
 with st.expander("Data availability"):

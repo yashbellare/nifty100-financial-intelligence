@@ -6,10 +6,10 @@ from openpyxl import load_workbook
 from openpyxl.styles import PatternFill, Font, Alignment
 from openpyxl.utils import get_column_letter
 
-
 # ============================================================
 # PATHS
 # ============================================================
+
 
 def table_exists(conn, table_name):
     """Return True when the requested SQLite table exists."""
@@ -18,7 +18,6 @@ def table_exists(conn, table_name):
         ("table", table_name),
     ).fetchone()
     return row is not None
-
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -50,7 +49,9 @@ METRICS = {
 # LOAD PEER PERCENTILE DATA
 # ============================================================
 
+
 def load_peer_data():
+    """Load peer percentile observations from SQLite."""
     conn = sqlite3.connect(DB_PATH)
 
     query = """
@@ -69,7 +70,6 @@ def load_peer_data():
     conn.close()
 
     return df
-
 
 
 # ============================================================
@@ -122,10 +122,7 @@ def load_peer_groups():
         conn.close()
 
     groups = (
-        rows["peer_group_name"]
-        .astype(str)
-        .str.strip()
-        .tolist()
+        rows["peer_group_name"].astype(str).str.strip().tolist()
         if not rows.empty
         else []
     )
@@ -141,14 +138,13 @@ def load_peer_groups():
 # LOAD COMPANY NAMES
 # ============================================================
 
+
 def load_company_names():
+    """Load company identifiers and display names from SQLite."""
     conn = sqlite3.connect(DB_PATH)
 
     # First inspect available company columns.
-    columns = pd.read_sql_query(
-        "PRAGMA table_info(companies)",
-        conn
-    )["name"].tolist()
+    columns = pd.read_sql_query("PRAGMA table_info(companies)", conn)["name"].tolist()
 
     # Try to find a ticker/company-id style column.
     possible_id_columns = [
@@ -158,13 +154,10 @@ def load_company_names():
         "ticker",
         "nse_symbol",
         "stock_code",
-        "code"
+        "code",
     ]
 
-    id_column = next(
-        (col for col in possible_id_columns if col in columns),
-        None
-    )
+    id_column = next((col for col in possible_id_columns if col in columns), None)
 
     if id_column:
         query = f"""
@@ -177,9 +170,7 @@ def load_company_names():
         names = pd.read_sql_query(query, conn)
 
     else:
-        names = pd.DataFrame(
-            columns=["company_id", "company_name"]
-        )
+        names = pd.DataFrame(columns=["company_id", "company_name"])
 
     conn.close()
 
@@ -190,7 +181,9 @@ def load_company_names():
 # LOAD BENCHMARK COMPANIES
 # ============================================================
 
+
 def load_benchmarks():
+    """Load benchmark companies for each peer group."""
     conn = sqlite3.connect(DB_PATH)
 
     query = """
@@ -212,6 +205,7 @@ def load_benchmarks():
 # BUILD WIDE TABLE
 # ============================================================
 
+
 def build_wide_table(group_df, company_names):
     """
     Convert long peer-percentile data into:
@@ -231,31 +225,19 @@ def build_wide_table(group_df, company_names):
         columns = (
             ["company_id", "company_name"]
             + list(METRICS.keys())
-            + [
-                f"{key}_percentile"
-                for key in METRICS
-            ]
+            + [f"{key}_percentile" for key in METRICS]
         )
         return pd.DataFrame(columns=columns)
 
     group_df = group_df.copy()
 
-    group_df["company_id"] = (
-        group_df["company_id"]
-        .astype(str)
-        .str.strip()
-    )
+    group_df["company_id"] = group_df["company_id"].astype(str).str.strip()
 
     # Keep the newest available record for each company + metric.
-    group_df["_year_sort"] = (
-        group_df["year"].astype(str)
-    )
+    group_df["_year_sort"] = group_df["year"].astype(str)
 
     group_df = (
-        group_df
-        .sort_values(
-            ["company_id", "metric", "_year_sort"]
-        )
+        group_df.sort_values(["company_id", "metric", "_year_sort"])
         .drop_duplicates(
             subset=["company_id", "metric"],
             keep="last",
@@ -280,14 +262,9 @@ def build_wide_table(group_df, company_names):
     result = values.copy()
 
     # Add company names using company_id as the join key.
-    if (
-        company_names is not None
-        and not company_names.empty
-    ):
+    if company_names is not None and not company_names.empty:
         names = (
-            company_names[
-                ["company_id", "company_name"]
-            ]
+            company_names[["company_id", "company_name"]]
             .drop_duplicates(
                 subset=["company_id"],
                 keep="first",
@@ -317,9 +294,7 @@ def build_wide_table(group_df, company_names):
         )
 
         result["company_name"] = (
-            result["company_name"]
-            .fillna(fallback_names)
-            .astype(str)
+            result["company_name"].fillna(fallback_names).astype(str)
         )
 
     # Ensure all 10 metric columns exist.
@@ -329,33 +304,22 @@ def build_wide_table(group_df, company_names):
 
     # Add all 10 percentile columns.
     for metric_key in METRICS:
-        percentile_column = (
-            f"{metric_key}_percentile"
-        )
+        percentile_column = f"{metric_key}_percentile"
 
         if metric_key in percentiles.columns:
-            result[percentile_column] = (
-                percentiles[metric_key]
-            )
+            result[percentile_column] = percentiles[metric_key]
         else:
             result[percentile_column] = None
 
     result.index.name = "company_id"
     result = result.reset_index()
 
-    result["company_id"] = (
-        result["company_id"]
-        .astype(str)
-        .str.strip()
-    )
+    result["company_id"] = result["company_id"].astype(str).str.strip()
 
     ordered_columns = (
         ["company_id", "company_name"]
         + list(METRICS.keys())
-        + [
-            f"{key}_percentile"
-            for key in METRICS
-        ]
+        + [f"{key}_percentile" for key in METRICS]
     )
 
     return result[ordered_columns]
@@ -365,45 +329,36 @@ def build_wide_table(group_df, company_names):
 # ADD MEDIAN ROW
 # ============================================================
 
+
 def add_median_row(df):
+    """Append a median row to a peer comparison table."""
     median_values = {}
 
     for column in df.columns:
         if column in ["company_id", "company_name"]:
             continue
 
-        numeric_values = pd.to_numeric(
-            df[column],
-            errors="coerce"
-        )
+        numeric_values = pd.to_numeric(df[column], errors="coerce")
 
         if numeric_values.notna().any():
             median_values[column] = numeric_values.median()
         else:
             median_values[column] = None
 
-    median_row = {
-        column: None
-        for column in df.columns
-    }
+    median_row = {column: None for column in df.columns}
 
     median_row["company_id"] = ""
     median_row["company_name"] = "Peer Group Median"
 
     median_row.update(median_values)
 
-    return pd.concat(
-        [
-            df,
-            pd.DataFrame([median_row])
-        ],
-        ignore_index=True
-    )
+    return pd.concat([df, pd.DataFrame([median_row])], ignore_index=True)
 
 
 # ============================================================
 # WRITE EXCEL FILE
 # ============================================================
+
 
 def generate_excel(
     peer_df,
@@ -411,6 +366,7 @@ def generate_excel(
     benchmarks,
     peer_groups,
 ):
+    """Generate the peer comparison workbook."""
     OUTPUT_DIR.mkdir(
         parents=True,
         exist_ok=True,
@@ -420,9 +376,7 @@ def generate_excel(
     print("=" * 60)
     print("PEER COMPARISON EXCEL REPORT")
     print("=" * 60)
-    print(
-        f"Peer groups found: {len(peer_groups)}"
-    )
+    print(f"Peer groups found: {len(peer_groups)}")
 
     # Remove the old workbook before creating a fresh one.
     if OUTPUT_FILE.exists():
@@ -442,28 +396,19 @@ def generate_excel(
         used_sheet_names = set()
 
         for peer_group in peer_groups:
-            print(
-                f"Creating sheet: {peer_group}"
-            )
+            print(f"Creating sheet: {peer_group}")
 
-            group_df = peer_df[
-                peer_df["peer_group_name"]
-                == peer_group
-            ].copy()
+            group_df = peer_df[peer_df["peer_group_name"] == peer_group].copy()
 
             wide_df = build_wide_table(
                 group_df,
                 company_names,
             )
 
-            wide_df = add_median_row(
-                wide_df
-            )
+            wide_df = add_median_row(wide_df)
 
             # Excel sheet names have a 31-character limit.
-            sheet_name = str(
-                peer_group
-            ).strip()[:31]
+            sheet_name = str(peer_group).strip()[:31]
 
             # Avoid duplicate sheet names after truncation.
             base_name = sheet_name or "Peer Group"
@@ -472,12 +417,7 @@ def generate_excel(
 
             while sheet_name in used_sheet_names:
                 suffix = f" ({counter})"
-                sheet_name = (
-                    base_name[
-                        :31 - len(suffix)
-                    ]
-                    + suffix
-                )
+                sheet_name = base_name[: 31 - len(suffix)] + suffix
                 counter += 1
 
             used_sheet_names.add(sheet_name)
@@ -489,9 +429,7 @@ def generate_excel(
             )
 
     print()
-    print(
-        f"Excel created: {OUTPUT_FILE}"
-    )
+    print(f"Excel created: {OUTPUT_FILE}")
 
     return OUTPUT_FILE
 
@@ -500,38 +438,23 @@ def generate_excel(
 # FORMAT EXCEL
 # ============================================================
 
+
 def format_excel(filename, benchmarks):
+    """Apply presentation formatting and benchmark highlights to a workbook."""
     wb = load_workbook(filename)
 
     # Required colours
-    green_fill = PatternFill(
-        fill_type="solid",
-        fgColor="C6EFCE"
-    )
+    green_fill = PatternFill(fill_type="solid", fgColor="C6EFCE")
 
-    yellow_fill = PatternFill(
-        fill_type="solid",
-        fgColor="FFEB9C"
-    )
+    yellow_fill = PatternFill(fill_type="solid", fgColor="FFEB9C")
 
-    red_fill = PatternFill(
-        fill_type="solid",
-        fgColor="FFC7CE"
-    )
+    red_fill = PatternFill(fill_type="solid", fgColor="FFC7CE")
 
-    benchmark_fill = PatternFill(
-        fill_type="solid",
-        fgColor="FFD966"
-    )
+    benchmark_fill = PatternFill(fill_type="solid", fgColor="FFD966")
 
-    median_fill = PatternFill(
-        fill_type="solid",
-        fgColor="D9EAD3"
-    )
+    median_fill = PatternFill(fill_type="solid", fgColor="D9EAD3")
 
-    header_font = Font(
-        bold=True
-    )
+    header_font = Font(bold=True)
 
     # Benchmark lookup
     benchmark_lookup = {}
@@ -541,10 +464,7 @@ def format_excel(filename, benchmarks):
             group = str(row["peer_group_name"])
             company_id = str(row["company_id"])
 
-            benchmark_lookup.setdefault(
-                group,
-                set()
-            ).add(company_id)
+            benchmark_lookup.setdefault(group, set()).add(company_id)
 
     for ws in wb.worksheets:
 
@@ -554,10 +474,7 @@ def format_excel(filename, benchmarks):
 
         for cell in ws[1]:
             cell.font = header_font
-            cell.alignment = Alignment(
-                horizontal="center",
-                vertical="center"
-            )
+            cell.alignment = Alignment(horizontal="center", vertical="center")
 
         ws.freeze_panes = "C2"
 
@@ -565,10 +482,7 @@ def format_excel(filename, benchmarks):
         # COLUMN IDENTIFICATION
         # ----------------------------------------------------
 
-        headers = {
-            cell.column: str(cell.value)
-            for cell in ws[1]
-        }
+        headers = {cell.column: str(cell.value) for cell in ws[1]}
 
         percentile_columns = [
             column
@@ -583,20 +497,14 @@ def format_excel(filename, benchmarks):
         for row in range(2, ws.max_row + 1):
 
             # Last row is median row
-            is_median = (
-                ws.cell(row, 2).value
-                == "Peer Group Median"
-            )
+            is_median = ws.cell(row, 2).value == "Peer Group Median"
 
             if is_median:
                 continue
 
             for column in percentile_columns:
 
-                cell = ws.cell(
-                    row=row,
-                    column=column
-                )
+                cell = ws.cell(row=row, column=column)
 
                 if cell.value is None:
                     continue
@@ -631,85 +539,51 @@ def format_excel(filename, benchmarks):
 
         for row in range(2, ws.max_row + 1):
 
-            company_id = ws.cell(
-                row=row,
-                column=1
-            ).value
+            company_id = ws.cell(row=row, column=1).value
 
             if company_id is None:
                 continue
 
             if str(company_id) in benchmark_ids:
 
-                for column in range(
-                    1,
-                    ws.max_column + 1
-                ):
-                    cell = ws.cell(
-                        row=row,
-                        column=column
-                    )
+                for column in range(1, ws.max_column + 1):
+                    cell = ws.cell(row=row, column=column)
 
                     cell.fill = benchmark_fill
-                    cell.font = Font(
-                        bold=True
-                    )
+                    cell.font = Font(bold=True)
 
         # ----------------------------------------------------
         # MEDIAN ROW
         # ----------------------------------------------------
 
-        for row in range(
-            2,
-            ws.max_row + 1
-        ):
+        for row in range(2, ws.max_row + 1):
 
-            if (
-                ws.cell(row, 2).value
-                == "Peer Group Median"
-            ):
+            if ws.cell(row, 2).value == "Peer Group Median":
 
-                for column in range(
-                    1,
-                    ws.max_column + 1
-                ):
+                for column in range(1, ws.max_column + 1):
 
-                    cell = ws.cell(
-                        row=row,
-                        column=column
-                    )
+                    cell = ws.cell(row=row, column=column)
 
                     cell.fill = median_fill
-                    cell.font = Font(
-                        bold=True
-                    )
+                    cell.font = Font(bold=True)
 
         # ----------------------------------------------------
         # NUMBER FORMATTING
         # ----------------------------------------------------
 
-        for row in ws.iter_rows(
-            min_row=2,
-            max_row=ws.max_row
-        ):
+        for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
 
             for cell in row:
 
                 if cell.value is None:
                     continue
 
-                header = headers.get(
-                    cell.column,
-                    ""
-                )
+                header = headers.get(cell.column, "")
 
                 if "percentile" in header.lower():
                     cell.number_format = "0.0%"
 
-                elif isinstance(
-                    cell.value,
-                    (int, float)
-                ):
+                elif isinstance(cell.value, (int, float)):
                     cell.number_format = "0.00"
 
         # ----------------------------------------------------
@@ -723,21 +597,11 @@ def format_excel(filename, benchmarks):
             for cell in column:
 
                 if cell.value is not None:
-                    max_length = max(
-                        max_length,
-                        len(str(cell.value))
-                    )
+                    max_length = max(max_length, len(str(cell.value)))
 
-            column_letter = get_column_letter(
-                column[0].column
-            )
+            column_letter = get_column_letter(column[0].column)
 
-            ws.column_dimensions[
-                column_letter
-            ].width = min(
-                max(max_length + 2, 12),
-                28
-            )
+            ws.column_dimensions[column_letter].width = min(max(max_length + 2, 12), 28)
 
         ws.auto_filter.ref = ws.dimensions
 
@@ -748,11 +612,10 @@ def format_excel(filename, benchmarks):
 # VALIDATION
 # ============================================================
 
+
 def validate_output(filename):
-    wb = load_workbook(
-        filename,
-        read_only=True
-    )
+    """Validate that the generated peer workbook contains expected sheets."""
+    wb = load_workbook(filename, read_only=True)
 
     sheet_count = len(wb.sheetnames)
 
@@ -761,25 +624,17 @@ def validate_output(filename):
     print("VALIDATION")
     print("=" * 60)
 
-    print(
-        f"Sheets generated: {sheet_count}"
-    )
+    print(f"Sheets generated: {sheet_count}")
 
     for sheet in wb.sheetnames:
         ws = wb[sheet]
 
-        print(
-            f"  ✓ {sheet}: "
-            f"{ws.max_row - 1} companies/data rows"
-        )
+        print(f"  ✓ {sheet}: " f"{ws.max_row - 1} companies/data rows")
 
     if sheet_count == 11:
         print("✓ Exactly 11 peer-group sheets")
     else:
-        print(
-            f"⚠ Expected 11 sheets, "
-            f"found {sheet_count}"
-        )
+        print(f"⚠ Expected 11 sheets, " f"found {sheet_count}")
 
     wb.close()
 
@@ -788,24 +643,18 @@ def validate_output(filename):
 # MAIN
 # ============================================================
 
+
 def main():
+    """Generate and validate the peer comparison workbook."""
     print()
-    print(
-        "Starting Day 20 - Peer Comparison Report"
-    )
+    print("Starting Day 20 - Peer Comparison Report")
 
     print(f"\nProject root: {PROJECT_ROOT}")
-    print(
-        f"Database: {DB_PATH}"
-    )
-    print(
-        f"Output: {OUTPUT_FILE}"
-    )
+    print(f"Database: {DB_PATH}")
+    print(f"Output: {OUTPUT_FILE}")
 
     if not DB_PATH.exists():
-        raise FileNotFoundError(
-            f"Database not found: {DB_PATH}"
-        )
+        raise FileNotFoundError(f"Database not found: {DB_PATH}")
 
     # --------------------------------------------------------
     # Load database data
@@ -836,18 +685,12 @@ def main():
 
     try:
         if table_exists(conn, "companies"):
-            company_count = conn.execute(
-                "SELECT COUNT(*) FROM companies"
-            ).fetchone()[0]
+            company_count = conn.execute("SELECT COUNT(*) FROM companies").fetchone()[0]
 
-            print(
-                f"Companies in database: "
-                f"{company_count}"
-            )
+            print(f"Companies in database: " f"{company_count}")
 
         if table_exists(conn, "peer_groups"):
-            group_rows = conn.execute(
-                """
+            group_rows = conn.execute("""
                 SELECT
                     peer_group_name,
                     COUNT(DISTINCT company_id)
@@ -855,48 +698,26 @@ def main():
                 WHERE peer_group_name IS NOT NULL
                 GROUP BY peer_group_name
                 ORDER BY peer_group_name
-                """
-            ).fetchall()
+                """).fetchall()
 
-            print(
-                f"Peer groups in database: "
-                f"{len(group_rows)}"
-            )
+            print(f"Peer groups in database: " f"{len(group_rows)}")
 
             for group_name, count in group_rows:
-                print(
-                    f"  {group_name}: "
-                    f"{count} companies"
-                )
+                print(f"  {group_name}: " f"{count} companies")
 
     finally:
         conn.close()
 
-    print(
-        f"Peer percentile records: "
-        f"{len(peer_df)}"
-    )
+    print(f"Peer percentile records: " f"{len(peer_df)}")
 
     if not peer_df.empty:
-        print(
-            "Latest reporting year in table: "
-            f"{peer_df['year'].astype(str).max()}"
-        )
+        print("Latest reporting year in table: " f"{peer_df['year'].astype(str).max()}")
 
-    print(
-        f"Peer groups used for workbook: "
-        f"{len(peer_groups)}"
-    )
+    print(f"Peer groups used for workbook: " f"{len(peer_groups)}")
 
-    print(
-        f"Company names loaded: "
-        f"{len(company_names)}"
-    )
+    print(f"Company names loaded: " f"{len(company_names)}")
 
-    print(
-        f"Benchmark assignments: "
-        f"{len(benchmarks)}"
-    )
+    print(f"Benchmark assignments: " f"{len(benchmarks)}")
 
     # --------------------------------------------------------
     # Generate workbook
@@ -930,9 +751,7 @@ def main():
     print("=" * 60)
     print("DAY 20 COMPLETE")
     print("=" * 60)
-    print(
-        f"Output: {filename}"
-    )
+    print(f"Output: {filename}")
 
 
 if __name__ == "__main__":

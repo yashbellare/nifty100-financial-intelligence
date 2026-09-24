@@ -14,8 +14,14 @@ pages = [
     st.Page("pages/04_peers.py", title="Peer comparison", icon=":material/groups:"),
     st.Page("pages/05_trends.py", title="Trend analysis", icon=":material/show_chart:"),
     st.Page("pages/06_sectors.py", title="Sector analysis", icon=":material/domain:"),
-    st.Page("pages/07_capital.py", title="Capital allocation", icon=":material/account_tree:"),
-    st.Page("pages/08_reports.py", title="Annual reports", icon=":material/description:"),
+    st.Page(
+        "pages/07_capital.py",
+        title="Capital allocation",
+        icon=":material/account_tree:",
+    ),
+    st.Page(
+        "pages/08_reports.py", title="Annual reports", icon=":material/description:"
+    ),
 ]
 
 navigation = st.navigation(pages)

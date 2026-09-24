@@ -1,4 +1,5 @@
 """Valuation summary and relative P/E flag generation for Sprint 4."""
+
 from __future__ import annotations
 
 import argparse
@@ -7,7 +8,6 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_DB_PATH = PROJECT_ROOT / "nifty100.db"
@@ -115,7 +115,9 @@ def generate_valuation_outputs(
     summary = summary.merge(
         latest_fcf[["company_id", "free_cash_flow_cr"]], on="company_id", how="left"
     )
-    summary = summary.merge(_sector_medians(market_cap, sectors), on="broad_sector", how="left")
+    summary = summary.merge(
+        _sector_medians(market_cap, sectors), on="broad_sector", how="left"
+    )
 
     summary["FCF_yield_pct"] = np.where(
         summary["market_cap_crore"].gt(0),
@@ -152,6 +154,7 @@ def generate_valuation_outputs(
 
 
 def main() -> None:
+    """Run the valuation analysis command-line workflow."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
     parser.add_argument("--market-cap", type=Path, default=DEFAULT_MARKET_CAP_PATH)

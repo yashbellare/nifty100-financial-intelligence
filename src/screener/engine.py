@@ -11,7 +11,6 @@ from openpyxl import Workbook
 from openpyxl.styles import PatternFill, Font, Alignment
 from openpyxl.utils import get_column_letter
 
-
 # ============================================================
 # PATHS
 # ============================================================
@@ -31,39 +30,33 @@ DEFAULT_DAY17_INPUT = OUTPUT_DIR / "nifty100_screened_results.csv"
 # ============================================================
 
 DAY17_PRESETS = {
-
     "Quality Compounder": {
         "roe": (">", 15),
         "de": ("<", 1.0),
         "fcf": (">", 0),
         "revenue_cagr_5yr": (">", 10),
     },
-
     "Value Pick": {
         "pe": ("<", 20),
         "pb": ("<", 3.0),
         "de": ("<", 2.0),
         "dividend_yield": (">", 1),
     },
-
     "Growth Accelerator": {
         "pat_cagr_5yr": (">", 20),
         "revenue_cagr_5yr": (">", 15),
         "de": ("<", 2.0),
     },
-
     "Dividend Champion": {
         "dividend_yield": (">", 2),
         "dividend_payout": ("<", 80),
         "fcf": (">", 0),
     },
-
     "Debt-Free Blue Chip": {
         "de": ("=", 0),
         "roe": (">", 12),
         "revenue": (">", 5000),
     },
-
     "Turnaround Watch": {
         "revenue_cagr_3yr": (">", 10),
         "fcf": (">", 0),
@@ -77,7 +70,6 @@ DAY17_PRESETS = {
 # ============================================================
 
 DAY17_ALIASES = {
-
     "company_id": [
         "company_id",
         "id",
@@ -85,7 +77,6 @@ DAY17_ALIASES = {
         "symbol",
         "ticker",
     ],
-
     "company_name": [
         "company_name",
         "name",
@@ -93,7 +84,6 @@ DAY17_ALIASES = {
         "companyname",
         "stock_name",
     ],
-
     "broad_sector": [
         "broad_sector",
         "sector",
@@ -101,11 +91,9 @@ DAY17_ALIASES = {
         "industry",
         "Sector",
     ],
-
     # --------------------------------------------------------
     # Profitability
     # --------------------------------------------------------
-
     "roe": [
         "roe",
         "roe_percentage",
@@ -114,7 +102,6 @@ DAY17_ALIASES = {
         "return_on_equity_percentage",
         "ROE",
     ],
-
     "roce": [
         "roce",
         "roce_percentage",
@@ -122,7 +109,6 @@ DAY17_ALIASES = {
         "return_on_capital_employed_pct",
         "ROCE",
     ],
-
     "npm": [
         "npm",
         "net_profit_margin",
@@ -130,11 +116,9 @@ DAY17_ALIASES = {
         "net_profit_margin_percentage",
         "NPM",
     ],
-
     # --------------------------------------------------------
     # Leverage
     # --------------------------------------------------------
-
     "de": [
         "de",
         "de_ratio",
@@ -145,7 +129,6 @@ DAY17_ALIASES = {
         "d_e",
         "debt_equity",
     ],
-
     "de_previous_year": [
         "de_previous_year",
         "de_prev_year",
@@ -154,25 +137,21 @@ DAY17_ALIASES = {
         "previous_year_de",
         "de_previous",
     ],
-
     # --------------------------------------------------------
     # Cash flow
     # --------------------------------------------------------
-
     "fcf": [
         "fcf",
         "free_cash_flow",
         "free_cash_flow_cr",
         "FCF",
     ],
-
     "cfo": [
         "cfo",
         "cash_from_operations",
         "cash_from_operations_cr",
         "cash_flow_from_operations",
     ],
-
     "fcf_cagr": [
         "fcf_cagr",
         "fcf_cagr_5yr",
@@ -180,7 +159,6 @@ DAY17_ALIASES = {
         "FCF_CAGR_5yr",
         "free_cash_flow_cagr",
     ],
-
     "cfo_pat": [
         "cfo_pat",
         "cfo_pat_ratio",
@@ -188,18 +166,15 @@ DAY17_ALIASES = {
         "CFO/PAT",
         "cfo_pat_percentage",
     ],
-
     # --------------------------------------------------------
     # Growth
     # --------------------------------------------------------
-
     "revenue_cagr_3yr": [
         "revenue_cagr_3yr",
         "revenue_cagr_3yr_pct",
         "sales_cagr_3yr",
         "compounded_sales_growth_3yr",
     ],
-
     "revenue_cagr_5yr": [
         "revenue_cagr_5yr",
         "revenue_cagr_5yr_pct",
@@ -209,7 +184,6 @@ DAY17_ALIASES = {
         "compounded_sales_growth_pct",
         "Revenue CAGR 5yr",
     ],
-
     "pat_cagr_5yr": [
         "pat_cagr_5yr",
         "pat_cagr_5yr_pct",
@@ -220,18 +194,15 @@ DAY17_ALIASES = {
         "compounded_profit_growth_pct",
         "PAT CAGR 5yr",
     ],
-
     "eps_cagr_5yr": [
         "eps_cagr_5yr",
         "eps_cagr_5yr_pct",
         "eps_growth_5yr",
         "EPS CAGR 5yr",
     ],
-
     # --------------------------------------------------------
     # Valuation
     # --------------------------------------------------------
-
     "pe": [
         "pe",
         "pe_ratio",
@@ -239,24 +210,20 @@ DAY17_ALIASES = {
         "price_earnings",
         "P/E",
     ],
-
     "pb": [
         "pb",
         "pb_ratio",
         "price_to_book",
         "P/B",
     ],
-
     # --------------------------------------------------------
     # Dividend
     # --------------------------------------------------------
-
     "dividend_yield": [
         "dividend_yield",
         "dividend_yield_pct",
         "Dividend Yield",
     ],
-
     "dividend_payout": [
         "dividend_payout",
         "dividend_payout_ratio",
@@ -265,23 +232,19 @@ DAY17_ALIASES = {
         "dividend_payout_percentage",
         "Dividend Payout",
     ],
-
     # --------------------------------------------------------
     # Other KPIs
     # --------------------------------------------------------
-
     "icr": [
         "icr",
         "interest_coverage",
         "interest_coverage_ratio",
         "ICR",
     ],
-
     "icr_label": [
         "icr_label",
         "interest_coverage_label",
     ],
-
     "market_cap": [
         "market_cap",
         "market_cap_cr",
@@ -289,25 +252,21 @@ DAY17_ALIASES = {
         "market_capitalization",
         "Market Cap",
     ],
-
     "net_profit": [
         "net_profit",
         "net_profit_cr",
         "Net Profit",
     ],
-
     "eps": [
         "eps",
         "earnings_per_share",
         "EPS",
     ],
-
     "asset_turnover": [
         "asset_turnover",
         "asset_turnover_ratio",
         "Asset Turnover",
     ],
-
     "sales": [
         "sales",
         "sales_cr",
@@ -317,7 +276,6 @@ DAY17_ALIASES = {
         "Revenue",
         "Sales",
     ],
-
     "revenue": [
         "revenue",
         "revenue_cr",
@@ -327,13 +285,11 @@ DAY17_ALIASES = {
         "Revenue",
         "Sales",
     ],
-
     "de_declining": [
         "de_declining",
         "de_declining_yoy",
         "D/E declining",
     ],
-
     "year": [
         "year",
         "financial_year",
@@ -347,6 +303,7 @@ DAY17_ALIASES = {
 # ============================================================
 # COLUMN RESOLVER
 # ============================================================
+
 
 def _normalise_column_name(value):
     return (
@@ -370,14 +327,10 @@ def _resolve_column(df, logical_name):
     if logical_name not in DAY17_ALIASES:
         return None
 
-    exact_columns = {
-        str(column).strip().lower(): column
-        for column in df.columns
-    }
+    exact_columns = {str(column).strip().lower(): column for column in df.columns}
 
     normalised_columns = {
-        _normalise_column_name(column): column
-        for column in df.columns
+        _normalise_column_name(column): column for column in df.columns
     }
 
     for alias in DAY17_ALIASES[logical_name]:
@@ -402,16 +355,13 @@ def _resolve_column(df, logical_name):
 # NUMERIC SERIES HELPER
 # ============================================================
 
+
 def _series(df, logical_name, default=np.nan):
 
     column = _resolve_column(df, logical_name)
 
     if column is None:
-        return pd.Series(
-            default,
-            index=df.index,
-            dtype="float64"
-        )
+        return pd.Series(default, index=df.index, dtype="float64")
 
     series = df[column]
 
@@ -429,26 +379,20 @@ def _series(df, logical_name, default=np.nan):
             .str.strip()
         )
 
-    return pd.to_numeric(
-        series,
-        errors="coerce"
-    )
+    return pd.to_numeric(series, errors="coerce")
 
 
 # ============================================================
 # BOOLEAN HELPER
 # ============================================================
 
+
 def _boolean_series(df, logical_name):
 
     column = _resolve_column(df, logical_name)
 
     if column is None:
-        return pd.Series(
-            False,
-            index=df.index,
-            dtype=bool
-        )
+        return pd.Series(False, index=df.index, dtype=bool)
 
     values = df[column]
 
@@ -459,14 +403,16 @@ def _boolean_series(df, logical_name):
         values.astype(str)
         .str.strip()
         .str.lower()
-        .isin([
-            "true",
-            "1",
-            "yes",
-            "y",
-            "decreasing",
-            "declining",
-        ])
+        .isin(
+            [
+                "true",
+                "1",
+                "yes",
+                "y",
+                "decreasing",
+                "declining",
+            ]
+        )
     )
 
 
@@ -474,48 +420,28 @@ def _boolean_series(df, logical_name):
 # P10 / P90 WINSORISATION + 0–100 NORMALISATION
 # ============================================================
 
+
 def _winsor_score(series):
 
-    s = pd.to_numeric(
-        series,
-        errors="coerce"
-    )
+    s = pd.to_numeric(series, errors="coerce")
 
     valid = s.dropna()
 
     if valid.empty:
-        return pd.Series(
-            50.0,
-            index=series.index,
-            dtype=float
-        )
+        return pd.Series(50.0, index=series.index, dtype=float)
 
     p10 = valid.quantile(0.10)
     p90 = valid.quantile(0.90)
 
     if pd.isna(p10) or pd.isna(p90):
-        return pd.Series(
-            50.0,
-            index=series.index,
-            dtype=float
-        )
+        return pd.Series(50.0, index=series.index, dtype=float)
 
     if p10 == p90:
-        return pd.Series(
-            50.0,
-            index=series.index,
-            dtype=float
-        )
+        return pd.Series(50.0, index=series.index, dtype=float)
 
-    clipped = s.clip(
-        lower=p10,
-        upper=p90
-    )
+    clipped = s.clip(lower=p10, upper=p90)
 
-    score = (
-        (clipped - p10)
-        / (p90 - p10)
-    ) * 100
+    score = ((clipped - p10) / (p90 - p10)) * 100
 
     return score.fillna(50.0)
 
@@ -524,41 +450,24 @@ def _winsor_score(series):
 # SECTOR-RELATIVE SCORE
 # ============================================================
 
-def _sector_relative_score(
-    df,
-    metric,
-    sector_column
-):
 
-    values = _series(
-        df,
-        metric
-    )
+def _sector_relative_score(df, metric, sector_column):
+
+    values = _series(df, metric)
 
     if sector_column is None:
 
-        return _winsor_score(
-            values
-        )
+        return _winsor_score(values)
 
-    result = pd.Series(
-        50.0,
-        index=df.index,
-        dtype=float
-    )
+    result = pd.Series(50.0, index=df.index, dtype=float)
 
     sectors = df[sector_column]
 
-    grouped = values.groupby(
-        sectors,
-        dropna=False
-    )
+    grouped = values.groupby(sectors, dropna=False)
 
     for _, index_values in grouped:
 
-        score = _winsor_score(
-            values.loc[index_values.index]
-        )
+        score = _winsor_score(values.loc[index_values.index])
 
         result.loc[index_values.index] = score
 
@@ -570,67 +479,36 @@ def _sector_relative_score(
 # LOWER VALUE = BETTER
 # ============================================================
 
-def _inverse_sector_score(
-    df,
-    metric,
-    sector_column
-):
 
-    normal_score = _sector_relative_score(
-        df,
-        metric,
-        sector_column
-    )
+def _inverse_sector_score(df, metric, sector_column):
 
-    return (
-        100 - normal_score
-    ).clip(0, 100)
+    normal_score = _sector_relative_score(df, metric, sector_column)
+
+    return (100 - normal_score).clip(0, 100)
 
 
 # ============================================================
 # CFO / PAT
 # ============================================================
 
+
 def _get_cfo_pat(df):
 
-    direct = _resolve_column(
-        df,
-        "cfo_pat"
-    )
+    direct = _resolve_column(df, "cfo_pat")
 
     if direct is not None:
 
-        return _series(
-            df,
-            "cfo_pat"
-        )
+        return _series(df, "cfo_pat")
 
-    cfo = _series(
-        df,
-        "cfo"
-    )
+    cfo = _series(df, "cfo")
 
-    pat = _series(
-        df,
-        "net_profit"
-    )
+    pat = _series(df, "net_profit")
 
-    result = pd.Series(
-        np.nan,
-        index=df.index,
-        dtype=float
-    )
+    result = pd.Series(np.nan, index=df.index, dtype=float)
 
-    valid = (
-        pat.notna()
-        & cfo.notna()
-        & pat.ne(0)
-    )
+    valid = pat.notna() & cfo.notna() & pat.ne(0)
 
-    result.loc[valid] = (
-        cfo.loc[valid]
-        / pat.loc[valid]
-    )
+    result.loc[valid] = cfo.loc[valid] / pat.loc[valid]
 
     return result
 
@@ -639,29 +517,20 @@ def _get_cfo_pat(df):
 # FCF CAGR
 # ============================================================
 
+
 def _get_fcf_cagr(df):
 
-    direct = _resolve_column(
-        df,
-        "fcf_cagr"
-    )
+    direct = _resolve_column(df, "fcf_cagr")
 
     if direct is not None:
 
-        return _series(
-            df,
-            "fcf_cagr"
-        )
+        return _series(df, "fcf_cagr")
 
     # If the project already has FCF CAGR, use it.
     # Otherwise keep neutral score rather than inventing
     # historical data from a single-year record.
 
-    return pd.Series(
-        np.nan,
-        index=df.index,
-        dtype=float
-    )
+    return pd.Series(np.nan, index=df.index, dtype=float)
 
 
 # ============================================================
@@ -669,20 +538,12 @@ def _get_fcf_cagr(df):
 # DEBT-FREE = INFINITY = 100
 # ============================================================
 
-def _icr_score(
-    df,
-    sector_column
-):
 
-    icr = _series(
-        df,
-        "icr"
-    )
+def _icr_score(df, sector_column):
 
-    de = _series(
-        df,
-        "de"
-    )
+    icr = _series(df, "icr")
+
+    de = _series(df, "de")
 
     debt_free = de.eq(0)
 
@@ -691,56 +552,32 @@ def _icr_score(
 
     icr_adjusted.loc[debt_free] = np.inf
 
-    finite_icr = icr_adjusted.replace(
-        [np.inf, -np.inf],
-        np.nan
-    )
+    finite_icr = icr_adjusted.replace([np.inf, -np.inf], np.nan)
 
-    score = _sector_relative_score_from_series(
-        finite_icr,
-        df,
-        sector_column
-    )
+    score = _sector_relative_score_from_series(finite_icr, df, sector_column)
 
     score.loc[debt_free] = 100.0
 
-    return score.clip(
-        0,
-        100
-    )
+    return score.clip(0, 100)
 
 
 # ============================================================
 # GENERIC SECTOR SCORE FROM SERIES
 # ============================================================
 
-def _sector_relative_score_from_series(
-    values,
-    df,
-    sector_column
-):
+
+def _sector_relative_score_from_series(values, df, sector_column):
 
     if sector_column is None:
-        return _winsor_score(
-            values
-        )
+        return _winsor_score(values)
 
-    result = pd.Series(
-        50.0,
-        index=df.index,
-        dtype=float
-    )
+    result = pd.Series(50.0, index=df.index, dtype=float)
 
-    grouped = values.groupby(
-        df[sector_column],
-        dropna=False
-    )
+    grouped = values.groupby(df[sector_column], dropna=False)
 
     for _, group in grouped:
 
-        result.loc[group.index] = (
-            _winsor_score(group)
-        )
+        result.loc[group.index] = _winsor_score(group)
 
     return result
 
@@ -749,18 +586,12 @@ def _sector_relative_score_from_series(
 # FCF POSITIVE SCORE
 # ============================================================
 
+
 def _fcf_positive_score(df):
 
-    fcf = _series(
-        df,
-        "fcf"
-    )
+    fcf = _series(df, "fcf")
 
-    result = pd.Series(
-        0.0,
-        index=df.index,
-        dtype=float
-    )
+    result = pd.Series(0.0, index=df.index, dtype=float)
 
     result.loc[fcf > 0] = 100.0
 
@@ -771,45 +602,24 @@ def _fcf_positive_score(df):
 # DE DECLINING
 # ============================================================
 
+
 def _calculate_de_declining(df):
 
-    direct = _resolve_column(
-        df,
-        "de_declining"
-    )
+    direct = _resolve_column(df, "de_declining")
 
     if direct is not None:
 
-        return _boolean_series(
-            df,
-            "de_declining"
-        )
+        return _boolean_series(df, "de_declining")
 
-    current_de = _series(
-        df,
-        "de"
-    )
+    current_de = _series(df, "de")
 
-    previous_de = _series(
-        df,
-        "de_previous_year"
-    )
+    previous_de = _series(df, "de_previous_year")
 
-    result = pd.Series(
-        False,
-        index=df.index,
-        dtype=bool
-    )
+    result = pd.Series(False, index=df.index, dtype=bool)
 
-    valid = (
-        current_de.notna()
-        & previous_de.notna()
-    )
+    valid = current_de.notna() & previous_de.notna()
 
-    result.loc[valid] = (
-        current_de.loc[valid]
-        < previous_de.loc[valid]
-    )
+    result.loc[valid] = current_de.loc[valid] < previous_de.loc[valid]
 
     return result
 
@@ -818,17 +628,13 @@ def _calculate_de_declining(df):
 # COMPOSITE QUALITY SCORE
 # ============================================================
 
-def calculate_composite_quality_score(
-    df,
-    sector_relative=True
-):
+
+def calculate_composite_quality_score(df, sector_relative=True):
+    """Calculate the composite quality score for normalized company data."""
 
     result = df.copy()
 
-    sector_column = _resolve_column(
-        result,
-        "broad_sector"
-    )
+    sector_column = _resolve_column(result, "broad_sector")
 
     # --------------------------------------------------------
     # Profitability — 35%
@@ -836,92 +642,50 @@ def calculate_composite_quality_score(
 
     if sector_relative:
 
-        roe_score = _sector_relative_score(
-            result,
-            "roe",
-            sector_column
-        )
+        roe_score = _sector_relative_score(result, "roe", sector_column)
 
-        roce_score = _sector_relative_score(
-            result,
-            "roce",
-            sector_column
-        )
+        roce_score = _sector_relative_score(result, "roce", sector_column)
 
-        npm_score = _sector_relative_score(
-            result,
-            "npm",
-            sector_column
-        )
+        npm_score = _sector_relative_score(result, "npm", sector_column)
 
     else:
 
-        roe_score = _winsor_score(
-            _series(result, "roe")
-        )
+        roe_score = _winsor_score(_series(result, "roe"))
 
-        roce_score = _winsor_score(
-            _series(result, "roce")
-        )
+        roce_score = _winsor_score(_series(result, "roce"))
 
-        npm_score = _winsor_score(
-            _series(result, "npm")
-        )
+        npm_score = _winsor_score(_series(result, "npm"))
 
-    profitability = (
-        roe_score * 0.15
-        + roce_score * 0.10
-        + npm_score * 0.10
-    )
+    profitability = roe_score * 0.15 + roce_score * 0.10 + npm_score * 0.10
 
     # --------------------------------------------------------
     # Cash Quality — 30%
     # --------------------------------------------------------
 
-    fcf_cagr = _get_fcf_cagr(
-        result
-    )
+    fcf_cagr = _get_fcf_cagr(result)
 
-    cfo_pat = _get_cfo_pat(
-        result
-    )
+    cfo_pat = _get_cfo_pat(result)
 
     if sector_relative:
 
-        fcf_cagr_score = (
-            _sector_relative_score_from_series(
-                fcf_cagr,
-                result,
-                sector_column
-            )
+        fcf_cagr_score = _sector_relative_score_from_series(
+            fcf_cagr, result, sector_column
         )
 
-        cfo_pat_score = (
-            _sector_relative_score_from_series(
-                cfo_pat,
-                result,
-                sector_column
-            )
+        cfo_pat_score = _sector_relative_score_from_series(
+            cfo_pat, result, sector_column
         )
 
     else:
 
-        fcf_cagr_score = _winsor_score(
-            fcf_cagr
-        )
+        fcf_cagr_score = _winsor_score(fcf_cagr)
 
-        cfo_pat_score = _winsor_score(
-            cfo_pat
-        )
+        cfo_pat_score = _winsor_score(cfo_pat)
 
-    fcf_positive_score = (
-        _fcf_positive_score(result)
-    )
+    fcf_positive_score = _fcf_positive_score(result)
 
     cash_quality = (
-        fcf_cagr_score * 0.15
-        + cfo_pat_score * 0.10
-        + fcf_positive_score * 0.05
+        fcf_cagr_score * 0.15 + cfo_pat_score * 0.10 + fcf_positive_score * 0.05
     )
 
     # --------------------------------------------------------
@@ -930,42 +694,19 @@ def calculate_composite_quality_score(
 
     if sector_relative:
 
-        revenue_growth_score = (
-            _sector_relative_score(
-                result,
-                "revenue_cagr_5yr",
-                sector_column
-            )
+        revenue_growth_score = _sector_relative_score(
+            result, "revenue_cagr_5yr", sector_column
         )
 
-        pat_growth_score = (
-            _sector_relative_score(
-                result,
-                "pat_cagr_5yr",
-                sector_column
-            )
-        )
+        pat_growth_score = _sector_relative_score(result, "pat_cagr_5yr", sector_column)
 
     else:
 
-        revenue_growth_score = _winsor_score(
-            _series(
-                result,
-                "revenue_cagr_5yr"
-            )
-        )
+        revenue_growth_score = _winsor_score(_series(result, "revenue_cagr_5yr"))
 
-        pat_growth_score = _winsor_score(
-            _series(
-                result,
-                "pat_cagr_5yr"
-            )
-        )
+        pat_growth_score = _winsor_score(_series(result, "pat_cagr_5yr"))
 
-    growth = (
-        revenue_growth_score * 0.10
-        + pat_growth_score * 0.10
-    )
+    growth = revenue_growth_score * 0.10 + pat_growth_score * 0.10
 
     # --------------------------------------------------------
     # Leverage — 15%
@@ -973,46 +714,24 @@ def calculate_composite_quality_score(
 
     if sector_relative:
 
-        de_score = _inverse_sector_score(
-            result,
-            "de",
-            sector_column
-        )
+        de_score = _inverse_sector_score(result, "de", sector_column)
 
     else:
 
-        de_score = (
-            100
-            - _winsor_score(
-                _series(result, "de")
-            )
-        )
+        de_score = 100 - _winsor_score(_series(result, "de"))
 
-    icr_score = _icr_score(
-        result,
-        sector_column
-    )
+    icr_score = _icr_score(result, sector_column)
 
-    leverage = (
-        de_score * 0.10
-        + icr_score * 0.05
-    )
+    leverage = de_score * 0.10 + icr_score * 0.05
 
     # --------------------------------------------------------
     # Final score
     # --------------------------------------------------------
 
-    result["composite_quality_score"] = (
-        profitability
-        + cash_quality
-        + growth
-        + leverage
-    )
+    result["composite_quality_score"] = profitability + cash_quality + growth + leverage
 
     result["composite_quality_score"] = (
-        result["composite_quality_score"]
-        .clip(0, 100)
-        .round(2)
+        result["composite_quality_score"].clip(0, 100).round(2)
     )
 
     # --------------------------------------------------------
@@ -1020,9 +739,7 @@ def calculate_composite_quality_score(
     # --------------------------------------------------------
 
     result = result.sort_values(
-        "composite_quality_score",
-        ascending=False,
-        kind="mergesort"
+        "composite_quality_score", ascending=False, kind="mergesort"
     ).reset_index(drop=True)
 
     return result
@@ -1032,28 +749,19 @@ def calculate_composite_quality_score(
 # PRESET FILTER
 # ============================================================
 
-def _apply_day17_preset_check(
-    df,
-    preset_name
-):
+
+def _apply_day17_preset_check(df, preset_name):
 
     result = df.copy()
 
-    rules = DAY17_PRESETS[
-        preset_name
-    ]
+    rules = DAY17_PRESETS[preset_name]
 
-    mask = pd.Series(
-        True,
-        index=result.index
-    )
+    mask = pd.Series(True, index=result.index)
 
     # Create D/E declining if necessary.
     if "de_declining" in rules:
 
-        result["_day17_de_declining"] = (
-            _calculate_de_declining(result)
-        )
+        result["_day17_de_declining"] = _calculate_de_declining(result)
 
     for metric, rule in rules.items():
 
@@ -1065,14 +773,9 @@ def _apply_day17_preset_check(
 
         if metric == "de_declining":
 
-            values = result[
-                "_day17_de_declining"
-            ]
+            values = result["_day17_de_declining"]
 
-            mask &= (
-                values
-                == bool(threshold)
-            )
+            mask &= values == bool(threshold)
 
             continue
 
@@ -1080,10 +783,7 @@ def _apply_day17_preset_check(
         # Numeric rule
         # ----------------------------------------------------
 
-        values = _series(
-            result,
-            metric
-        )
+        values = _series(result, metric)
 
         if operator == ">":
 
@@ -1103,21 +803,11 @@ def _apply_day17_preset_check(
 
         elif operator == "=":
 
-            mask &= np.isclose(
-                values,
-                threshold,
-                equal_nan=False
-            )
+            mask &= np.isclose(values, threshold, equal_nan=False)
 
-    result = result.loc[
-        mask
-    ].copy()
+    result = result.loc[mask].copy()
 
-    result.drop(
-        columns=["_day17_de_declining"],
-        errors="ignore",
-        inplace=True
-    )
+    result.drop(columns=["_day17_de_declining"], errors="ignore", inplace=True)
 
     return result
 
@@ -1127,33 +817,25 @@ def _apply_day17_preset_check(
 # ============================================================
 
 DAY17_KPI_KEYS = [
-
     "company_id",
     "company_name",
     "broad_sector",
-
     "roe",
     "roce",
     "npm",
-
     "de",
     "fcf",
     "fcf_cagr",
     "cfo_pat",
-
     "revenue_cagr_5yr",
     "pat_cagr_5yr",
     "eps_cagr_5yr",
-
     "icr",
-
     "market_cap",
     "net_profit",
     "eps",
     "asset_turnover",
-
     "dividend_yield",
-
     "composite_quality_score",
 ]
 
@@ -1162,52 +844,38 @@ DAY17_KPI_KEYS = [
 # PREPARE KPI OUTPUT
 # ============================================================
 
+
 def _prepare_kpi_output(df):
 
-    output = pd.DataFrame(
-        index=df.index
-    )
+    output = pd.DataFrame(index=df.index)
 
     for key in DAY17_KPI_KEYS:
 
         if key == "composite_quality_score":
 
-            output[
-                "composite_quality_score"
-            ] = df[
-                "composite_quality_score"
-            ]
+            output["composite_quality_score"] = df["composite_quality_score"]
 
             continue
 
         # CFO/PAT can be derived.
         if key == "cfo_pat":
 
-            output["cfo_pat"] = (
-                _get_cfo_pat(df)
-            )
+            output["cfo_pat"] = _get_cfo_pat(df)
 
             continue
 
         # FCF CAGR can be derived/loaded.
         if key == "fcf_cagr":
 
-            output["fcf_cagr"] = (
-                _get_fcf_cagr(df)
-            )
+            output["fcf_cagr"] = _get_fcf_cagr(df)
 
             continue
 
-        column = _resolve_column(
-            df,
-            key
-        )
+        column = _resolve_column(df, key)
 
         if column is not None:
 
-            output[key] = df[
-                column
-            ]
+            output[key] = df[column]
 
         else:
 
@@ -1220,45 +888,29 @@ def _prepare_kpi_output(df):
 # EXCEL THRESHOLD CHECK
 # ============================================================
 
-def _cell_meets_threshold(
-    value,
-    metric,
-    preset_name
-):
+
+def _cell_meets_threshold(value, metric, preset_name):
 
     if pd.isna(value):
         return False
 
-    rules = DAY17_PRESETS.get(
-        preset_name,
-        {}
-    )
+    rules = DAY17_PRESETS.get(preset_name, {})
 
     if metric not in rules:
         return False
 
-    operator, threshold = (
-        rules[metric]
-    )
+    operator, threshold = rules[metric]
 
     # Boolean
     if metric == "de_declining":
 
-        return (
-            bool(value)
-            == bool(threshold)
-        )
+        return bool(value) == bool(threshold)
 
     try:
 
-        numeric_value = float(
-            value
-        )
+        numeric_value = float(value)
 
-    except (
-        TypeError,
-        ValueError
-    ):
+    except (TypeError, ValueError):
 
         return False
 
@@ -1275,10 +927,7 @@ def _cell_meets_threshold(
         return numeric_value <= threshold
 
     if operator == "=":
-        return np.isclose(
-            numeric_value,
-            threshold
-        )
+        return np.isclose(numeric_value, threshold)
 
     return False
 
@@ -1287,19 +936,13 @@ def _cell_meets_threshold(
 # EXCEL EXPORT
 # ============================================================
 
-def export_screener_output(
-    preset_results,
-    output_path=SCREENER_OUTPUT_XLSX
-):
 
-    output_path = Path(
-        output_path
-    )
+def export_screener_output(preset_results, output_path=SCREENER_OUTPUT_XLSX):
+    """Export screener results to an Excel workbook."""
 
-    output_path.parent.mkdir(
-        parents=True,
-        exist_ok=True
-    )
+    output_path = Path(output_path)
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
 
     wb = Workbook()
 
@@ -1311,79 +954,46 @@ def export_screener_output(
     # Styles
     # --------------------------------------------------------
 
-    green_fill = PatternFill(
-        fill_type="solid",
-        fgColor="C6EFCE"
-    )
+    green_fill = PatternFill(fill_type="solid", fgColor="C6EFCE")
 
-    red_fill = PatternFill(
-        fill_type="solid",
-        fgColor="FFC7CE"
-    )
+    red_fill = PatternFill(fill_type="solid", fgColor="FFC7CE")
 
-    header_fill = PatternFill(
-        fill_type="solid",
-        fgColor="D9EAF7"
-    )
+    header_fill = PatternFill(fill_type="solid", fgColor="D9EAF7")
 
-    header_font = Font(
-        bold=True
-    )
+    header_font = Font(bold=True)
 
     # --------------------------------------------------------
     # Create six sheets
     # --------------------------------------------------------
 
-    for preset_name, df in (
-        preset_results.items()
-    ):
+    for preset_name, df in preset_results.items():
 
         sheet_name = preset_name[:31]
 
-        ws = wb.create_sheet(
-            title=sheet_name
-        )
+        ws = wb.create_sheet(title=sheet_name)
 
-        kpi_df = _prepare_kpi_output(
-            df
-        )
+        kpi_df = _prepare_kpi_output(df)
 
         # ----------------------------------------------------
         # Header
         # ----------------------------------------------------
 
-        for column_index, column in enumerate(
-            kpi_df.columns,
-            start=1
-        ):
+        for column_index, column in enumerate(kpi_df.columns, start=1):
 
-            cell = ws.cell(
-                row=1,
-                column=column_index,
-                value=column
-            )
+            cell = ws.cell(row=1, column=column_index, value=column)
 
             cell.fill = header_fill
             cell.font = header_font
 
-            cell.alignment = Alignment(
-                horizontal="center",
-                vertical="center"
-            )
+            cell.alignment = Alignment(horizontal="center", vertical="center")
 
         # ----------------------------------------------------
         # Data
         # ----------------------------------------------------
 
-        for row_index, (_, row) in enumerate(
-            kpi_df.iterrows(),
-            start=2
-        ):
+        for row_index, (_, row) in enumerate(kpi_df.iterrows(), start=2):
 
-            for column_index, column in enumerate(
-                kpi_df.columns,
-                start=1
-            ):
+            for column_index, column in enumerate(kpi_df.columns, start=1):
 
                 value = row[column]
 
@@ -1395,28 +1005,15 @@ def export_screener_output(
 
                     excel_value = value
 
-                cell = ws.cell(
-                    row=row_index,
-                    column=column_index,
-                    value=excel_value
-                )
+                cell = ws.cell(row=row_index, column=column_index, value=excel_value)
 
                 # ------------------------------------------------
                 # Preset threshold colour
                 # ------------------------------------------------
 
-                if column in DAY17_PRESETS.get(
-                    preset_name,
-                    {}
-                ):
+                if column in DAY17_PRESETS.get(preset_name, {}):
 
-                    meets = (
-                        _cell_meets_threshold(
-                            value,
-                            column,
-                            preset_name
-                        )
-                    )
+                    meets = _cell_meets_threshold(value, column, preset_name)
 
                     if meets:
 
@@ -1438,82 +1035,49 @@ def export_screener_output(
 
         if ws.max_row >= 1:
 
-            ws.auto_filter.ref = (
-                ws.dimensions
-            )
+            ws.auto_filter.ref = ws.dimensions
 
         # ----------------------------------------------------
         # Header row height
         # ----------------------------------------------------
 
-        ws.row_dimensions[
-            1
-        ].height = 24
+        ws.row_dimensions[1].height = 24
 
         # ----------------------------------------------------
         # Auto width
         # ----------------------------------------------------
 
-        for column_index in range(
-            1,
-            len(kpi_df.columns) + 1
-        ):
+        for column_index in range(1, len(kpi_df.columns) + 1):
 
-            column_letter = (
-                get_column_letter(
-                    column_index
-                )
-            )
+            column_letter = get_column_letter(column_index)
 
             max_length = 0
 
-            for cell in ws[
-                column_letter
-            ]:
+            for cell in ws[column_letter]:
 
                 if cell.value is not None:
 
-                    max_length = max(
-                        max_length,
-                        len(str(cell.value))
-                    )
+                    max_length = max(max_length, len(str(cell.value)))
 
-            ws.column_dimensions[
-                column_letter
-            ].width = min(
-                max(
-                    max_length + 2,
-                    12
-                ),
-                30
-            )
+            ws.column_dimensions[column_letter].width = min(max(max_length + 2, 12), 30)
 
         # ----------------------------------------------------
         # Number formatting
         # ----------------------------------------------------
 
-        for row in ws.iter_rows(
-            min_row=2
-        ):
+        for row in ws.iter_rows(min_row=2):
 
             for cell in row:
 
-                if isinstance(
-                    cell.value,
-                    (int, float, np.integer, np.floating)
-                ):
+                if isinstance(cell.value, (int, float, np.integer, np.floating)):
 
-                    cell.number_format = (
-                        "0.00"
-                    )
+                    cell.number_format = "0.00"
 
     # --------------------------------------------------------
     # Save
     # --------------------------------------------------------
 
-    wb.save(
-        output_path
-    )
+    wb.save(output_path)
 
     return output_path
 
@@ -1521,6 +1085,7 @@ def export_screener_output(
 # ============================================================
 # LOAD DAY 17 DATA
 # ============================================================
+
 
 def _load_day17_data():
 
@@ -1534,9 +1099,7 @@ def _load_day17_data():
         "load_data",
     ]:
 
-        loader = globals().get(
-            loader_name
-        )
+        loader = globals().get(loader_name)
 
         if callable(loader):
 
@@ -1544,10 +1107,7 @@ def _load_day17_data():
 
                 loaded = loader()
 
-                if isinstance(
-                    loaded,
-                    pd.DataFrame
-                ):
+                if isinstance(loaded, pd.DataFrame):
 
                     return loaded
 
@@ -1560,9 +1120,7 @@ def _load_day17_data():
 
     if DEFAULT_DAY17_INPUT.exists():
 
-        df = pd.read_csv(
-            DEFAULT_DAY17_INPUT
-        )
+        df = pd.read_csv(DEFAULT_DAY17_INPUT)
 
         if not df.empty:
 
@@ -1573,21 +1131,10 @@ def _load_day17_data():
     # --------------------------------------------------------
 
     candidates = [
-
-        OUTPUT_DIR
-        / "financial_ratios.csv",
-
-        OUTPUT_DIR
-        / "nifty100_screened_results.csv",
-
-        PROJECT_ROOT
-        / "data"
-        / "financial_ratios.csv",
-
-        PROJECT_ROOT
-        / "data"
-        / "financial_ratios.xlsx",
-
+        OUTPUT_DIR / "financial_ratios.csv",
+        OUTPUT_DIR / "nifty100_screened_results.csv",
+        PROJECT_ROOT / "data" / "financial_ratios.csv",
+        PROJECT_ROOT / "data" / "financial_ratios.xlsx",
     ]
 
     for candidate in candidates:
@@ -1599,20 +1146,13 @@ def _load_day17_data():
 
             if candidate.suffix.lower() == ".csv":
 
-                df = pd.read_csv(
-                    candidate
-                )
+                df = pd.read_csv(candidate)
 
             else:
 
-                df = pd.read_excel(
-                    candidate
-                )
+                df = pd.read_excel(candidate)
 
-            if isinstance(
-                df,
-                pd.DataFrame
-            ) and not df.empty:
+            if isinstance(df, pd.DataFrame) and not df.empty:
 
                 return df
 
@@ -1632,7 +1172,9 @@ def _load_day17_data():
 # DAY 17 MAIN RUNNER
 # ============================================================
 
+
 def run_day17(df=None):
+    """Run the Day 17 preset screener and export workflow."""
 
     print()
     print("=" * 70)
@@ -1648,59 +1190,30 @@ def run_day17(df=None):
 
         df = _load_day17_data()
 
-    if not isinstance(
-        df,
-        pd.DataFrame
-    ):
+    if not isinstance(df, pd.DataFrame):
 
-        raise TypeError(
-            "run_day17(df) requires "
-            "a pandas DataFrame."
-        )
+        raise TypeError("run_day17(df) requires " "a pandas DataFrame.")
 
     if df.empty:
 
-        raise ValueError(
-            "Day 17 received an empty DataFrame."
-        )
+        raise ValueError("Day 17 received an empty DataFrame.")
 
-    print(
-        f"Latest company records: {len(df)}"
-    )
+    print(f"Latest company records: {len(df)}")
 
     # --------------------------------------------------------
     # Calculate composite score
     # --------------------------------------------------------
 
-    scored_df = (
-        calculate_composite_quality_score(
-            df,
-            sector_relative=True
-        )
-    )
+    scored_df = calculate_composite_quality_score(df, sector_relative=True)
 
-    min_score = (
-        scored_df[
-            "composite_quality_score"
-        ].min()
-    )
+    min_score = scored_df["composite_quality_score"].min()
 
-    max_score = (
-        scored_df[
-            "composite_quality_score"
-        ].max()
-    )
+    max_score = scored_df["composite_quality_score"].max()
 
     print()
-    print(
-        "Composite quality score calculated."
-    )
+    print("Composite quality score calculated.")
 
-    print(
-        f"Score range: "
-        f"{min_score:.2f} - "
-        f"{max_score:.2f}"
-    )
+    print(f"Score range: " f"{min_score:.2f} - " f"{max_score:.2f}")
 
     # --------------------------------------------------------
     # Generate six preset results
@@ -1715,76 +1228,39 @@ def run_day17(df=None):
 
     for preset_name in DAY17_PRESETS:
 
-        preset_df = (
-            _apply_day17_preset_check(
-                scored_df,
-                preset_name
-            )
-        )
+        preset_df = _apply_day17_preset_check(scored_df, preset_name)
 
-        preset_df = (
-            preset_df
-            .sort_values(
-                "composite_quality_score",
-                ascending=False,
-                kind="mergesort"
-            )
-            .reset_index(drop=True)
-        )
+        preset_df = preset_df.sort_values(
+            "composite_quality_score", ascending=False, kind="mergesort"
+        ).reset_index(drop=True)
 
-        preset_results[
-            preset_name
-        ] = preset_df
+        preset_results[preset_name] = preset_df
 
-        print(
-            f"{preset_name:<25}"
-            f"{len(preset_df):>4} companies"
-        )
+        print(f"{preset_name:<25}" f"{len(preset_df):>4} companies")
 
     # --------------------------------------------------------
     # Export Excel
     # --------------------------------------------------------
 
-    output_path = (
-        export_screener_output(
-            preset_results,
-            SCREENER_OUTPUT_XLSX
-        )
-    )
+    output_path = export_screener_output(preset_results, SCREENER_OUTPUT_XLSX)
 
     print()
     print("=" * 70)
     print("DAY 17 — EXPORT COMPLETE")
     print("=" * 70)
 
-    print(
-        f"Excel file: {output_path}"
-    )
+    print(f"Excel file: {output_path}")
 
-    print(
-        f"Sheets created: "
-        f"{len(preset_results)}"
-    )
+    print(f"Sheets created: " f"{len(preset_results)}")
 
-    for preset_name, result in (
-        preset_results.items()
-    ):
+    for preset_name, result in preset_results.items():
 
-        print(
-            f"  {preset_name}: "
-            f"{len(result)} companies"
-        )
+        print(f"  {preset_name}: " f"{len(result)} companies")
 
     print()
-    print(
-        "SUCCESS: Day 17 composite score "
-        "and screener export completed."
-    )
+    print("SUCCESS: Day 17 composite score " "and screener export completed.")
 
-    return (
-        scored_df,
-        preset_results
-    )
+    return (scored_df, preset_results)
 
 
 # ============================================================

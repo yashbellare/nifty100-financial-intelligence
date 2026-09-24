@@ -9,7 +9,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-
 DB_PATH = Path("nifty100.db")
 OUTPUT_DIR = Path("reports/radar_charts")
 
@@ -106,9 +105,7 @@ def load_composite_scores(
         result = pd.read_sql_query(query, conn)
 
     else:
-        result = pd.DataFrame(
-            columns=["company_id", "composite_score"]
-        )
+        result = pd.DataFrame(columns=["company_id", "composite_score"])
 
     conn.close()
 
@@ -194,11 +191,7 @@ def build_radar_values(
 
         company_values.append(scaled[-1])
 
-        peer_values.append(
-            np.mean(scaled[:-1])
-            if len(scaled) > 1
-            else 0
-        )
+        peer_values.append(np.mean(scaled[:-1]) if len(scaled) > 1 else 0)
 
     return (
         np.array(company_values),
@@ -230,13 +223,9 @@ def generate_radar_chart(
     ).tolist()
 
     # Close polygons.
-    company_values = np.concatenate(
-        [company_values, [company_values[0]]]
-    )
+    company_values = np.concatenate([company_values, [company_values[0]]])
 
-    peer_values = np.concatenate(
-        [peer_values, [peer_values[0]]]
-    )
+    peer_values = np.concatenate([peer_values, [peer_values[0]]])
 
     angles += angles[:1]
 
@@ -286,8 +275,7 @@ def generate_radar_chart(
     )
 
     ax.set_title(
-        f"{company['company_id']} — {peer_group}\n"
-        "Peer Comparison Radar",
+        f"{company['company_id']} — {peer_group}\n" "Peer Comparison Radar",
         fontsize=14,
         pad=25,
     )
@@ -327,9 +315,7 @@ def generate_all_radar_charts(
         print("No financial data found.")
         return 0
 
-    assigned = df[
-        df["peer_group_name"].notna()
-    ].copy()
+    assigned = df[df["peer_group_name"].notna()].copy()
 
     if assigned.empty:
         print("No companies have peer groups assigned.")
@@ -341,13 +327,9 @@ def generate_all_radar_charts(
 
         peer_group = company["peer_group_name"]
 
-        peers = assigned[
-            assigned["peer_group_name"] == peer_group
-        ].copy()
+        peers = assigned[assigned["peer_group_name"] == peer_group].copy()
 
-        filename = (
-            f"{company['company_id']}_radar.png"
-        )
+        filename = f"{company['company_id']}_radar.png"
 
         output_path = output_dir / filename
 
@@ -359,10 +341,7 @@ def generate_all_radar_charts(
 
         generated += 1
 
-        print(
-            f"✓ {company['company_id']} "
-            f"({peer_group}) -> {output_path}"
-        )
+        print(f"✓ {company['company_id']} " f"({peer_group}) -> {output_path}")
 
     return generated
 

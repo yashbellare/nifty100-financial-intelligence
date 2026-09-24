@@ -3,7 +3,6 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
-
 # Project paths
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
@@ -32,13 +31,7 @@ def _filter_company(df: pd.DataFrame, ticker: str) -> pd.DataFrame:
 
     ticker = str(ticker).strip().upper()
 
-    return df[
-        df["company_id"]
-        .astype(str)
-        .str.strip()
-        .str.upper()
-        == ticker
-    ].copy()
+    return df[df["company_id"].astype(str).str.strip().str.upper() == ticker].copy()
 
 
 def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
@@ -55,7 +48,9 @@ def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
         "sub sector": "sub_sector",
         "dividend_yield": "dividend_yield_pct",
     }
-    result = result.rename(columns={key: value for key, value in aliases.items() if key in result.columns})
+    result = result.rename(
+        columns={key: value for key, value in aliases.items() if key in result.columns}
+    )
     return result
 
 
@@ -63,8 +58,10 @@ def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
 # COMPANY MASTER
 # ============================================================
 
+
 @st.cache_data(ttl=600)
 def get_companies() -> pd.DataFrame:
+    """Load normalized company master data."""
     return _normalize_columns(_load_excel("companies.xlsx", header=1))
 
 
@@ -72,8 +69,10 @@ def get_companies() -> pd.DataFrame:
 # FINANCIAL RATIOS
 # ============================================================
 
+
 @st.cache_data(ttl=600)
 def get_ratios(ticker: str, year=None) -> pd.DataFrame:
+    """Load ratio history for a ticker, optionally filtered by year."""
     df = _load_excel(
         "financial_ratios.xlsx",
         header=0,
@@ -84,9 +83,7 @@ def get_ratios(ticker: str, year=None) -> pd.DataFrame:
 
     if year is not None and "year" in df.columns:
         df = df[
-            df["year"]
-            .astype(str)
-            .str.contains(str(year), case=False, na=False)
+            df["year"].astype(str).str.contains(str(year), case=False, na=False)
         ].copy()
 
     return df
@@ -96,8 +93,10 @@ def get_ratios(ticker: str, year=None) -> pd.DataFrame:
 # PROFIT & LOSS
 # ============================================================
 
+
 @st.cache_data(ttl=600)
 def get_pl(ticker: str) -> pd.DataFrame:
+    """Load profit and loss history for a ticker."""
     df = _load_excel("profitandloss.xlsx", header=1)
 
     return _filter_company(_normalize_columns(df), ticker)
@@ -107,8 +106,10 @@ def get_pl(ticker: str) -> pd.DataFrame:
 # BALANCE SHEET
 # ============================================================
 
+
 @st.cache_data(ttl=600)
 def get_bs(ticker: str) -> pd.DataFrame:
+    """Load balance sheet history for a ticker."""
     df = _load_excel("balancesheet.xlsx", header=1)
 
     return _filter_company(_normalize_columns(df), ticker)
@@ -118,8 +119,10 @@ def get_bs(ticker: str) -> pd.DataFrame:
 # CASH FLOW
 # ============================================================
 
+
 @st.cache_data(ttl=600)
 def get_cf(ticker: str) -> pd.DataFrame:
+    """Load cash flow history for a ticker."""
     df = _load_excel("cashflow.xlsx", header=1)
 
     return _filter_company(_normalize_columns(df), ticker)
@@ -129,39 +132,41 @@ def get_cf(ticker: str) -> pd.DataFrame:
 # SECTORS
 # ============================================================
 
+
 @st.cache_data(ttl=600)
 def get_sectors() -> pd.DataFrame:
-    return _normalize_columns(_load_excel(
-        "sectors.xlsx",
-        header=0,
-        supporting=True,
-    ))
+    """Load normalized sector assignments."""
+    return _normalize_columns(
+        _load_excel(
+            "sectors.xlsx",
+            header=0,
+            supporting=True,
+        )
+    )
 
 
 # ============================================================
 # PEER GROUPS
 # ============================================================
 
+
 @st.cache_data(ttl=600)
 def get_peers(group_name: str) -> pd.DataFrame:
-    df = _normalize_columns(_load_excel(
-        "peer_groups.xlsx",
-        header=0,
-        supporting=True,
-    ))
+    """Load companies belonging to a peer group."""
+    df = _normalize_columns(
+        _load_excel(
+            "peer_groups.xlsx",
+            header=0,
+            supporting=True,
+        )
+    )
 
     if "peer_group_name" not in df.columns:
         return df.iloc[0:0].copy()
 
     group = str(group_name).strip().lower()
 
-    return df[
-        df["peer_group_name"]
-        .astype(str)
-        .str.strip()
-        .str.lower()
-        == group
-    ].copy()
+    return df[df["peer_group_name"].astype(str).str.strip().str.lower() == group].copy()
 
 
 @st.cache_data(ttl=600)
@@ -171,15 +176,19 @@ def get_peer_group_names() -> list[str]:
     df = _load_excel("peer_groups.xlsx", header=0, supporting=True)
     if "peer_group_name" not in df.columns:
         return []
-    return sorted(df["peer_group_name"].dropna().astype(str).str.strip().unique().tolist())
+    return sorted(
+        df["peer_group_name"].dropna().astype(str).str.strip().unique().tolist()
+    )
 
 
 # ============================================================
 # VALUATION
 # ============================================================
 
+
 @st.cache_data(ttl=600)
 def get_valuation(ticker: str) -> pd.DataFrame:
+    """Load generated valuation summary data for a ticker."""
     path = OUTPUT_DIR / "valuation_summary.xlsx"
 
     if not path.exists():
@@ -194,20 +203,23 @@ def get_valuation(ticker: str) -> pd.DataFrame:
 # MARKET CAP
 # ============================================================
 
+
 @st.cache_data(ttl=600)
 def get_market_cap(ticker: str, year=None) -> pd.DataFrame:
-    df = _normalize_columns(_load_excel(
-        "market_cap.xlsx",
-        header=0,
-        supporting=True,
-    ))
+    """Load market-cap history for a ticker, optionally filtered by year."""
+    df = _normalize_columns(
+        _load_excel(
+            "market_cap.xlsx",
+            header=0,
+            supporting=True,
+        )
+    )
 
     df = _filter_company(df, ticker)
 
     if year is not None and "year" in df.columns:
         df = df[
-            df["year"].astype(str).str.extract(r"(20\d{2})", expand=False)
-            == str(year)
+            df["year"].astype(str).str.extract(r"(20\d{2})", expand=False) == str(year)
         ].copy()
 
     return df
@@ -217,8 +229,10 @@ def get_market_cap(ticker: str, year=None) -> pd.DataFrame:
 # ANNUAL REPORT DOCUMENTS
 # ============================================================
 
+
 @st.cache_data(ttl=600)
 def get_documents(ticker: str) -> pd.DataFrame:
+    """Load annual-report documents for a ticker."""
     df = _load_excel("documents.xlsx", header=1)
 
     return _filter_company(_normalize_columns(df), ticker)
@@ -228,8 +242,10 @@ def get_documents(ticker: str) -> pd.DataFrame:
 # PROS & CONS
 # ============================================================
 
+
 @st.cache_data(ttl=600)
 def get_pros_cons(ticker: str) -> pd.DataFrame:
+    """Load generated pros and cons for a ticker."""
     df = _load_excel("prosandcons.xlsx", header=1)
 
     return _filter_company(_normalize_columns(df), ticker)
@@ -239,12 +255,16 @@ def get_pros_cons(ticker: str) -> pd.DataFrame:
 # STOCK PRICES
 # ============================================================
 
+
 @st.cache_data(ttl=600)
 def get_stock_prices(ticker: str) -> pd.DataFrame:
-    df = _normalize_columns(_load_excel(
-        "stock_prices.xlsx",
-        header=0,
-        supporting=True,
-    ))
+    """Load stock-price history for a ticker."""
+    df = _normalize_columns(
+        _load_excel(
+            "stock_prices.xlsx",
+            header=0,
+            supporting=True,
+        )
+    )
 
     return _filter_company(df, ticker)

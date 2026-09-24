@@ -1,10 +1,10 @@
 """SQLite connection helpers used by the API."""
+
 from __future__ import annotations
 
 import sqlite3
 from pathlib import Path
 from typing import Iterator
-
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_DB_PATH = PROJECT_ROOT / "nifty100.db"
