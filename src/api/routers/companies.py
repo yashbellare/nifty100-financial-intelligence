@@ -4,6 +4,7 @@ from __future__ import annotations
 import re
 import sqlite3
 from pathlib import Path
+from urllib.parse import urlparse
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from fastapi.responses import FileResponse
@@ -150,6 +151,76 @@ def get_company(
         "sector": sector_payload,
         "latest_ratios": _row_to_dict(latest_ratios) or {},
     }
+
+
+@router.get("/{ticker}/peers/compare")
+def compare_company_peers(
+    ticker: str,
+    connection: sqlite3.Connection = Depends(get_db),
+) -> dict[str, object]:
+    """Return eight radar metrics for a company, its peer average, and its benchmark."""
+    normalized_ticker = ticker.strip().upper()
+    company = connection.execute(
+        "SELECT 1 FROM companies WHERE id = ?", [normalized_ticker]
+    ).fetchone()
+    if company is None:
+        raise HTTPException(status_code=404, detail="Company not found")
+    group = connection.execute(
+        "SELECT peer_group_name FROM peer_groups WHERE company_id = ? LIMIT 1", [normalized_ticker]
+    ).fetchone()
+    if group is None:
+        raise HTTPException(status_code=404, detail="Peer group not found")
+    metrics = [
+        "return_on_equity_pct", "return_on_capital_employed_pct", "net_profit_margin_pct",
+        "debt_to_equity", "interest_coverage", "revenue_cagr_5yr", "pat_cagr_5yr",
+        "free_cash_flow_cr",
+    ]
+    latest = connection.execute(
+        "SELECT * FROM financial_ratios WHERE company_id = ? ORDER BY year DESC LIMIT 1", [normalized_ticker]
+    ).fetchone()
+    peers = connection.execute(
+        """SELECT r.* FROM financial_ratios r JOIN peer_groups p ON p.company_id = r.company_id
+           WHERE p.peer_group_name = ? AND r.year = (SELECT MAX(r2.year) FROM financial_ratios r2 WHERE r2.company_id = r.company_id)""",
+        [group["peer_group_name"]],
+    ).fetchall()
+    benchmark = connection.execute(
+        """SELECT r.* FROM financial_ratios r JOIN peer_groups p ON p.company_id = r.company_id
+           WHERE p.peer_group_name = ? AND p.is_benchmark = 1 ORDER BY r.year DESC LIMIT 1""",
+        [group["peer_group_name"]],
+    ).fetchone()
+
+    def values(row: sqlite3.Row | None) -> dict[str, object]:
+        return {metric: (row[metric] if row and metric in row.keys() else None) for metric in metrics}
+
+    averages = {
+        metric: sum(float(row[metric]) for row in peers if row[metric] is not None) / sum(row[metric] is not None for row in peers)
+        if any(row[metric] is not None for row in peers) else None
+        for metric in metrics
+    }
+    return {
+        "company_id": normalized_ticker,
+        "peer_group": group["peer_group_name"],
+        "metrics": metrics,
+        "company": values(latest),
+        "peer_group_average": averages,
+        "benchmark": values(benchmark),
+    }
+
+
+@router.get("/{ticker}/documents")
+def get_company_documents(
+    ticker: str,
+    connection: sqlite3.Connection = Depends(get_db),
+) -> list[dict[str, object]]:
+    """Return annual-report links for a company with URL validity flags."""
+    rows = connection.execute(
+        "SELECT year, annual_report FROM documents WHERE company_id = ? ORDER BY year DESC",
+        [ticker.strip().upper()],
+    ).fetchall()
+    return [
+        {**dict(row), "is_url_valid": bool(urlparse(str(row["annual_report"] or "")).scheme in {"http", "https"})}
+        for row in rows
+    ]
 
 
 @router.get("/{ticker}/pl")
