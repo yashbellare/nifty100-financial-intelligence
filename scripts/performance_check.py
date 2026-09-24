@@ -1,4 +1,5 @@
 """Run the Day 43 API and dashboard data-load performance checks."""
+
 from __future__ import annotations
 
 import sqlite3
@@ -12,7 +13,6 @@ from fastapi.testclient import TestClient
 from src.api.database import DEFAULT_DB_PATH
 from src.api.main import app
 from src.dashboard.utils.db import get_companies, get_ratios
-
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "output" / "perf_notes.md"

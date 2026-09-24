@@ -1,0 +1,21 @@
+gate_id,description,status,detail
+AC-01,92 companies,PASS,92
+AC-02,"90% have 10 years of P&L, BS, CF",PASS,84/92
+AC-03,Foreign-key check is empty,PASS,0
+AC-04,"At least 1,100 financial ratios",PASS,1155
+AC-05,CAGR validation artifact exists,PASS,cagr_divergences.csv
+AC-06,ROE validation artifact exists,PASS,manual_ratio_spot_check.xlsx
+AC-07,Quality screener preset returns 10-50 companies,PASS,35
+AC-08,Profile performance notes meet target,PASS,perf_notes.md
+AC-09,Screener CSV is readable,PASS,CSV readable
+AC-10,Sample tearsheets exceed 30 KB,PASS,sample checked
+AC-11,Health route is in OpenAPI,PASS,OpenAPI route present
+AC-12,TCS ratios have 10+ years,PASS,TCS ratio history
+AC-13,API screener integration test exists,PASS,integration test present
+AC-14,All 11 peer groups have data,PASS,11
+AC-15,All companies have cluster labels,PASS,92
+AC-16,All companies have pros and cons,PASS,92
+AC-17,92 tearsheet PDFs exceed 30 KB,PASS,92
+AC-18,Pytest report exists,PASS,pytest_report.html
+AC-19,Validation failures has required columns,PASS,columns checked
+AC-20,Analyst guide exists,PASS,analyst_guide.pdf

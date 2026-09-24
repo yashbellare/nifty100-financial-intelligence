@@ -4,7 +4,6 @@ import pytest
 
 from src.etl.loader import RAW, SUP, clean_df, read_excel
 
-
 CORE_FILES = [
     ("companies", RAW / "companies.xlsx", True, "id"),
     ("profitandloss", RAW / "profitandloss.xlsx", True, "company_id"),
@@ -25,7 +24,9 @@ SUPPORTING_FILES = [
 
 
 @pytest.mark.parametrize("name,path,core,key", CORE_FILES + SUPPORTING_FILES)
-def test_loader_source_exists_and_has_rows(name: str, path: Path, core: bool, key: str) -> None:
+def test_loader_source_exists_and_has_rows(
+    name: str, path: Path, core: bool, key: str
+) -> None:
     frame = clean_df(name, read_excel(path, core_file=core))
     assert path.exists()
     assert not frame.empty
@@ -33,17 +34,32 @@ def test_loader_source_exists_and_has_rows(name: str, path: Path, core: bool, ke
 
 
 @pytest.mark.parametrize("name,path,core,key", CORE_FILES + SUPPORTING_FILES)
-def test_loader_source_has_unique_normalized_key_column(name: str, path: Path, core: bool, key: str) -> None:
+def test_loader_source_has_unique_normalized_key_column(
+    name: str, path: Path, core: bool, key: str
+) -> None:
     frame = clean_df(name, read_excel(path, core_file=core))
     assert frame[key].notna().any()
     if key == "company_id":
-        assert (frame[key].dropna().astype(str) == frame[key].dropna().astype(str).str.upper()).all()
+        assert (
+            frame[key].dropna().astype(str)
+            == frame[key].dropna().astype(str).str.upper()
+        ).all()
 
 
 def test_loader_core_and_supporting_file_sets_are_complete() -> None:
     assert {item[0] for item in CORE_FILES} == {
-        "companies", "profitandloss", "balancesheet", "cashflow", "analysis", "documents", "prosandcons"
+        "companies",
+        "profitandloss",
+        "balancesheet",
+        "cashflow",
+        "analysis",
+        "documents",
+        "prosandcons",
     }
     assert {item[0] for item in SUPPORTING_FILES} == {
-        "sectors", "stock_prices", "market_cap", "financial_ratios", "peer_groups"
+        "sectors",
+        "stock_prices",
+        "market_cap",
+        "financial_ratios",
+        "peer_groups",
     }

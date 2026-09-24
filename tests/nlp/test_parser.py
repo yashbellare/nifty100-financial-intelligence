@@ -26,7 +26,14 @@ def test_parse_analysis_frame_logs_unmatched_cells():
 
 def test_cross_validate_flags_divergence_above_five_percent():
     parsed = pd.DataFrame(
-        [{"company_id": "ABC", "metric_type": "revenue_cagr", "period_years": 5, "value_pct": 20.0}]
+        [
+            {
+                "company_id": "ABC",
+                "metric_type": "revenue_cagr",
+                "period_years": 5,
+                "value_pct": 20.0,
+            }
+        ]
     )
     ratios = pd.DataFrame([{"company_id": "ABC", "revenue_cagr_5yr": 12.0}])
     result = cross_validate(parsed, ratios)

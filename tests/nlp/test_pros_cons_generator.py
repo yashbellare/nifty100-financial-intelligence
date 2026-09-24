@@ -34,9 +34,20 @@ def _rows(**overrides):
 def test_evaluate_company_emits_explicit_pro_rules():
     result = pd.DataFrame(evaluate_company("TEST", _rows()))
 
-    assert {"P01", "P02", "P03", "P04", "P05", "P06", "P07", "P08", "P09", "P10", "P11", "P12"}.issubset(
-        set(result.loc[result["type"] == "pro", "rule_id"])
-    )
+    assert {
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09",
+        "P10",
+        "P11",
+        "P12",
+    }.issubset(set(result.loc[result["type"] == "pro", "rule_id"]))
     assert result["confidence_pct"].between(0, 100).all()
 
 
@@ -46,7 +57,10 @@ def test_generate_pros_cons_falls_back_to_both_types():
     result = generate_pros_cons(sparse)
 
     assert set(result["type"]) == {"pro", "con"}
-    assert all(set(types) == {"pro", "con"} for types in result.groupby("company_id")["type"].agg(set))
+    assert all(
+        set(types) == {"pro", "con"}
+        for types in result.groupby("company_id")["type"].agg(set)
+    )
     assert (result["confidence_pct"] > 60).all()
 
 
