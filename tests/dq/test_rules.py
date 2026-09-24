@@ -23,3 +23,27 @@ def test_dq14_eps_sign():
  d=base(); d["profitandloss"].loc[0,"eps"]=-1; assert "DQ-14" in ids(validate_all(d))
 def test_dq16_coverage():
  d=base(); assert "DQ-16" in ids(validate_all(d))
+
+def test_dq01_duplicate_company_id():
+ d=base(); d["companies"] = pd.concat([d["companies"], d["companies"]], ignore_index=True); assert "DQ-01" in ids(validate_all(d))
+
+def test_dq02_duplicate_annual_key():
+ d=base(); d["profitandloss"] = pd.concat([d["profitandloss"], d["profitandloss"]], ignore_index=True); assert "DQ-02" in ids(validate_all(d))
+
+def test_dq03_orphan_company_id():
+ d=base(); d["cashflow"].loc[0, "company_id"] = "UNKNOWN"; assert "DQ-03" in ids(validate_all(d))
+
+def test_dq05_opm_mismatch():
+ d=base(); d["profitandloss"].loc[0, "opm_percentage"] = 10; assert "DQ-05" in ids(validate_all(d))
+
+def test_dq07_invalid_year():
+ d=base(); d["cashflow"].loc[0, "year"] = "FY24"; assert "DQ-07" in ids(validate_all(d))
+
+def test_dq08_invalid_ticker():
+ d=base(); d["cashflow"].loc[0, "company_id"] = "tcs"; assert "DQ-08" in ids(validate_all(d))
+
+def test_dq10_negative_fixed_assets():
+ d=base(); d["balancesheet"].loc[0, "fixed_assets"] = -1; assert "DQ-10" in ids(validate_all(d))
+
+def test_dq15_strict_balance_mismatch():
+ d=base(); d["balancesheet"].loc[0, "total_assets"] = 99; assert "DQ-15" in ids(validate_all(d))
